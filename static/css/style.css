@@ -708,13 +708,23 @@ body {
 .week-header {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
+    gap: 2rem;
     margin-bottom: 1rem;
+}
+
+.week-header > div {
+    flex: 1;
 }
 
 .week-header h3 {
     font-size: 1.5rem;
     color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.week-header .week-description {
+    margin-bottom: 0;
 }
 
 .challenge-count {

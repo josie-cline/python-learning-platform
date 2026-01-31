@@ -48,10 +48,14 @@
                 {% for week in roadmap %}
                 <div class="week-card">
                     <div class="week-header">
-                        <h3>Week {{ week.week }}: {{ week.title }}</h3>
-                        <span class="challenge-count">{{ week.challenge_count }} challenges</span>
+                        <div>
+                            <h3>Week {{ week.week }}: {{ week.title }}</h3>
+                            <p class="week-description">{{ week.description }}</p>
+                        </div>
+                        <a href="/browse#week-{{ week.week }}" class="btn btn-primary btn-small">
+                            View {{ week.challenge_count }} Challenges →
+                        </a>
                     </div>
-                    <p class="week-description">{{ week.description }}</p>
                     {% if week.topics %}
                     <div class="week-topics">
                         <strong>Topics:</strong>

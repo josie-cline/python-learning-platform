@@ -31,7 +31,7 @@
             <p class="page-subtitle">Choose any challenge to work on at your own pace</p>
 
             {% for week_num, week_data in weeks.items() %}
-            <div class="week-section">
+            <div class="week-section" id="week-{{ week_num }}">
                 <h2>Week {{ week_num }}: {{ week_data.title }}</h2>
                 <p class="week-description">{{ week_data.description }}</p>
                 
