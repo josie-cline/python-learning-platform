@@ -1,6 +1,7 @@
 /* PyQuest - Modern Learning Platform Styles */
 
 :root {
+    /* Light Mode (Default) */
     --primary: #3b82f6;
     --primary-dark: #2563eb;
     --secondary: #8b5cf6;
@@ -15,6 +16,28 @@
     --shadow: rgba(0, 0, 0, 0.1);
     --code-bg: #1e293b;
     --code-text: #e2e8f0;
+    --hover-bg: #f1f5f9;
+    --accent: #6366f1;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --secondary: #a78bfa;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #f87171;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --text: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --code-bg: #0d1117;
+    --code-text: #e6edf3;
+    --hover-bg: #2d3a4d;
+    --accent: #818cf8;
 }
 
 * {
@@ -233,18 +256,21 @@ body {
 }
 
 .difficulty-badge.beginner {
-    background: #d1fae5;
-    color: #065f46;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+    border: 1px solid var(--success);
 }
 
 .difficulty-badge.intermediate {
-    background: #fef3c7;
-    color: #92400e;
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+    border: 1px solid var(--warning);
 }
 
 .difficulty-badge.advanced {
-    background: #fee2e2;
-    color: #991b1b;
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--error);
+    border: 1px solid var(--error);
 }
 
 /* Buttons */
@@ -369,7 +395,7 @@ body {
 }
 
 .progress-fill {
-    background: white;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
     height: 100%;
     border-radius: 0.75rem;
     transition: width 0.5s ease;
@@ -437,13 +463,14 @@ body {
 }
 
 .hints-section {
-    background: #fef3c7;
+    background: rgba(245, 158, 11, 0.1);
     padding: 1.5rem;
     border-radius: 0.5rem;
+    border: 1px solid var(--border);
 }
 
 .hint-item {
-    background: white;
+    background: var(--surface);
     padding: 1rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
@@ -530,8 +557,8 @@ body {
 }
 
 .test-summary.failure {
-    background: #fee2e2;
-    color: #991b1b;
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--error);
 }
 
 .test-result {
@@ -542,13 +569,15 @@ body {
 }
 
 .test-result.success {
-    background: #f0fdf4;
+    background: rgba(16, 185, 129, 0.1);
     border-color: var(--success);
+    color: var(--text);
 }
 
 .test-result.failure {
-    background: #fef2f2;
+    background: rgba(239, 68, 68, 0.1);
     border-color: var(--error);
+    color: var(--text);
 }
 
 .success-message {
@@ -978,12 +1007,12 @@ body {
 }
 
 .markdown-content code {
-    background: #f1f5f9;
+    background: var(--code-bg);
     padding: 0.2rem 0.4rem;
     border-radius: 0.25rem;
     font-family: 'Fira Code', monospace;
     font-size: 0.9em;
-    color: #c7254e;
+    color: var(--accent);
 }
 
 .markdown-content pre {
@@ -1381,11 +1410,12 @@ body {
 }
 
 .reference-card code {
-    background: #f1f5f9;
+    background: var(--code-bg);
     padding: 0.2rem 0.4rem;
     border-radius: 0.25rem;
     font-family: 'Fira Code', monospace;
     font-size: 0.875rem;
+    color: var(--accent);
 }
 
 .tools-cta {
@@ -1487,4 +1517,40 @@ body {
     color: var(--text-secondary);
     padding: 2rem;
     font-style: italic;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 2rem;
+    padding: 0.375rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1.25rem;
+}
+
+.theme-toggle:hover {
+    background: var(--hover-bg);
+    border-color: var(--primary);
+}
+
+.theme-toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Smooth theme transition */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar, .card, .stat-card, .action-card, .challenge-card {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }

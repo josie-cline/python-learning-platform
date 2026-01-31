@@ -1,5 +1,33 @@
 // PyQuest - Frontend JavaScript
 
+// Theme Toggle
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update icon
+    const icon = document.querySelector('.theme-toggle-icon');
+    if (icon) {
+        icon.textContent = newTheme === 'dark' ? '☀️' : '🌓';
+    }
+}
+
+// Load saved theme on page load
+(function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Update icon if toggle exists
+    const icon = document.querySelector('.theme-toggle-icon');
+    if (icon) {
+        icon.textContent = savedTheme === 'dark' ? '☀️' : '🌓';
+    }
+})();
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
