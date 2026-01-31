@@ -256,20 +256,30 @@ Your progress is saved locally in `user_progress.json`. This includes:
 ### "Can't connect to database"
 **Fix**: Make sure you're in the project folder when running `python3 app.py`
 
-## 🎓 Learning Resources
+## 📚 Documentation
 
-- **Python Docs**: [docs.python.org](https://docs.python.org/)
-- **Practice Problems**: Built into PyQuest!
-- **Video Tutorials**: [Real Python](https://realpython.com/)
-- **Scale AI Interview Prep**: Built into Months 5-6 curriculum
+**Complete guides in [`docs/`](./docs/) folder:**
 
-## 📞 Support
+### **Setup & Installation**
+- [Quick Start](./docs/setup/QUICKSTART.md) - 5 minutes
+- [Setup Guide](./docs/setup/SETUP_GUIDE.md) - Detailed installation
+- [AI Practice Setup](./docs/setup/AI_PRACTICE_SETUP.md) - Enable AI generation ✨
+- [Deployment](./docs/setup/DEPLOYMENT.md) - Go live
 
-Questions? Issues? Want to customize your learning path?
+### **User Guides**
+- [Features](./docs/guides/FEATURES.md) - All features explained
+- [Tools Guide](./docs/guides/TOOLS_GUIDE.md) - Cursor, VS Code, Git, Terminal
+- [Quick Reference](./docs/guides/QUICK_REFERENCE.md) - Command cheat sheet
 
-1. Check the documentation in `/docs`
-2. Look at example solutions in `/solutions` (after completing challenges)
-3. Review the troubleshooting guide above
+### **Browse All Docs**
+See **[docs/README.md](./docs/README.md)** for complete navigation
+
+## 🆘 Need Help?
+
+1. **Start here:** [START_HERE.md](./START_HERE.md)
+2. **Features:** [docs/guides/FEATURES.md](./docs/guides/FEATURES.md)
+3. **Troubleshooting:** See section above
+4. **API Setup:** [docs/setup/AI_PRACTICE_SETUP.md](./docs/setup/AI_PRACTICE_SETUP.md)
 
 ## 🎉 Your Learning Journey Starts Now!
 
