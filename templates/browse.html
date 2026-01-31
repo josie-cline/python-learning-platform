@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Challenges - PyQuest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🐍</span>
+                <span class="brand-text">PyQuest</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/challenge" class="nav-link">Today's Challenge</a>
+                <a href="/browse" class="nav-link active">Browse</a>
+                <a href="/practice" class="nav-link">Practice</a>
+                <a href="/tools" class="nav-link">Tools</a>
+                <a href="/progress" class="nav-link">Progress</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>📚 Browse All Challenges</h1>
+            <p class="page-subtitle">Choose any challenge to work on at your own pace</p>
+
+            {% for week_num, week_data in weeks.items() %}
+            <div class="week-section">
+                <h2>Week {{ week_num }}: {{ week_data.title }}</h2>
+                <p class="week-description">{{ week_data.description }}</p>
+                
+                <div class="challenges-grid">
+                    {% for challenge in week_data.challenges %}
+                    <a href="/challenge?week={{ week_num }}&day_num={{ challenge.day }}" class="challenge-browse-card">
+                        <div class="challenge-day">Day {{ challenge.day }}</div>
+                        <h3>{{ challenge.title }}</h3>
+                        <p class="challenge-topic">{{ challenge.topic }}</p>
+                        <div class="challenge-browse-meta">
+                            <span class="difficulty-badge {{ challenge.difficulty }}">{{ challenge.difficulty }}</span>
+                            <span class="meta-item">⏱️ {{ challenge.time_estimate }}</span>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 PyQuest - Your Path to Python Mastery 🐍</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -37,6 +37,29 @@
                             <span class="meta-item">⏱️ {{ challenge.time_estimate }}</span>
                             <span class="meta-item">📅 Week {{ challenge.week }}, Day {{ challenge.day }}</span>
                         </div>
+                        
+                        <!-- Navigation Buttons -->
+                        <div class="challenge-navigation">
+                            {% if has_prev %}
+                            <a href="/challenge?week={{ prev_week }}&day_num={{ prev_day }}" class="btn btn-secondary btn-small">
+                                ← Previous Challenge
+                            </a>
+                            {% else %}
+                            <span class="btn btn-secondary btn-small btn-disabled">← Previous</span>
+                            {% endif %}
+                            
+                            <a href="/browse" class="btn btn-secondary btn-small">
+                                📚 Browse All
+                            </a>
+                            
+                            {% if has_next %}
+                            <a href="/challenge?week={{ next_week }}&day_num={{ next_day }}" class="btn btn-secondary btn-small">
+                                Next Challenge →
+                            </a>
+                            {% else %}
+                            <span class="btn btn-secondary btn-small btn-disabled">Next →</span>
+                            {% endif %}
+                        </div>
                     </div>
 
                     <div class="section">

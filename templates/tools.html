@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Tools - PyQuest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🐍</span>
+                <span class="brand-text">PyQuest</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/challenge" class="nav-link">Today's Challenge</a>
+                <a href="/browse" class="nav-link">Browse</a>
+                <a href="/practice" class="nav-link">Practice</a>
+                <a href="/tools" class="nav-link active">Tools</a>
+                <a href="/progress" class="nav-link">Progress</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>🛠️ Development Tools Learning Paths</h1>
+            <p class="page-subtitle">Master the tools developers use every day</p>
+
+            <!-- Cursor -->
+            <section class="tool-learning-section">
+                <div class="tool-header">
+                    <h2>💻 Cursor IDE</h2>
+                    <span class="tool-badge">Beginner Friendly</span>
+                </div>
+                
+                <p class="tool-intro">Cursor is an AI-powered code editor. Learn to use it effectively!</p>
+                
+                <div class="lessons-grid">
+                    <div class="lesson-card">
+                        <div class="lesson-number">1</div>
+                        <h3>Getting Started with Cursor</h3>
+                        <ul>
+                            <li>Installing Cursor</li>
+                            <li>Opening files and folders</li>
+                            <li>The file explorer</li>
+                            <li>Opening multiple files</li>
+                        </ul>
+                        <a href="#cursor-basics" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">2</div>
+                        <h3>Essential Shortcuts</h3>
+                        <ul>
+                            <li>Save: Cmd/Ctrl + S</li>
+                            <li>Find: Cmd/Ctrl + F</li>
+                            <li>Command Palette: Cmd/Ctrl + Shift + P</li>
+                            <li>Toggle Terminal: Ctrl + `</li>
+                        </ul>
+                        <a href="#cursor-shortcuts" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">3</div>
+                        <h3>Using AI Features</h3>
+                        <ul>
+                            <li>Ask Cursor questions</li>
+                            <li>Code completions</li>
+                            <li>Explain code</li>
+                            <li>Fix errors</li>
+                        </ul>
+                        <a href="#cursor-ai" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">4</div>
+                        <h3>Working with Python</h3>
+                        <ul>
+                            <li>Running Python files</li>
+                            <li>Using the debugger</li>
+                            <li>Installing extensions</li>
+                            <li>Integrated terminal</li>
+                        </ul>
+                        <a href="#cursor-python" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VS Code -->
+            <section class="tool-learning-section">
+                <div class="tool-header">
+                    <h2>📝 VS Code</h2>
+                    <span class="tool-badge">Industry Standard</span>
+                </div>
+                
+                <p class="tool-intro">Visual Studio Code is the most popular code editor. Learn it inside and out!</p>
+                
+                <div class="lessons-grid">
+                    <div class="lesson-card">
+                        <div class="lesson-number">1</div>
+                        <h3>VS Code Basics</h3>
+                        <ul>
+                            <li>Interface overview</li>
+                            <li>File management</li>
+                            <li>Settings and preferences</li>
+                            <li>Themes and customization</li>
+                        </ul>
+                        <a href="#vscode-basics" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">2</div>
+                        <h3>Extensions</h3>
+                        <ul>
+                            <li>Python extension</li>
+                            <li>Pylance</li>
+                            <li>GitLens</li>
+                            <li>Prettier</li>
+                        </ul>
+                        <a href="#vscode-extensions" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">3</div>
+                        <h3>Productivity Tips</h3>
+                        <ul>
+                            <li>Multi-cursor editing</li>
+                            <li>Find and replace</li>
+                            <li>Snippets</li>
+                            <li>Refactoring</li>
+                        </ul>
+                        <a href="#vscode-productivity" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">4</div>
+                        <h3>Debugging</h3>
+                        <ul>
+                            <li>Setting breakpoints</li>
+                            <li>Step through code</li>
+                            <li>Watch variables</li>
+                            <li>Debug console</li>
+                        </ul>
+                        <a href="#vscode-debugging" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Terminal/CLI -->
+            <section class="tool-learning-section">
+                <div class="tool-header">
+                    <h2>⚡ Terminal & Command Line</h2>
+                    <span class="tool-badge">Essential Skill</span>
+                </div>
+                
+                <p class="tool-intro">The command line is powerful. Learn to use it like a pro!</p>
+                
+                <div class="lessons-grid">
+                    <div class="lesson-card">
+                        <div class="lesson-number">1</div>
+                        <h3>Terminal Basics</h3>
+                        <ul>
+                            <li>What is the terminal?</li>
+                            <li>Opening terminal</li>
+                            <li>Understanding prompts</li>
+                            <li>Your first commands</li>
+                        </ul>
+                        <a href="#terminal-basics" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">2</div>
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li>cd - change directory</li>
+                            <li>ls - list files</li>
+                            <li>pwd - where am I?</li>
+                            <li>Paths and directories</li>
+                        </ul>
+                        <a href="#terminal-navigation" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">3</div>
+                        <h3>File Operations</h3>
+                        <ul>
+                            <li>mkdir - create folders</li>
+                            <li>touch - create files</li>
+                            <li>cp - copy</li>
+                            <li>mv - move/rename</li>
+                            <li>rm - delete (careful!)</li>
+                        </ul>
+                        <a href="#terminal-files" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">4</div>
+                        <h3>Advanced Terminal</h3>
+                        <ul>
+                            <li>Pipes and redirects</li>
+                            <li>Environment variables</li>
+                            <li>Shell shortcuts</li>
+                            <li>Customizing your prompt</li>
+                        </ul>
+                        <a href="#terminal-advanced" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Git -->
+            <section class="tool-learning-section">
+                <div class="tool-header">
+                    <h2>🔀 Git & GitHub</h2>
+                    <span class="tool-badge">Version Control</span>
+                </div>
+                
+                <p class="tool-intro">Git is how developers save and share code. GitHub is where code lives!</p>
+                
+                <div class="lessons-grid">
+                    <div class="lesson-card">
+                        <div class="lesson-number">1</div>
+                        <h3>Git Fundamentals</h3>
+                        <ul>
+                            <li>What is version control?</li>
+                            <li>Installing Git</li>
+                            <li>git init, add, commit</li>
+                            <li>Understanding commits</li>
+                        </ul>
+                        <a href="#git-basics" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">2</div>
+                        <h3>Working with GitHub</h3>
+                        <ul>
+                            <li>Creating repositories</li>
+                            <li>git push and pull</li>
+                            <li>README files</li>
+                            <li>GitHub Desktop</li>
+                        </ul>
+                        <a href="#github-basics" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">3</div>
+                        <h3>Branching</h3>
+                        <ul>
+                            <li>What are branches?</li>
+                            <li>Creating branches</li>
+                            <li>Switching branches</li>
+                            <li>Merging</li>
+                        </ul>
+                        <a href="#git-branching" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card">
+                        <div class="lesson-number">4</div>
+                        <h3>Collaboration</h3>
+                        <ul>
+                            <li>Pull requests</li>
+                            <li>Code reviews</li>
+                            <li>Merge conflicts</li>
+                            <li>Best practices</li>
+                        </ul>
+                        <a href="#git-collaboration" class="btn btn-small btn-secondary">Start Lesson</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Reference -->
+            <section class="quick-reference-section">
+                <h2>📋 Quick Reference</h2>
+                <p>Common commands you'll use every day</p>
+                
+                <div class="reference-grid">
+                    <div class="reference-card">
+                        <h3>Terminal</h3>
+                        <code>cd folder</code> - Go into folder<br>
+                        <code>ls</code> - List files<br>
+                        <code>pwd</code> - Current location<br>
+                        <code>mkdir name</code> - Create folder<br>
+                        <code>python3 file.py</code> - Run Python
+                    </div>
+
+                    <div class="reference-card">
+                        <h3>Git</h3>
+                        <code>git status</code> - Check changes<br>
+                        <code>git add .</code> - Stage all<br>
+                        <code>git commit -m "msg"</code> - Save<br>
+                        <code>git push</code> - Upload<br>
+                        <code>git pull</code> - Download
+                    </div>
+
+                    <div class="reference-card">
+                        <h3>Cursor/VS Code</h3>
+                        <code>Cmd/Ctrl + S</code> - Save<br>
+                        <code>Cmd/Ctrl + F</code> - Find<br>
+                        <code>Cmd/Ctrl + P</code> - Quick open<br>
+                        <code>Cmd/Ctrl + /</code> - Comment<br>
+                        <code>Ctrl + `</code> - Terminal
+                    </div>
+
+                    <div class="reference-card">
+                        <h3>Python</h3>
+                        <code>python3 --version</code> - Check version<br>
+                        <code>pip3 install pkg</code> - Install package<br>
+                        <code>python3 -m venv env</code> - Virtual env<br>
+                        <code>python3</code> - Interactive mode
+                    </div>
+                </div>
+            </section>
+
+            <div class="tools-cta">
+                <h2>🎯 Ready to Level Up?</h2>
+                <p>These tools will make you a more efficient developer. Start with Terminal basics, then move to your editor of choice!</p>
+                <p><strong>Recommended order:</strong> Terminal → Cursor/VS Code → Git → Advanced features</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 PyQuest - Your Path to Python Mastery 🐍</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

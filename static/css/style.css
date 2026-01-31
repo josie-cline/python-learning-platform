@@ -1029,6 +1029,376 @@ body {
     margin: 2rem 0;
 }
 
+/* Challenge Navigation */
+.challenge-navigation {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Browse Challenges */
+.week-section {
+    margin-bottom: 3rem;
+}
+
+.week-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.week-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.challenge-browse-card {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    border-left: 4px solid var(--primary);
+}
+
+.challenge-browse-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px var(--shadow);
+}
+
+.challenge-day {
+    font-size: 0.875rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.challenge-browse-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.challenge-browse-card .challenge-topic {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.challenge-browse-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+/* Practice Sandbox */
+.practice-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.practice-filters {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    height: fit-content;
+    position: sticky;
+    top: 5rem;
+}
+
+.practice-filters h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-section {
+    margin-bottom: 2rem;
+}
+
+.filter-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.filter-group input {
+    cursor: pointer;
+}
+
+.practice-tips {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.practice-tips h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.practice-tips ul {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-left: 1.25rem;
+}
+
+.practice-tips li {
+    margin-bottom: 0.5rem;
+}
+
+.practice-content {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    min-height: 500px;
+}
+
+.practice-empty,
+.practice-challenge-display {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-state-large {
+    text-align: center;
+    max-width: 500px;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state-large h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state-large p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.empty-hint {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.practice-challenge-display {
+    display: block;
+}
+
+.practice-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.practice-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.practice-description,
+.practice-instructions {
+    margin-bottom: 2rem;
+}
+
+.practice-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Tools Learning */
+.tool-learning-section {
+    margin-bottom: 4rem;
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tool-badge {
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.tool-intro {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.lesson-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    transition: transform 0.2s;
+}
+
+.lesson-card:hover {
+    transform: translateY(-2px);
+}
+
+.lesson-number {
+    width: 3rem;
+    height: 3rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.lesson-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.lesson-card ul {
+    margin-left: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.lesson-card li {
+    margin-bottom: 0.5rem;
+}
+
+.quick-reference-section {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.quick-reference-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.quick-reference-section > p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.reference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.reference-card {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.reference-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.reference-card code {
+    background: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+}
+
+.tools-cta {
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+}
+
+.tools-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tools-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .practice-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .practice-filters {
+        position: static;
+    }
+    
+    .challenge-navigation {
+        justify-content: center;
+    }
+}
+
 .empty-state {
     text-align: center;
     color: var(--text-secondary);

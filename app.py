@@ -63,13 +63,48 @@ def index():
 def challenge():
     """Today's challenge page"""
     day_offset = request.args.get('day', 0, type=int)
-    challenge_data = challenge_loader.get_challenge_by_day(day_offset)
+    week = request.args.get('week', type=int)
+    day = request.args.get('day_num', type=int)
+    
+    # If specific week/day requested
+    if week is not None and day is not None:
+        challenge_data = challenge_loader.get_challenge(week, day)
+    else:
+        # Use day offset from today
+        challenge_data = challenge_loader.get_challenge_by_day(day_offset)
     
     if not challenge_data:
         return render_template('error.html', 
                              message="No challenge available for this day")
     
-    return render_template('challenge.html', challenge=challenge_data)
+    # Get previous and next challenge info
+    current_week = challenge_data.get('week')
+    current_day = challenge_data.get('day')
+    
+    # Calculate previous
+    prev_week, prev_day = current_week, current_day - 1
+    if prev_day < 1:
+        prev_week -= 1
+        prev_day = 7
+    
+    # Calculate next
+    next_week, next_day = current_week, current_day + 1
+    if next_day > 7:
+        next_week += 1
+        next_day = 1
+    
+    # Check if prev/next exist
+    has_prev = challenge_loader.get_challenge(prev_week, prev_day) is not None
+    has_next = challenge_loader.get_challenge(next_week, next_day) is not None
+    
+    return render_template('challenge.html', 
+                         challenge=challenge_data,
+                         has_prev=has_prev,
+                         has_next=has_next,
+                         prev_week=prev_week,
+                         prev_day=prev_day,
+                         next_week=next_week,
+                         next_day=next_day)
 
 
 @app.route('/challenge/<int:week>/<int:day>')
@@ -158,6 +193,75 @@ def curriculum():
     """View full curriculum and roadmap"""
     roadmap = challenge_loader.get_roadmap()
     return render_template('curriculum.html', roadmap=roadmap)
+
+
+@app.route('/browse')
+def browse_challenges():
+    """Browse all available challenges"""
+    roadmap = challenge_loader.get_roadmap()
+    
+    # Get all challenges organized by week
+    all_challenges = {}
+    for week_info in roadmap:
+        week_num = week_info['week']
+        week_data = challenge_loader.get_week_data(week_num)
+        if week_data:
+            all_challenges[week_num] = {
+                'title': week_info['title'],
+                'description': week_info['description'],
+                'challenges': week_data.get('challenges', [])
+            }
+    
+    return render_template('browse.html', weeks=all_challenges)
+
+
+@app.route('/practice')
+def practice():
+    """Practice sandbox with random challenges"""
+    return render_template('practice.html')
+
+
+@app.route('/api/random-challenge')
+def random_challenge():
+    """Get a random challenge based on filters"""
+    topics = request.args.getlist('topics')
+    difficulty = request.args.get('difficulty')
+    
+    # Get all available challenges
+    all_challenges = []
+    roadmap = challenge_loader.get_roadmap()
+    
+    for week_info in roadmap:
+        week_num = week_info['week']
+        week_data = challenge_loader.get_week_data(week_num)
+        if week_data:
+            for ch in week_data.get('challenges', []):
+                ch['week'] = week_num
+                ch['id'] = f"week{week_num:03d}_day{ch.get('day')}"
+                all_challenges.append(ch)
+    
+    # Filter by difficulty if specified
+    if difficulty:
+        all_challenges = [ch for ch in all_challenges if ch.get('difficulty') == difficulty]
+    
+    # Filter by topics if specified
+    if topics:
+        all_challenges = [ch for ch in all_challenges 
+                         if ch.get('topic') and any(t.lower() in ch.get('topic', '').lower() for t in topics)]
+    
+    # Return random challenge
+    import random
+    if all_challenges:
+        challenge = random.choice(all_challenges)
+        return jsonify(challenge)
+    else:
+        return jsonify({'error': 'No challenges match your filters'}), 404
+
+
+@app.route('/tools')
+def tools_learning():
+    """Learning paths for development tools"""
+    return render_template('tools.html')
 
 
 @app.route('/resources')
