@@ -15,26 +15,162 @@ challenges:
     title: "Even or Odd?"
     topic: "If/Else Statements"
     difficulty: beginner
-    time_estimate: "30-40 minutes"
+    time_estimate: "45-60 minutes"
     description: |
-      Learn to make decisions in your code! If statements let your program
-      choose different paths based on conditions.
+      Learn to make decisions in your code!
       
-      **What you'll learn:**
-      - If/else statements
-      - The modulo operator (%)
-      - Comparison operators
+      ## 🎓 LESSON: Conditional Statements
+      
+      ### Part 1: What Are If Statements?
+      
+      An `if` statement lets your program make decisions. Think of it like a fork in the road.
+      
+      **Basic structure:**
+      ```python
+      if condition:
+          # Do this if condition is True
+      ```
+      
+      **Example:**
+      ```python
+      age = 18
+      if age >= 18:
+          print("You can vote!")
+      ```
+      
+      ### Part 2: Boolean Values (True/False)
+      
+      Python has two special values for yes/no questions:
+      - `True` - Yes, it's true
+      - `False` - No, it's false
+      
+      **Examples:**
+      ```python
+      is_raining = True
+      is_sunny = False
+      
+      5 > 3   # True
+      10 < 5  # False
+      ```
+      
+      ### Part 3: Comparison Operators
+      
+      These compare values and return True or False:
+      
+      ```python
+      ==  # Equal to
+      !=  # Not equal to
+      >   # Greater than
+      <   # Less than
+      >=  # Greater than or equal to
+      <=  # Less than or equal to
+      ```
+      
+      **Examples:**
+      ```python
+      5 == 5   # True
+      5 == 3   # False
+      10 > 5   # True
+      10 < 5   # False
+      age >= 18  # True if age is 18 or more
+      ```
+      
+      ### Part 4: If/Else
+      
+      `else` handles the "otherwise" case:
+      
+      ```python
+      age = 16
+      if age >= 18:
+          print("You can vote!")
+      else:
+          print("Too young to vote")
+      ```
+      
+      ### Part 5: The Modulo Operator (%)
+      
+      The `%` operator gives you the REMAINDER after division:
+      
+      ```python
+      10 % 3  # = 1 (10 divided by 3 is 3 remainder 1)
+      15 % 4  # = 3 (15 divided by 4 is 3 remainder 3)
+      10 % 2  # = 0 (10 divided by 2 is 5 remainder 0)
+      ```
+      
+      **Finding even/odd numbers:**
+      - Even numbers divide by 2 with NO remainder: `number % 2 == 0`
+      - Odd numbers have remainder 1: `number % 2 == 1`
+      
+      **Examples:**
+      ```python
+      4 % 2   # = 0 (even)
+      7 % 2   # = 1 (odd)
+      10 % 2  # = 0 (even)
+      ```
+      
+      ### Part 6: Returning True/False
+      
+      Functions can return boolean values:
+      
+      ```python
+      def is_adult(age):
+          if age >= 18:
+              return True
+          else:
+              return False
+      
+      result = is_adult(25)  # result is True
+      ```
     
     instructions: |
       Create a function `is_even(number)` that returns True if the number
       is even, and False if it's odd.
       
-      Hint: A number is even if dividing by 2 has no remainder.
-      Use the modulo operator: number % 2 == 0
+      **Step-by-step:**
+      
+      1. Check if the number is even using: `number % 2 == 0`
+      2. If it's even (remainder is 0), return True
+      3. Otherwise, return False
+      
+      **Method 1: Using if/else**
+      ```python
+      def is_even(number):
+          if number % 2 == 0:
+              return True
+          else:
+              return False
+      ```
+      
+      **Method 2: Shorter version (advanced)**
+      ```python
+      def is_even(number):
+          return number % 2 == 0
+      ```
+      
+      This works because `number % 2 == 0` already gives True or False!
+      
+      **Test it:**
+      ```python
+      is_even(4)   # True (4 % 2 = 0)
+      is_even(7)   # False (7 % 2 = 1)
+      is_even(0)   # True (0 % 2 = 0)
+      ```
     
     starter_code: |
       def is_even(number):
-          # Return True if even, False if odd
+          # Check if number % 2 equals 0
+          # If yes, return True
+          # If no, return False
+          
+          # Method 1: if/else
+          # if number % 2 == 0:
+          #     return True
+          # else:
+          #     return False
+          
+          # Method 2: Direct return
+          # return number % 2 == 0
+          
           pass
     
     hints:
@@ -59,10 +195,94 @@ challenges:
     title: "Grade Calculator"
     topic: "Multiple Conditions"
     difficulty: beginner
-    time_estimate: "40-50 minutes"
+    time_estimate: "50-60 minutes"
     description: |
-      Use multiple if/elif/else statements to convert a numeric score
-      into a letter grade.
+      Use multiple conditions to make more complex decisions!
+      
+      ## 🎓 LESSON: elif and Multiple Conditions
+      
+      ### Part 1: The Problem with Multiple Ifs
+      
+      What if you need to check multiple conditions?
+      
+      **Bad approach:**
+      ```python
+      score = 85
+      if score >= 90:
+          grade = "A"
+      if score >= 80:
+          grade = "B"  # This runs even after A!
+      ```
+      
+      This is wrong because it checks EVERY condition!
+      
+      ### Part 2: Enter elif (else if)
+      
+      `elif` means "else, if this condition". It only checks if previous conditions were False.
+      
+      **Correct approach:**
+      ```python
+      score = 85
+      if score >= 90:
+          grade = "A"
+      elif score >= 80:
+          grade = "B"  # Only checks if score < 90
+      elif score >= 70:
+          grade = "C"
+      else:
+          grade = "F"
+      ```
+      
+      ### Part 3: How It Flows
+      
+      Think of it like a waterfall:
+      
+      ```
+      if score >= 90:        ← Check this first
+          return "A"         ← If True, stop here
+      elif score >= 80:      ← Only if first was False
+          return "B"         ← If True, stop here
+      elif score >= 70:      ← Only if above were False
+          return "C"
+      else:                  ← If nothing else was True
+          return "F"
+      ```
+      
+      Once one condition is True, the rest are skipped!
+      
+      ### Part 4: Order Matters!
+      
+      **WRONG ORDER:**
+      ```python
+      if score >= 60:     # This catches everything!
+          return "D"
+      elif score >= 90:   # Never reached!
+          return "A"
+      ```
+      
+      **RIGHT ORDER:**
+      ```python
+      if score >= 90:     # Check highest first
+          return "A"
+      elif score >= 60:   # Check lower values later
+          return "D"
+      ```
+      
+      **Rule:** Always check from highest to lowest (or lowest to highest consistently)!
+      
+      ### Part 5: Range Checking
+      
+      You don't need upper bounds with elif:
+      
+      **Don't need this:**
+      ```python
+      if score >= 90 and score <= 100:  # Too complex!
+      ```
+      
+      **Do this instead:**
+      ```python
+      if score >= 90:      # Already know score < 100 from previous checks
+      ```
     
     instructions: |
       Create a function `get_grade(score)` that returns a letter grade:
@@ -71,10 +291,48 @@ challenges:
       - 70-79: "C"
       - 60-69: "D"
       - Below 60: "F"
+      
+      **Step-by-step:**
+      
+      1. Start with the highest grade (A)
+      2. Use elif for each subsequent grade
+      3. Use else for the lowest grade (F)
+      
+      **Solution:**
+      ```python
+      def get_grade(score):
+          if score >= 90:
+              return "A"
+          elif score >= 80:
+              return "B"
+          elif score >= 70:
+              return "C"
+          elif score >= 60:
+              return "D"
+          else:
+              return "F"
+      ```
+      
+      **Why this works:**
+      - If score is 95, first condition (>= 90) is True, returns "A", done!
+      - If score is 85, first is False, second (>= 80) is True, returns "B"
+      - If score is 55, all conditions False, else returns "F"
+      
+      **Test it:**
+      ```python
+      get_grade(95)  # "A"
+      get_grade(85)  # "B"
+      get_grade(75)  # "C"
+      get_grade(55)  # "F"
+      ```
     
     starter_code: |
       def get_grade(score):
-          # Return the letter grade
+          # Check from highest to lowest
+          # Start with: if score >= 90:
+          #     return "A"
+          # Then use elif for 80, 70, 60
+          # Finally use else for F
           pass
     
     hints:
@@ -103,19 +361,167 @@ challenges:
     title: "Count to Ten"
     topic: "While Loops"
     difficulty: beginner
-    time_estimate: "40-50 minutes"
+    time_estimate: "50-60 minutes"
     description: |
-      Loops let you repeat code! Learn how while loops work by counting from 1 to 10.
+      Loops let you repeat code! Learn while loops by counting.
+      
+      ## 🎓 LESSON: While Loops
+      
+      ### Part 1: Why Do We Need Loops?
+      
+      Imagine you need to print numbers 1 to 10:
+      
+      **Without loops (bad):**
+      ```python
+      print(1)
+      print(2)
+      print(3)
+      # ... 7 more lines!
+      ```
+      
+      **With loops (good):**
+      ```python
+      i = 1
+      while i <= 10:
+          print(i)
+          i += 1
+      ```
+      
+      Much better!
+      
+      ### Part 2: How While Loops Work
+      
+      A while loop repeats as long as a condition is True:
+      
+      ```python
+      while condition:
+          # Do something
+          # Update condition eventually!
+      ```
+      
+      **Example:**
+      ```python
+      count = 1
+      while count <= 3:
+          print(count)
+          count += 1
+      ```
+      
+      **What happens:**
+      1. Check: is count <= 3? (1 <= 3) Yes! → Print 1, count becomes 2
+      2. Check: is count <= 3? (2 <= 3) Yes! → Print 2, count becomes 3
+      3. Check: is count <= 3? (3 <= 3) Yes! → Print 3, count becomes 4
+      4. Check: is count <= 3? (4 <= 3) No! → Stop
+      
+      ### Part 3: The += Operator
+      
+      `+=` is a shortcut for increasing a variable:
+      
+      ```python
+      count = count + 1  # Long way
+      count += 1         # Short way (same thing!)
+      
+      # Also works with other operators:
+      score += 10    # Add 10 to score
+      price -= 5     # Subtract 5 from price
+      total *= 2     # Multiply total by 2
+      ```
+      
+      ### Part 4: Building Lists with Loops
+      
+      You can build a list by appending to it in a loop:
+      
+      ```python
+      numbers = []  # Start with empty list
+      i = 1
+      while i <= 5:
+          numbers.append(i)  # Add i to the list
+          i += 1
+      # numbers is now [1, 2, 3, 4, 5]
+      ```
+      
+      **The append() method:**
+      ```python
+      my_list = [1, 2]
+      my_list.append(3)  # my_list is now [1, 2, 3]
+      my_list.append(4)  # my_list is now [1, 2, 3, 4]
+      ```
+      
+      ### Part 5: Loop Variables
+      
+      **Start value:**
+      ```python
+      i = 1  # Start at 1
+      ```
+      
+      **Condition:**
+      ```python
+      while i <= 10:  # Keep going while i is 10 or less
+      ```
+      
+      **Update:**
+      ```python
+      i += 1  # Increase i by 1 each time
+      ```
+      
+      **⚠️ Warning:** Always update your loop variable or you'll have an infinite loop!
+      
+      **Infinite loop (BAD):**
+      ```python
+      i = 1
+      while i <= 10:
+          print(i)
+          # Forgot to do i += 1, so i stays 1 forever!
+      ```
     
     instructions: |
       Create a function `count_to_n(n)` that returns a list of numbers from 1 to n.
       
-      Example:
-      count_to_n(5) returns [1, 2, 3, 4, 5]
+      **Step-by-step:**
+      
+      1. Create an empty list: `numbers = []`
+      2. Create a counter variable: `i = 1`
+      3. Loop while i <= n
+      4. Inside loop: append i to the list
+      5. Inside loop: increase i by 1
+      6. Return the list
+      
+      **Solution:**
+      ```python
+      def count_to_n(n):
+          numbers = []       # Empty list
+          i = 1              # Start at 1
+          while i <= n:      # Loop until n
+              numbers.append(i)  # Add i to list
+              i += 1         # Increase i
+          return numbers     # Give back the list
+      ```
+      
+      **Test it:**
+      ```python
+      count_to_n(5)  # [1, 2, 3, 4, 5]
+      count_to_n(3)  # [1, 2, 3]
+      count_to_n(1)  # [1]
+      ```
     
     starter_code: |
       def count_to_n(n):
-          # Create a list of numbers from 1 to n
+          # Step 1: Create empty list
+          # numbers = []
+          
+          # Step 2: Create counter starting at 1
+          # i = 1
+          
+          # Step 3: Loop while i <= n
+          # while i <= n:
+          #     Step 4: Add i to list
+          #     numbers.append(i)
+          #     Step 5: Increase i
+          #     i += 1
+          
+          # Step 6: Return the list
+          # return numbers
+          
           pass
     
     hints:
@@ -136,21 +542,175 @@ challenges:
     title: "FizzBuzz (Part 1)"
     topic: "Combining Conditions and Loops"
     difficulty: intermediate
-    time_estimate: "45-60 minutes"
+    time_estimate: "60-75 minutes"
     description: |
-      FizzBuzz is a classic programming challenge! It combines loops,
-      conditions, and the modulo operator.
+      FizzBuzz is a classic programming challenge!
+      
+      ## 🎓 LESSON: Combining Multiple Concepts
+      
+      ### Part 1: What is FizzBuzz?
+      
+      FizzBuzz is a common interview question. The rules:
+      - If a number is divisible by 3, say "Fizz"
+      - If divisible by 5, say "Buzz"
+      - If divisible by BOTH 3 and 5, say "FizzBuzz"
+      - Otherwise, say the number
+      
+      **Examples:**
+      - 3 → "Fizz" (divisible by 3)
+      - 5 → "Buzz" (divisible by 5)
+      - 15 → "FizzBuzz" (divisible by both!)
+      - 7 → "7" (not divisible by 3 or 5)
+      
+      ### Part 2: Checking Divisibility
+      
+      Remember the modulo operator from Day 1?
+      
+      ```python
+      15 % 3  # = 0 (divisible by 3)
+      15 % 5  # = 0 (divisible by 5)
+      7 % 3   # = 1 (NOT divisible by 3)
+      ```
+      
+      **If remainder is 0, it's divisible!**
+      
+      ### Part 3: The "and" Operator
+      
+      `and` checks if BOTH conditions are True:
+      
+      ```python
+      True and True   # = True
+      True and False  # = False
+      False and False # = False
+      ```
+      
+      **Example:**
+      ```python
+      age = 25
+      has_license = True
+      
+      if age >= 18 and has_license:
+          print("Can drive!")
+      ```
+      
+      Both conditions must be True!
+      
+      ### Part 4: Order Matters in FizzBuzz!
+      
+      **WRONG ORDER (doesn't work):**
+      ```python
+      if n % 3 == 0:
+          return "Fizz"
+      elif n % 5 == 0:
+          return "Buzz"
+      elif n % 3 == 0 and n % 5 == 0:  # Never reached!
+          return "FizzBuzz"
+      ```
+      
+      Why? If n=15, the first condition catches it and returns "Fizz"!
+      
+      **RIGHT ORDER:**
+      ```python
+      if n % 3 == 0 and n % 5 == 0:  # Check BOTH first!
+          return "FizzBuzz"
+      elif n % 3 == 0:
+          return "Fizz"
+      elif n % 5 == 0:
+          return "Buzz"
+      else:
+          return str(n)
+      ```
+      
+      **Rule:** Check the MOST SPECIFIC condition first!
+      
+      ### Part 5: Converting Numbers to Strings
+      
+      If the number isn't divisible by 3 or 5, return it as a string:
+      
+      ```python
+      str(7)   # "7"
+      str(42)  # "42"
+      str(100) # "100"
+      ```
+      
+      Why? Because we're returning strings ("Fizz", "Buzz"), so the number should also be a string!
+      
+      ### Part 6: Alternative Checking Method
+      
+      Another way to check if divisible by both:
+      
+      ```python
+      n % 15 == 0  # Same as: n % 3 == 0 and n % 5 == 0
+      ```
+      
+      Because 15 = 3 × 5!
     
     instructions: |
       Create a function `fizzbuzz_single(n)` that:
+      - Returns "FizzBuzz" if n is divisible by both 3 and 5
       - Returns "Fizz" if n is divisible by 3
       - Returns "Buzz" if n is divisible by 5
-      - Returns "FizzBuzz" if divisible by both 3 and 5
       - Returns the number as a string otherwise
+      
+      **Step-by-step:**
+      
+      1. Check if divisible by BOTH 3 and 5 first (most specific)
+      2. Then check if divisible by 3
+      3. Then check if divisible by 5
+      4. Else return str(n)
+      
+      **Solution:**
+      ```python
+      def fizzbuzz_single(n):
+          if n % 3 == 0 and n % 5 == 0:
+              return "FizzBuzz"
+          elif n % 3 == 0:
+              return "Fizz"
+          elif n % 5 == 0:
+              return "Buzz"
+          else:
+              return str(n)
+      ```
+      
+      **Or using n % 15:**
+      ```python
+      def fizzbuzz_single(n):
+          if n % 15 == 0:         # Divisible by 15 = both 3 and 5
+              return "FizzBuzz"
+          elif n % 3 == 0:
+              return "Fizz"
+          elif n % 5 == 0:
+              return "Buzz"
+          else:
+              return str(n)
+      ```
+      
+      **Test it:**
+      ```python
+      fizzbuzz_single(3)   # "Fizz"
+      fizzbuzz_single(5)   # "Buzz"
+      fizzbuzz_single(15)  # "FizzBuzz"
+      fizzbuzz_single(7)   # "7"
+      ```
     
     starter_code: |
       def fizzbuzz_single(n):
-          # Check conditions and return appropriate value
+          # IMPORTANT: Check divisible by BOTH first!
+          # if n % 3 == 0 and n % 5 == 0:
+          #     return "FizzBuzz"
+          
+          # Then check divisible by 3
+          # elif n % 3 == 0:
+          #     return "Fizz"
+          
+          # Then check divisible by 5
+          # elif n % 5 == 0:
+          #     return "Buzz"
+          
+          # Otherwise return number as string
+          # else:
+          #     return str(n)
+          
           pass
     
     hints:
@@ -179,21 +739,146 @@ challenges:
     title: "Sum of List"
     topic: "For Loops"
     difficulty: beginner
-    time_estimate: "40-50 minutes"
+    time_estimate: "50-60 minutes"
     description: |
-      For loops are perfect for going through lists! Calculate the sum
-      of all numbers in a list.
+      For loops are perfect for going through lists!
+      
+      ## 🎓 LESSON: For Loops and Lists
+      
+      ### Part 1: What is a For Loop?
+      
+      A for loop goes through each item in a sequence (like a list):
+      
+      ```python
+      fruits = ["apple", "banana", "cherry"]
+      for fruit in fruits:
+          print(fruit)
+      ```
+      
+      **Output:**
+      ```
+      apple
+      banana
+      cherry
+      ```
+      
+      It automatically gets each item, one at a time!
+      
+      ### Part 2: For Loop vs While Loop
+      
+      **While loop (we know this):**
+      ```python
+      i = 0
+      while i < len(numbers):
+          print(numbers[i])
+          i += 1
+      ```
+      
+      **For loop (easier!):**
+      ```python
+      for number in numbers:
+          print(number)
+      ```
+      
+      For loops are simpler when working with lists!
+      
+      ### Part 3: The Anatomy of a For Loop
+      
+      ```python
+      for item in collection:
+          # Do something with item
+      ```
+      
+      - `for` - keyword to start the loop
+      - `item` - variable name (you choose this!)
+      - `in` - keyword  
+      - `collection` - the list/sequence
+      - `:` - starts the loop body
+      - Indented code - runs for each item
+      
+      **You can name the variable anything:**
+      ```python
+      for x in numbers:      # x is each number
+      for name in names:     # name is each name
+      for i in items:        # i is each item
+      ```
+      
+      ### Part 4: Building a Sum
+      
+      To add all numbers in a list:
+      
+      ```python
+      numbers = [1, 2, 3, 4]
+      total = 0  # Start at 0
+      
+      for number in numbers:
+          total += number  # Add each number to total
+      
+      # total is now 10 (1+2+3+4)
+      ```
+      
+      **Step by step:**
+      1. total = 0, number = 1 → total = 0 + 1 = 1
+      2. total = 1, number = 2 → total = 1 + 2 = 3
+      3. total = 3, number = 3 → total = 3 + 3 = 6
+      4. total = 6, number = 4 → total = 6 + 4 = 10
+      
+      ### Part 5: The sum() Function (Bonus)
+      
+      Python has a built-in function for this!
+      
+      ```python
+      numbers = [1, 2, 3, 4]
+      total = sum(numbers)  # 10
+      ```
+      
+      But for learning, it's good to understand HOW it works with a loop!
     
     instructions: |
       Create a function `sum_list(numbers)` that returns the sum of all
       numbers in the list.
       
-      Example:
-      sum_list([1, 2, 3, 4]) returns 10
+      **Step-by-step:**
+      
+      1. Start with total = 0
+      2. Loop through each number in the list
+      3. Add each number to total
+      4. Return total
+      
+      **Solution:**
+      ```python
+      def sum_list(numbers):
+          total = 0                # Start at 0
+          for num in numbers:      # For each number
+              total += num         # Add to total
+          return total             # Return the sum
+      ```
+      
+      **Test it:**
+      ```python
+      sum_list([1, 2, 3, 4])  # 10
+      sum_list([10, 20, 30])  # 60
+      sum_list([5])           # 5
+      sum_list([])            # 0 (empty list)
+      ```
+      
+      **Why start at 0?**
+      If you start at 0, adding numbers gives the right answer.
+      If you started at 1, you'd have an extra 1!
     
     starter_code: |
       def sum_list(numbers):
-          # Calculate and return the sum
+          # Step 1: Create variable to hold the sum, start at 0
+          # total = 0
+          
+          # Step 2: Loop through each number
+          # for num in numbers:
+          #     Step 3: Add the number to total
+          #     total += num
+          
+          # Step 4: Return the total
+          # return total
+          
           pass
     
     hints:
@@ -214,20 +899,142 @@ challenges:
     title: "Find Maximum"
     topic: "Loops and Comparisons"
     difficulty: beginner
-    time_estimate: "40-50 minutes"
+    time_estimate: "50-60 minutes"
     description: |
-      Find the largest number in a list by comparing each number!
+      Find the largest number in a list!
+      
+      ## 🎓 LESSON: Finding Maximum Values
+      
+      ### Part 1: The Strategy
+      
+      To find the biggest number, we:
+      1. Assume the first number is the biggest
+      2. Check each other number
+      3. If we find a bigger one, remember it
+      4. Return the biggest we found
+      
+      **Example with [3, 7, 2, 9, 1]:**
+      - Start: max = 3 (first number)
+      - Check 7: Is 7 > 3? Yes! → max = 7
+      - Check 2: Is 2 > 7? No → max stays 7
+      - Check 9: Is 9 > 7? Yes! → max = 9
+      - Check 1: Is 1 > 9? No → max stays 9
+      - Result: 9
+      
+      ### Part 2: Accessing List Elements
+      
+      Lists use indexes (positions starting at 0):
+      
+      ```python
+      numbers = [10, 20, 30, 40]
+      
+      numbers[0]  # 10 (first item)
+      numbers[1]  # 20 (second item)
+      numbers[2]  # 30 (third item)
+      numbers[3]  # 40 (fourth item)
+      ```
+      
+      **Getting the first element:**
+      ```python
+      first = numbers[0]
+      ```
+      
+      ### Part 3: The Algorithm (Step by Step)
+      
+      ```python
+      def find_max(numbers):
+          max_num = numbers[0]  # Start with first number
+          
+          for num in numbers:   # Check each number
+              if num > max_num: # If bigger than current max
+                  max_num = num # Update max
+          
+          return max_num        # Return the biggest
+      ```
+      
+      ### Part 4: Comparison Operators Review
+      
+      ```python
+      >   # Greater than
+      <   # Less than
+      >=  # Greater than or equal to
+      <=  # Less than or equal to
+      ==  # Equal to
+      !=  # Not equal to
+      ```
+      
+      **Examples:**
+      ```python
+      9 > 7   # True
+      2 > 7   # False
+      5 >= 5  # True
+      ```
+      
+      ### Part 5: Why This Works
+      
+      By the end of the loop, `max_num` will have been compared
+      to every number in the list. If any number is bigger, we update
+      `max_num`. So `max_num` must be the biggest!
+      
+      ### Part 6: The max() Function (Bonus)
+      
+      Python has a built-in for this:
+      
+      ```python
+      numbers = [3, 7, 2, 9, 1]
+      biggest = max(numbers)  # 9
+      ```
+      
+      But understanding HOW it works is important!
     
     instructions: |
       Create a function `find_max(numbers)` that returns the largest number
       in the list.
       
-      Example:
-      find_max([3, 7, 2, 9, 1]) returns 9
+      **Step-by-step:**
+      
+      1. Get the first number from the list (numbers[0])
+      2. Store it in a variable called max_num
+      3. Loop through ALL numbers in the list
+      4. For each number, check if it's bigger than max_num
+      5. If yes, update max_num
+      6. Return max_num
+      
+      **Solution:**
+      ```python
+      def find_max(numbers):
+          max_num = numbers[0]     # Start with first number
+          
+          for num in numbers:      # Check each number
+              if num > max_num:    # If bigger
+                  max_num = num    # Update max
+          
+          return max_num           # Return biggest
+      ```
+      
+      **Test it:**
+      ```python
+      find_max([3, 7, 2, 9, 1])  # 9
+      find_max([10, 5, 8])       # 10
+      find_max([100])            # 100
+      find_max([-5, -2, -10])    # -2
+      ```
     
     starter_code: |
       def find_max(numbers):
-          # Find and return the maximum number
+          # Step 1: Start with first number as max
+          # max_num = numbers[0]
+          
+          # Step 2: Loop through each number
+          # for num in numbers:
+          #     Step 3: If current number is bigger than max
+          #     if num > max_num:
+          #         Step 4: Update max
+          #         max_num = num
+          
+          # Step 5: Return the maximum
+          # return max_num
+          
           pass
     
     hints:
@@ -248,21 +1055,210 @@ challenges:
     title: "Week 2 Challenge: Password Validator"
     topic: "Review - Conditions and Loops"
     difficulty: intermediate
-    time_estimate: "60-75 minutes"
+    time_estimate: "75-90 minutes"
     description: |
-      Create a password validator that checks if a password meets requirements!
+      Create a password validator! This combines everything from Week 2.
+      
+      ## 🎓 LESSON REVIEW: Week 2 Recap + New Concepts
+      
+      ### ✅ What You Learned This Week
+      
+      **Day 1: If/Else**
+      ```python
+      if condition:
+          # do this
+      else:
+          # do that
+      ```
+      
+      **Day 2: elif**
+      ```python
+      if condition1:
+          # do this
+      elif condition2:
+          # do this instead
+      else:
+          # do this if nothing else
+      ```
+      
+      **Day 3: While Loops**
+      ```python
+      while condition:
+          # repeat this
+          # update condition!
+      ```
+      
+      **Day 4: Boolean Logic (and/or)**
+      ```python
+      if x > 0 and y > 0:  # Both must be True
+      if x > 0 or y > 0:   # At least one True
+      ```
+      
+      **Day 5: For Loops**
+      ```python
+      for item in list:
+          # do something with item
+      ```
+      
+      **Day 6: Comparisons**
+      ```python
+      if num > max_num:
+          max_num = num
+      ```
+      
+      ## 🎯 Today's Challenge: Password Validation
+      
+      ### Part 1: String Methods You'll Need
+      
+      **Check if character is a digit (0-9):**
+      ```python
+      '5'.isdigit()    # True
+      'a'.isdigit()    # False
+      ```
+      
+      **Check if character is uppercase:**
+      ```python
+      'A'.isupper()    # True
+      'a'.isupper()    # False
+      ```
+      
+      **Check if character is lowercase:**
+      ```python
+      'a'.islower()    # True
+      'A'.islower()    # False
+      ```
+      
+      ### Part 2: Looping Through Strings
+      
+      You can loop through each character in a string:
+      
+      ```python
+      word = "Hello"
+      for char in word:
+          print(char)
+      # Prints: H, e, l, l, o
+      ```
+      
+      ### Part 3: Using Flags (Boolean Variables)
+      
+      Flags are boolean variables that track if we found something:
+      
+      ```python
+      has_number = False  # Start assuming we haven't found a number
+      
+      for char in password:
+          if char.isdigit():
+              has_number = True  # Found one!
+      
+      # After loop, has_number is True if we found any digit
+      ```
+      
+      ### Part 4: Multiple Conditions Strategy
+      
+      For password validation, we need to check THREE things:
+      1. Length >= 8
+      2. Has at least one number
+      3. Has at least one uppercase letter
+      
+      **ALL THREE must be True!**
+      
+      ```python
+      if condition1 and condition2 and condition3:
+          return True
+      else:
+          return False
+      ```
+      
+      ### Part 5: Step-by-Step Algorithm
+      
+      1. Check length first (quick and easy)
+      2. If too short, return False immediately
+      3. Loop through password to check for number and uppercase
+      4. Use flags to track what we've found
+      5. After loop, check if we found both
+      
+      ### Part 6: Early Return Pattern
+      
+      You can return immediately when you know the answer:
+      
+      ```python
+      if len(password) < 8:
+          return False  # No need to check more!
+      ```
+      
+      This makes code more efficient!
     
     instructions: |
-      Create a function `is_valid_password(password)` that returns True if:
-      - Password is at least 8 characters long
-      - Contains at least one number
-      - Contains at least one uppercase letter
+      Create a function `is_valid_password(password)` that returns True if
+      the password meets ALL requirements:
       
-      Otherwise return False.
+      **Requirements:**
+      1. At least 8 characters long
+      2. Contains at least one number (0-9)
+      3. Contains at least one uppercase letter (A-Z)
+      
+      **Step-by-step:**
+      
+      1. Check if len(password) >= 8, if not return False
+      2. Create two flags: has_number = False, has_uppercase = False
+      3. Loop through each character in password
+      4. If character is digit, set has_number = True
+      5. If character is uppercase, set has_uppercase = True
+      6. After loop, return True only if both flags are True
+      
+      **Solution:**
+      ```python
+      def is_valid_password(password):
+          # Check length first
+          if len(password) < 8:
+              return False
+          
+          # Create flags
+          has_number = False
+          has_uppercase = False
+          
+          # Check each character
+          for char in password:
+              if char.isdigit():
+                  has_number = True
+              if char.isupper():
+                  has_uppercase = True
+          
+          # Both must be True
+          return has_number and has_uppercase
+      ```
+      
+      **Test it:**
+      ```python
+      is_valid_password("Pass1234")        # True (has all)
+      is_valid_password("short")           # False (too short)
+      is_valid_password("toolongbutno")    # False (no number)
+      is_valid_password("alllowercase123") # False (no uppercase)
+      is_valid_password("ALLUPPERCASE123") # True (has all)
+      ```
     
     starter_code: |
       def is_valid_password(password):
-          # Check all password requirements
+          # Step 1: Check length
+          # if len(password) < 8:
+          #     return False
+          
+          # Step 2: Create flags to track what we find
+          # has_number = False
+          # has_uppercase = False
+          
+          # Step 3: Loop through each character
+          # for char in password:
+          #     Step 4: Check if it's a number
+          #     if char.isdigit():
+          #         has_number = True
+          #     Step 5: Check if it's uppercase
+          #     if char.isupper():
+          #         has_uppercase = True
+          
+          # Step 6: Return True only if we found both
+          # return has_number and has_uppercase
+          
           pass
     
     hints:
