@@ -394,6 +394,71 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Slicing lets you get subsets of lists. It's powerful and elegant!
+      
+      ## 🎓 LESSON: List Slicing
+      
+      ### Part 1: What is Slicing?
+      
+      Slicing extracts a portion of a list:
+      
+      ```python
+      numbers = [0, 1, 2, 3, 4, 5]
+      subset = numbers[1:4]  # [1, 2, 3]
+      ```
+      
+      ### Part 2: Slicing Syntax
+      
+      **Format:** `list[start:end:step]`
+      
+      - `start` - Where to begin (inclusive)
+      - `end` - Where to stop (exclusive!)
+      - `step` - How many to skip (optional, default 1)
+      
+      ```python
+      numbers = [0, 1, 2, 3, 4, 5]
+      
+      numbers[1:4]    # [1, 2, 3] - from index 1 to 3
+      numbers[:3]     # [0, 1, 2] - from start to index 2
+      numbers[3:]     # [3, 4, 5] - from index 3 to end
+      numbers[::2]    # [0, 2, 4] - every 2nd item
+      numbers[::-1]   # [5, 4, 3, 2, 1, 0] - reverse!
+      ```
+      
+      ### Part 3: Key Points
+      
+      **End is exclusive:**
+      ```python
+      nums = [0, 1, 2, 3, 4]
+      nums[1:3]  # [1, 2] - stops BEFORE index 3
+      ```
+      
+      **Negative indices:**
+      ```python
+      nums = [0, 1, 2, 3, 4]
+      nums[-2:]   # [3, 4] - last 2 items
+      nums[:-2]   # [0, 1, 2] - all except last 2
+      ```
+      
+      ### Part 4: Common Patterns
+      
+      ```python
+      data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      
+      # First 3
+      data[:3]      # [1, 2, 3]
+      
+      # Last 3
+      data[-3:]     # [8, 9, 10]
+      
+      # Middle (skip first and last)
+      data[1:-1]    # [2, 3, 4, 5, 6, 7, 8, 9]
+      
+      # Every other
+      data[::2]     # [1, 3, 5, 7, 9]
+      
+      # Reverse
+      data[::-1]    # [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+      ```
     
     instructions: |
       Create a function `get_first_three(my_list)` that returns the first
@@ -422,6 +487,70 @@ challenges:
     time_estimate: "30-40 minutes"
     description: |
       Learn to reverse and sort lists!
+      
+      ## 🎓 LESSON: Reversing and Sorting
+      
+      ### Part 1: Reversing Lists
+      
+      **Method 1: Slicing (creates new list)**
+      ```python
+      numbers = [1, 2, 3, 4, 5]
+      reversed_nums = numbers[::-1]
+      
+      print(reversed_nums)  # [5, 4, 3, 2, 1]
+      print(numbers)        # [1, 2, 3, 4, 5] - original unchanged
+      ```
+      
+      **Method 2: reverse() method (modifies in-place)**
+      ```python
+      numbers = [1, 2, 3, 4, 5]
+      numbers.reverse()
+      
+      print(numbers)  # [5, 4, 3, 2, 1] - original changed!
+      ```
+      
+      **Method 3: reversed() function**
+      ```python
+      numbers = [1, 2, 3, 4, 5]
+      reversed_nums = list(reversed(numbers))
+      
+      print(reversed_nums)  # [5, 4, 3, 2, 1]
+      ```
+      
+      ### Part 2: Sorting Lists
+      
+      **Method 1: sorted() function (creates new list)**
+      ```python
+      numbers = [3, 1, 4, 1, 5]
+      sorted_nums = sorted(numbers)
+      
+      print(sorted_nums)  # [1, 1, 3, 4, 5]
+      print(numbers)      # [3, 1, 4, 1, 5] - original unchanged
+      ```
+      
+      **Method 2: sort() method (modifies in-place)**
+      ```python
+      numbers = [3, 1, 4, 1, 5]
+      numbers.sort()
+      
+      print(numbers)  # [1, 1, 3, 4, 5] - original changed!
+      ```
+      
+      **Reverse sort:**
+      ```python
+      numbers = [3, 1, 4, 1, 5]
+      sorted_nums = sorted(numbers, reverse=True)
+      print(sorted_nums)  # [5, 4, 3, 1, 1]
+      ```
+      
+      ### Part 3: In-Place vs New List
+      
+      | Operation | Creates new? | Changes original? |
+      |-----------|--------------|-------------------|
+      | `list[::-1]` | ✅ Yes | ❌ No |
+      | `list.reverse()` | ❌ No | ✅ Yes |
+      | `sorted(list)` | ✅ Yes | ❌ No |
+      | `list.sort()` | ❌ No | ✅ Yes |
     
     instructions: |
       Create a function `reverse_list(my_list)` that returns a reversed
@@ -450,6 +579,72 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Remove duplicate values from a list!
+      
+      ## 🎓 LESSON: Removing Duplicates
+      
+      ### Part 1: The Problem
+      
+      Lists can have duplicate values:
+      
+      ```python
+      numbers = [1, 2, 2, 3, 1, 4, 3]
+      # We want: [1, 2, 3, 4]
+      ```
+      
+      How do we remove duplicates?
+      
+      ### Part 2: Method 1 - Using a Set
+      
+      Sets automatically remove duplicates:
+      
+      ```python
+      numbers = [1, 2, 2, 3, 1, 4]
+      unique = list(set(numbers))
+      print(unique)  # [1, 2, 3, 4]
+      ```
+      
+      **Problem:** Loses original order!
+      
+      ### Part 3: Method 2 - Loop and Track Seen Items
+      
+      Keep order by tracking what we've seen:
+      
+      ```python
+      def remove_duplicates(numbers):
+          seen = []
+          result = []
+          
+          for num in numbers:
+              if num not in seen:
+                  seen.append(num)
+                  result.append(num)
+          
+          return result
+      
+      numbers = [1, 2, 2, 3, 1, 4]
+      print(remove_duplicates(numbers))  # [1, 2, 3, 4] - order kept!
+      ```
+      
+      ### Part 4: Method 3 - Using a Set for Tracking
+      
+      More efficient - sets have O(1) lookup:
+      
+      ```python
+      def remove_duplicates(numbers):
+          seen = set()
+          result = []
+          
+          for num in numbers:
+              if num not in seen:
+                  seen.add(num)
+                  result.append(num)
+          
+          return result
+      ```
+      
+      **Why better?**
+      - `num in set` is faster than `num in list`
+      - Keeps order unlike `list(set(numbers))`
     
     instructions: |
       Create a function `remove_duplicates(my_list)` that returns a new list
@@ -478,6 +673,81 @@ challenges:
     time_estimate: "60 minutes"
     description: |
       Create a function that calculates statistics for a list of numbers!
+      
+      ## 🎓 LESSON: List Statistics
+      
+      ### Part 1: Statistical Functions
+      
+      Common statistics you might calculate:
+      
+      - **Minimum** - Smallest value
+      - **Maximum** - Largest value  
+      - **Average** - Sum divided by count
+      - **Sum** - Total of all values
+      
+      ### Part 2: Built-in Functions
+      
+      Python has functions for these:
+      
+      ```python
+      numbers = [1, 5, 3, 9, 2]
+      
+      min(numbers)     # 1 - smallest
+      max(numbers)     # 9 - largest
+      sum(numbers)     # 20 - total
+      len(numbers)     # 5 - count
+      
+      # Average = sum / count
+      avg = sum(numbers) / len(numbers)  # 4.0
+      ```
+      
+      ### Part 3: Returning Multiple Values
+      
+      Use a dictionary to return multiple statistics:
+      
+      ```python
+      def get_stats(numbers):
+          return {
+              "min": min(numbers),
+              "max": max(numbers),
+              "average": sum(numbers) / len(numbers)
+          }
+      
+      stats = get_stats([1, 2, 3, 4, 5])
+      print(stats)
+      # {"min": 1, "max": 5, "average": 3.0}
+      ```
+      
+      ### Part 4: Rounding
+      
+      Average might have many decimals:
+      
+      ```python
+      numbers = [1, 2, 3]
+      avg = sum(numbers) / len(numbers)  # 2.0
+      
+      numbers = [1, 2, 4]
+      avg = sum(numbers) / len(numbers)  # 2.3333333...
+      
+      # Round to 2 decimals
+      avg_rounded = round(avg, 2)  # 2.33
+      ```
+      
+      ### Part 5: Complete Example
+      
+      ```python
+      def calculate_stats(numbers):
+          stats = {
+              "min": min(numbers),
+              "max": max(numbers),
+              "average": round(sum(numbers) / len(numbers), 2)
+          }
+          return stats
+      
+      result = calculate_stats([10, 20, 30, 40, 50])
+      print(result)
+      # {"min": 10, "max": 50, "average": 30.0}
+      ```
     
     instructions: |
       Create a function `calculate_stats(numbers)` that returns a dictionary with:
