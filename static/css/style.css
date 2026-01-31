@@ -829,6 +829,22 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.interview-prep a,
+.tool-item a,
+.book-item a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.interview-prep a:hover,
+.tool-item a:hover,
+.book-item a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
 /* Error Page */
 .error-page {
     text-align: center;
