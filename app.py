@@ -51,11 +51,30 @@ reminder_scheduler.start()
 def index():
     """Homepage - Dashboard with progress overview"""
     stats = progress_tracker.get_stats()
-    today_challenge = challenge_loader.get_today_challenge()
+    
+    # Get next uncompleted challenge instead of today's date-based challenge
+    completed_ids = progress_tracker.data.get('completed_challenges', [])
+    
+    # Find first uncompleted challenge
+    next_challenge = None
+    for week in range(1, 27):  # Check up to week 26
+        for day in range(1, 8):
+            challenge = challenge_loader.get_challenge(week, day)
+            if challenge:
+                challenge_id = f"week{week:03d}_day{day}"
+                if challenge_id not in completed_ids:
+                    next_challenge = challenge
+                    break
+        if next_challenge:
+            break
+    
+    # Fallback to today's challenge if no uncompleted found
+    if not next_challenge:
+        next_challenge = challenge_loader.get_today_challenge()
     
     return render_template('index.html', 
                          stats=stats, 
-                         today_challenge=today_challenge,
+                         today_challenge=next_challenge,
                          user_name=os.getenv('USER_NAME', 'Learner'))
 
 

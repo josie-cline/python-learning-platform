@@ -142,6 +142,14 @@ class ProgressTracker:
         
         return history
     
+    def is_completed(self, challenge_id: str) -> bool:
+        """Check if a challenge has been completed"""
+        return challenge_id in self.data['completed_challenges']
+    
+    def get_completed_ids(self) -> List[str]:
+        """Get list of all completed challenge IDs"""
+        return self.data['completed_challenges']
+    
     def get_recent_completions(self, count: int = 10) -> List[Dict]:
         """Get most recent completions"""
         return list(reversed(self.data['daily_history'][-count:]))

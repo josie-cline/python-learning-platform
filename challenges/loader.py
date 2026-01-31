@@ -116,3 +116,24 @@ class ChallengeLoader:
     def get_week_data(self, week: int) -> Optional[Dict]:
         """Get all data for a specific week"""
         return self.challenges_cache.get(week)
+    
+    def get_next_uncompleted_challenge(self, completed_ids: List[str]) -> Optional[Dict]:
+        """Get the next challenge that hasn't been completed"""
+        # Go through all weeks and days in order
+        for week_num in sorted(self.challenges_cache.keys()):
+            week_data = self.challenges_cache[week_num]
+            challenges = week_data.get('challenges', [])
+            
+            # Sort by day
+            for challenge in sorted(challenges, key=lambda c: c.get('day', 0)):
+                day = challenge.get('day')
+                challenge_id = f"week{week_num:03d}_day{day}"
+                
+                # If this challenge is not completed, return it
+                if challenge_id not in completed_ids:
+                    challenge['week'] = week_num
+                    challenge['id'] = challenge_id
+                    return challenge
+        
+        # All challenges completed!
+        return None
