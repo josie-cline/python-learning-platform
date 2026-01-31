@@ -19,6 +19,58 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Master Python's built-in string methods!
+      
+      ## 🎓 LESSON: String Methods
+      
+      ### Part 1: Useful String Methods
+      
+      Strings have many built-in methods:
+      
+      ```python
+      text = "hello world"
+      
+      text.upper()       # "HELLO WORLD"
+      text.lower()       # "hello world"
+      text.title()       # "Hello World"
+      text.capitalize()  # "Hello world"
+      ```
+      
+      ### Part 2: Removing Whitespace
+      
+      ```python
+      text = "  hello  "
+      
+      text.strip()   # "hello" - removes both ends
+      text.lstrip()  # "hello  " - removes left
+      text.rstrip()  # "  hello" - removes right
+      ```
+      
+      ### Part 3: Chaining Methods
+      
+      Call methods one after another:
+      
+      ```python
+      name = "  john doe  "
+      
+      # Step by step
+      clean = name.strip()      # "john doe"
+      formatted = clean.title() # "John Doe"
+      
+      # Chained
+      formatted = name.strip().title()  # "John Doe"
+      ```
+      
+      ### Part 4: More Useful Methods
+      
+      ```python
+      text = "Hello World"
+      
+      text.replace("World", "Python")  # "Hello Python"
+      text.startswith("Hello")         # True
+      text.endswith("World")           # True
+      "Hello" in text                  # True
+      text.split()                     # ["Hello", "World"]
+      ```
     
     instructions: |
       Write a function that cleans and formats a name.
@@ -55,6 +107,62 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Use f-strings for elegant string formatting!
+      
+      ## 🎓 LESSON: F-Strings (Formatted String Literals)
+      
+      ### Part 1: Old Way vs F-Strings
+      
+      **Old concatenation:**
+      ```python
+      name = "Alice"
+      age = 25
+      message = "Hello, " + name + "! You are " + str(age) + " years old."
+      # Messy!
+      ```
+      
+      **F-strings:**
+      ```python
+      name = "Alice"
+      age = 25
+      message = f"Hello, {name}! You are {age} years old."
+      # Clean!
+      ```
+      
+      ### Part 2: F-String Syntax
+      
+      Put `f` before the quote, use `{}` for variables:
+      
+      ```python
+      name = "Bob"
+      greeting = f"Hello, {name}!"
+      print(greeting)  # "Hello, Bob!"
+      ```
+      
+      ### Part 3: Expressions in F-Strings
+      
+      You can put **any expression** inside `{}`:
+      
+      ```python
+      x = 5
+      y = 3
+      
+      f"{x} + {y} = {x + y}"        # "5 + 3 = 8"
+      f"{x} squared is {x**2}"      # "5 squared is 25"
+      f"Is {x} even? {x % 2 == 0}"  # "Is 5 even? False"
+      ```
+      
+      ### Part 4: Formatting Numbers
+      
+      ```python
+      pi = 3.14159
+      
+      f"{pi}"        # "3.14159"
+      f"{pi:.2f}"    # "3.14" - 2 decimals
+      f"{pi:.4f}"    # "3.1416" - 4 decimals
+      
+      num = 1000
+      f"{num:,}"     # "1,000" - with commas
+      ```
     
     instructions: |
       Write a function that creates a formatted greeting.
@@ -88,6 +196,76 @@ challenges:
     time_estimate: "50-65 minutes"
     description: |
       Check if an email address is valid!
+      
+      ## 🎓 LESSON: String Validation
+      
+      ### Part 1: Checking String Contents
+      
+      Use `in` to check if something is in a string:
+      
+      ```python
+      email = "user@example.com"
+      
+      "@" in email  # True
+      "." in email  # True
+      "xyz" in email  # False
+      ```
+      
+      ### Part 2: Counting Characters
+      
+      `.count()` tells you how many times something appears:
+      
+      ```python
+      email = "user@@example.com"
+      
+      email.count("@")  # 2 (two @ symbols!)
+      email.count(".")  # 1
+      ```
+      
+      ### Part 3: Splitting Strings
+      
+      `.split()` breaks a string into parts:
+      
+      ```python
+      email = "user@example.com"
+      parts = email.split("@")
+      # ["user", "example.com"]
+      
+      print(parts[0])  # "user"
+      print(parts[1])  # "example.com"
+      ```
+      
+      ### Part 4: Email Validation Logic
+      
+      Valid email rules:
+      - Must have exactly one @
+      - Must have text before @
+      - Must have text after @
+      - Must have . after @
+      
+      ```python
+      def is_valid_email(email):
+          # Check for @ symbol
+          if "@" not in email:
+              return False
+          
+          # Check exactly one @
+          if email.count("@") != 1:
+              return False
+          
+          # Split by @
+          parts = email.split("@")
+          
+          # Check both parts exist
+          if not parts[0] or not parts[1]:
+              return False
+          
+          # Check for . in domain
+          if "." not in parts[1]:
+              return False
+          
+          return True
+      ```
     
     instructions: |
       Write a function that validates email addresses.
@@ -127,6 +305,68 @@ challenges:
     time_estimate: "50-65 minutes"
     description: |
       Find patterns in text with regular expressions!
+      
+      ## 🎓 LESSON: Introduction to Regular Expressions
+      
+      ### Part 1: What is Regex?
+      
+      Regular expressions (regex) find patterns in text:
+      
+      - Find all phone numbers in a document
+      - Find all email addresses
+      - Validate passwords
+      - Extract specific data
+      
+      ### Part 2: The re Module
+      
+      Python's `re` module provides regex functions:
+      
+      ```python
+      import re
+      
+      text = "My number is 555-1234"
+      match = re.search(r"\d{3}-\d{4}", text)
+      # Finds pattern: 3 digits, dash, 4 digits
+      ```
+      
+      ### Part 3: Basic Patterns
+      
+      | Pattern | Matches |
+      |---------|---------|
+      | `\d` | Any digit (0-9) |
+      | `\d{3}` | Exactly 3 digits |
+      | `\d+` | One or more digits |
+      | `.` | Any character |
+      | `[abc]` | a, b, or c |
+      | `[a-z]` | Any lowercase letter |
+      
+      ### Part 4: re.findall()
+      
+      Find all matches:
+      
+      ```python
+      import re
+      
+      text = "Call 555-1234 or 555-5678"
+      
+      # Pattern: XXX-XXXX
+      pattern = r"\d{3}-\d{4}"
+      
+      numbers = re.findall(pattern, text)
+      # ["555-1234", "555-5678"]
+      ```
+      
+      ### Part 5: Raw Strings
+      
+      Use `r""` for regex patterns:
+      
+      ```python
+      # Without r (confusing!)
+      pattern = "\\d{3}"
+      
+      # With r (clear!)
+      pattern = r"\d{3}"
+      ```
     
     instructions: |
       Write a function that finds all phone numbers in text.
@@ -165,6 +405,53 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Extract all numbers from a string!
+      
+      ## 🎓 LESSON: Extracting Data with Regex
+      
+      ### Part 1: Finding All Numbers
+      
+      The `\d+` pattern matches one or more digits:
+      
+      ```python
+      import re
+      
+      text = "I have 3 cats and 2 dogs"
+      numbers = re.findall(r"\d+", text)
+      # ["3", "2"]
+      ```
+      
+      **Note:** Returns strings, not integers!
+      
+      ### Part 2: Converting to Integers
+      
+      Use list comprehension to convert:
+      
+      ```python
+      import re
+      
+      text = "Ages: 25, 30, 42"
+      number_strings = re.findall(r"\d+", text)  # ["25", "30", "42"]
+      numbers = [int(x) for x in number_strings]  # [25, 30, 42]
+      
+      # Or in one line:
+      numbers = [int(x) for x in re.findall(r"\d+", text)]
+      ```
+      
+      ### Part 3: Pattern Breakdown
+      
+      ```python
+      r"\d+"
+        ^^
+        ||
+        |+--- One or more times
+        ---- Any digit
+      
+      # Matches:
+      "5"      ✅
+      "123"    ✅
+      "9876"   ✅
+      ""       ❌ (needs at least one)
+      ```
     
     instructions: |
       Write a function that extracts all numbers from text.
@@ -201,6 +488,68 @@ challenges:
     time_estimate: "50-65 minutes"
     description: |
       Check if a password is strong enough!
+      
+      ## 🎓 LESSON: Advanced String Validation
+      
+      ### Part 1: Character Type Checking
+      
+      Python strings have methods to check character types:
+      
+      ```python
+      "A".isupper()    # True
+      "a".islower()    # True
+      "5".isdigit()    # True
+      "a".isalpha()    # True (letter)
+      "a5".isalnum()   # True (letter or number)
+      ```
+      
+      ### Part 2: Checking if ANY Character Matches
+      
+      Use `any()` with a generator:
+      
+      ```python
+      password = "Hello123"
+      
+      # Has uppercase?
+      has_upper = any(c.isupper() for c in password)  # True
+      
+      # Has digit?
+      has_digit = any(c.isdigit() for c in password)  # True
+      
+      # Has lowercase?
+      has_lower = any(c.islower() for c in password)  # True
+      ```
+      
+      ### Part 3: Password Strength Rules
+      
+      Strong password criteria:
+      - Length >= 12
+      - Has uppercase letter
+      - Has lowercase letter
+      - Has digit
+      - Has special character (!@#$%^&*)
+      
+      ### Part 4: Checking All Requirements
+      
+      ```python
+      def check_password(pwd):
+          checks = {
+              "length": len(pwd) >= 12,
+              "uppercase": any(c.isupper() for c in pwd),
+              "lowercase": any(c.islower() for c in pwd),
+              "digit": any(c.isdigit() for c in pwd),
+              "special": any(not c.isalnum() for c in pwd)
+          }
+          
+          passed = sum(checks.values())
+          
+          if passed == 5:
+              return "Strong"
+          elif passed >= 3:
+              return "Medium"
+          else:
+              return "Weak"
+      ```
     
     instructions: |
       Write a function that checks password strength.
@@ -242,6 +591,60 @@ challenges:
     time_estimate: "60-75 minutes"
     description: |
       Parse URLs and extract components!
+      
+      ## 🎓 LESSON: URL Parsing
+      
+      ### Part 1: URL Structure
+      
+      A URL has several parts:
+      
+      ```
+      https://example.com/page?id=5&name=test
+      ^^^^^^  ^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^
+         |        |         |           |
+      protocol  domain    path    query params
+      ```
+      
+      ### Part 2: Extracting Protocol
+      
+      Split by `://`:
+      
+      ```python
+      url = "https://example.com/page"
+      parts = url.split("://")
+      # ["https", "example.com/page"]
+      
+      protocol = parts[0]  # "https"
+      rest = parts[1]      # "example.com/page"
+      ```
+      
+      ### Part 3: Extracting Domain and Path
+      
+      Split the rest by `/`:
+      
+      ```python
+      rest = "example.com/page/subpage"
+      parts = rest.split("/", 1)  # Split only once
+      # ["example.com", "page/subpage"]
+      
+      domain = parts[0]  # "example.com"
+      path = "/" + parts[1] if len(parts) > 1 else "/"
+      ```
+      
+      ### Part 4: Query Parameters
+      
+      Parse `?id=5&name=test`:
+      
+      ```python
+      query = "id=5&name=test"
+      
+      params = {}
+      for pair in query.split("&"):
+          key, value = pair.split("=")
+          params[key] = value
+      
+      # {"id": "5", "name": "test"}
+      ```
     
     instructions: |
       Write a function that parses a URL.
