@@ -57,18 +57,22 @@ challenges:
       Learn useful dictionary methods for accessing and manipulating data!
     
     instructions: |
-      Create a function `get_value(dictionary, key, default="Not found")` that
-      safely gets a value from a dictionary, returning the default if key doesn't exist.
+      Write a function that safely gets a value from a dictionary. The function should:
+      - Take a dictionary, a key to look up, and an optional default value
+      - Return the value if the key exists
+      - Return the default value (which should be "Not found" by default) if the key doesn't exist
+      - Be safer than using `dictionary[key]` which crashes if the key is missing
     
     starter_code: |
       def get_value(dictionary, key, default="Not found"):
-          # Return value for key, or default if not found
+          # Your code here
           pass
     
     hints:
-      - "Use the .get() method"
-      - "dictionary.get(key, default)"
-      - "This is safer than dictionary[key]"
+      - "Python dictionaries have a built-in .get() method that does exactly this!"
+      - "Syntax: dictionary.get(key, default_value)"
+      - "Example: person.get('age', 0) returns the age or 0 if not found"
+      - "The .get() method never raises a KeyError, unlike dictionary[key]"
     
     tests:
       - function: get_value
@@ -89,11 +93,14 @@ challenges:
       Count how many times each word appears in a sentence!
     
     instructions: |
-      Create a function `count_words(sentence)` that returns a dictionary
-      where keys are words and values are their counts.
+      Build a word frequency counter that analyzes text.
       
-      Example:
-      count_words("hello world hello") returns {"hello": 2, "world": 1}
+      Your function should:
+      - Take a sentence (string) as input
+      - Count how many times each word appears
+      - Return a dictionary where each word is a key and its count is the value
+      
+      Example: "hello world hello" → {"hello": 2, "world": 1}
     
     starter_code: |
       def count_words(sentence):
@@ -101,9 +108,12 @@ challenges:
           pass
     
     hints:
-      - "Split sentence into words: sentence.split()"
-      - "Loop through words and count"
-      - "Use dictionary.get(word, 0) + 1"
+      - "First, split the sentence into individual words: words = sentence.split()"
+      - "Create an empty dictionary to store counts: word_count = {}"
+      - "Loop through each word: for word in words:"
+      - "For each word, check if it's in the dictionary and increment its count"
+      - "Use .get() to safely get current count: word_count[word] = word_count.get(word, 0) + 1"
+      - "Example: If 'hello' appears, word_count['hello'] starts at 0, then becomes 1, then 2..."
     
     tests:
       - function: count_words

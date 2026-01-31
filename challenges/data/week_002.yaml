@@ -124,14 +124,14 @@ challenges:
       ```
     
     instructions: |
-      Create a function `is_even(number)` that returns True if the number
-      is even, and False if it's odd.
+      Write a function that determines if a number is even or odd.
       
-      **Step-by-step:**
+      Your function should:
+      - Take a number as input
+      - Return `True` if the number is even
+      - Return `False` if the number is odd
       
-      1. Check if the number is even using: `number % 2 == 0`
-      2. If it's even (remainder is 0), return True
-      3. Otherwise, return False
+      **Remember:** A number is even if dividing by 2 leaves no remainder.
       
       **Method 1: Using if/else**
       ```python
@@ -175,9 +175,10 @@ challenges:
           pass
     
     hints:
-      - "Use the modulo operator: % gives the remainder"
-      - "number % 2 == 0 means the number is even"
-      - "Use an if statement to check the condition"
+      - "Use the modulo operator % to check for remainder when dividing by 2"
+      - "Syntax: if number % 2 == 0: means 'if even'"
+      - "Method 1: Use if/else to return True or False"
+      - "Method 2 (advanced): You can directly return the comparison: return number % 2 == 0"
     
     tests:
       - function: is_even
@@ -287,18 +288,16 @@ challenges:
       ```
     
     instructions: |
-      Create a function `get_grade(score)` that returns a letter grade:
-      - 90-100: "A"
+      Write a function that converts numerical scores to letter grades.
+      
+      The grading scale:
+      - 90 or above: "A"
       - 80-89: "B"
       - 70-79: "C"
       - 60-69: "D"
       - Below 60: "F"
       
-      **Step-by-step:**
-      
-      1. Start with the highest grade (A)
-      2. Use elif for each subsequent grade
-      3. Use else for the lowest grade (F)
+      Your function should take a score and return the appropriate letter grade.
       
       **Solution:**
       ```python
@@ -338,9 +337,11 @@ challenges:
           pass
     
     hints:
-      - "Use if, elif, and else"
-      - "Check from highest to lowest: if score >= 90"
-      - "Use elif (else if) for multiple conditions"
+      - "Use if, elif, and else to check multiple conditions"
+      - "Start with the highest grade first: if score >= 90:"
+      - "Use elif for each additional grade: elif score >= 80:"
+      - "Example structure: if... elif... elif... else..."
+      - "Full example: if score >= 90: return 'A' elif score >= 80: return 'B'"
     
     tests:
       - function: get_grade
@@ -840,15 +841,14 @@ challenges:
       But for learning, it's good to understand HOW it works with a loop!
     
     instructions: |
-      Create a function `sum_list(numbers)` that returns the sum of all
-      numbers in the list.
+      Write a function that calculates the sum of all numbers in a list.
       
-      **Step-by-step:**
+      Your function should:
+      - Take a list of numbers as input
+      - Add all the numbers together
+      - Return the total sum
       
-      1. Start with total = 0
-      2. Loop through each number in the list
-      3. Add each number to total
-      4. Return total
+      For example: [1, 2, 3, 4] should return 10
       
       **Solution:**
       ```python
@@ -887,9 +887,12 @@ challenges:
           pass
     
     hints:
-      - "Start with total = 0"
-      - "Loop through each number: for num in numbers:"
-      - "Add to total: total += num"
+      - "You need to accumulate (build up) a running total"
+      - "Start with: total = 0"
+      - "Use a for loop to go through each number: for num in numbers:"
+      - "Inside the loop, add each number to total: total += num"
+      - "After the loop, return total"
+      - "Full example: total = 0, then for num in numbers: total += num, then return total"
     
     tests:
       - function: sum_list
