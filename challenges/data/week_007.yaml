@@ -19,6 +19,90 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Learn to create lists in one elegant line!
+      
+      ## 🎓 LESSON: List Comprehensions
+      
+      ### Part 1: The Old Way (Loops)
+      
+      Creating a list of squares the long way:
+      
+      ```python
+      squares = []
+      for x in range(1, 6):
+          squares.append(x ** 2)
+      
+      print(squares)  # [1, 4, 9, 16, 25]
+      ```
+      
+      **4 lines of code!**
+      
+      ### Part 2: The New Way (Comprehension)
+      
+      Same result in ONE line:
+      
+      ```python
+      squares = [x**2 for x in range(1, 6)]
+      print(squares)  # [1, 4, 9, 16, 25]
+      ```
+      
+      **Much cleaner!**
+      
+      ### Part 3: Comprehension Syntax
+      
+      **Format:** `[expression for item in iterable]`
+      
+      ```python
+      # General pattern
+      [what_to_do_with_x for x in source]
+      
+      # Examples
+      [x * 2 for x in [1, 2, 3]]        # [2, 4, 6]
+      [x.upper() for x in ["a", "b"]]   # ["A", "B"]
+      [len(word) for word in ["hi", "hello"]]  # [2, 5]
+      ```
+      
+      ### Part 4: Breaking It Down
+      
+      ```python
+      [x**2 for x in range(1, 6)]
+       ^^^^     ^   ^^^^^^^^^^^^^
+         |      |         |
+      result   |     where from
+            variable
+      ```
+      
+      **Reads like:** "Give me x² for each x in range 1 to 5"
+      
+      ### Part 5: More Examples
+      
+      ```python
+      # Doubles
+      [x * 2 for x in [1, 2, 3, 4]]
+      # [2, 4, 6, 8]
+      
+      # String lengths
+      words = ["cat", "elephant", "dog"]
+      [len(w) for w in words]
+      # [3, 8, 3]
+      
+      # First characters
+      names = ["Alice", "Bob", "Charlie"]
+      [name[0] for name in names]
+      # ["A", "B", "C"]
+      ```
+      
+      ### Part 6: Why Use Comprehensions?
+      
+      **Advantages:**
+      - Shorter code
+      - Faster execution
+      - More readable (once you learn the pattern)
+      - "Pythonic" - the Python way!
+      
+      **When to use:**
+      - Transforming data (x → x²)
+      - Filtering (we'll learn next!)
+      - Simple operations
     
     instructions: |
       Write a function that creates a list of squares.
@@ -54,6 +138,60 @@ challenges:
     time_estimate: "45-55 minutes"
     description: |
       Filter lists elegantly with comprehensions!
+      
+      ## 🎓 LESSON: Filtering with Comprehensions
+      
+      ### Part 1: Adding Conditions
+      
+      Add `if` to filter items:
+      
+      **Old way:**
+      ```python
+      evens = []
+      for x in [1, 2, 3, 4, 5, 6]:
+          if x % 2 == 0:
+              evens.append(x)
+      # evens = [2, 4, 6]
+      ```
+      
+      **Comprehension way:**
+      ```python
+      evens = [x for x in [1, 2, 3, 4, 5, 6] if x % 2 == 0]
+      # [2, 4, 6]
+      ```
+      
+      ### Part 2: Syntax with Condition
+      
+      **Format:** `[expression for item in iterable if condition]`
+      
+      ```python
+      [x for x in numbers if x > 10]     # Numbers greater than 10
+      [w for w in words if len(w) > 3]   # Words longer than 3 chars
+      [x**2 for x in nums if x % 2 == 0] # Squares of even numbers
+      ```
+      
+      ### Part 3: Real Examples
+      
+      **Get positive numbers:**
+      ```python
+      numbers = [-2, 5, -1, 8, -3, 10]
+      positive = [x for x in numbers if x > 0]
+      # [5, 8, 10]
+      ```
+      
+      **Get long words:**
+      ```python
+      words = ["hi", "hello", "hey", "goodbye"]
+      long_words = [w for w in words if len(w) >= 5]
+      # ["hello", "goodbye"]
+      ```
+      
+      **Get passing grades:**
+      ```python
+      grades = [45, 78, 92, 55, 88, 34]
+      passing = [g for g in grades if g >= 60]
+      # [78, 92, 88]
+      ```
     
     instructions: |
       Write a function that returns only even numbers from a list.
@@ -86,6 +224,78 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Create quick, small functions without def!
+      
+      ## 🎓 LESSON: Lambda Functions
+      
+      ### Part 1: What Are Lambda Functions?
+      
+      Lambdas are **tiny anonymous functions** - functions without names!
+      
+      **Normal function:**
+      ```python
+      def double(x):
+          return x * 2
+      
+      result = double(5)  # 10
+      ```
+      
+      **Lambda function:**
+      ```python
+      double = lambda x: x * 2
+      
+      result = double(5)  # 10
+      ```
+      
+      Same result, fewer lines!
+      
+      ### Part 2: Lambda Syntax
+      
+      **Format:** `lambda parameters: expression`
+      
+      ```python
+      # No parameters
+      get_five = lambda: 5
+      print(get_five())  # 5
+      
+      # One parameter
+      square = lambda x: x ** 2
+      print(square(4))  # 16
+      
+      # Multiple parameters
+      add = lambda a, b: a + b
+      print(add(3, 5))  # 8
+      ```
+      
+      **Key points:**
+      - No `def` keyword
+      - No `return` keyword (automatically returns the expression)
+      - No function name (unless you assign it)
+      - One line only
+      
+      ### Part 3: When to Use Lambdas?
+      
+      **Use for:**
+      - Short, simple operations
+      - One-time use functions
+      - Functions as arguments (we'll see with map/filter)
+      
+      **Don't use for:**
+      - Complex logic
+      - Multiple statements
+      - Functions you'll use many times (use def instead)
+      
+      ### Part 4: Examples
+      
+      ```python
+      # Regular functions
+      multiply = lambda x, y: x * y
+      is_even = lambda x: x % 2 == 0
+      get_first = lambda items: items[0]
+      
+      print(multiply(3, 4))       # 12
+      print(is_even(7))           # False
+      print(get_first([1, 2, 3])) # 1
+      ```
     
     instructions: |
       Create a lambda function that doubles a number.
@@ -119,6 +329,46 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Create dictionaries elegantly!
+      
+      ## 🎓 LESSON: Dictionary Comprehensions
+      
+      ### Part 1: Creating Dictionaries the Old Way
+      
+      ```python
+      # Create {1: 1, 2: 4, 3: 9}
+      squares = {}
+      for x in [1, 2, 3]:
+          squares[x] = x ** 2
+      ```
+      
+      ### Part 2: Dictionary Comprehension
+      
+      Same result in one line:
+      
+      ```python
+      squares = {x: x**2 for x in [1, 2, 3]}
+      # {1: 1, 2: 4, 3: 9}
+      ```
+      
+      **Format:** `{key: value for item in iterable}`
+      
+      ### Part 3: Examples
+      
+      ```python
+      # Number: Square
+      {x: x**2 for x in range(1, 4)}
+      # {1: 1, 2: 4, 3: 9}
+      
+      # Word: Length
+      words = ["cat", "dog", "elephant"]
+      {word: len(word) for word in words}
+      # {"cat": 3, "dog": 3, "elephant": 8}
+      
+      # Name: Email
+      names = ["alice", "bob"]
+      {name: f"{name}@example.com" for name in names}
+      # {"alice": "alice@example.com", "bob": "bob@example.com"}
+      ```
     
     instructions: |
       Write a function that creates a dictionary of numbers and their squares.
@@ -153,6 +403,69 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Apply functions to every item in a list!
+      
+      ## 🎓 LESSON: map() Function
+      
+      ### Part 1: What is map()?
+      
+      `map()` applies a function to every item in a list:
+      
+      ```python
+      numbers = [1, 2, 3, 4]
+      
+      # Apply str() to each
+      strings = list(map(str, numbers))
+      # ["1", "2", "3", "4"]
+      ```
+      
+      **Syntax:** `map(function, iterable)`
+      
+      ### Part 2: Using Built-in Functions
+      
+      ```python
+      # Convert to uppercase
+      words = ["hello", "world"]
+      upper = list(map(str.upper, words))
+      # ["HELLO", "WORLD"]
+      
+      # Get lengths
+      lengths = list(map(len, ["cat", "dog", "elephant"]))
+      # [3, 3, 8]
+      
+      # Convert to int
+      nums = list(map(int, ["1", "2", "3"]))
+      # [1, 2, 3]
+      ```
+      
+      ### Part 3: Using with Lambda
+      
+      ```python
+      numbers = [1, 2, 3, 4]
+      
+      # Double each
+      doubled = list(map(lambda x: x * 2, numbers))
+      # [2, 4, 6, 8]
+      
+      # Square each
+      squared = list(map(lambda x: x**2, numbers))
+      # [1, 4, 9, 16]
+      ```
+      
+      ### Part 4: map() vs Comprehension
+      
+      Both work, comprehensions are often clearer:
+      
+      ```python
+      numbers = [1, 2, 3]
+      
+      # Using map
+      doubled = list(map(lambda x: x*2, numbers))
+      
+      # Using comprehension
+      doubled = [x*2 for x in numbers]
+      
+      # Both give: [2, 4, 6]
+      ```
     
     instructions: |
       Write a function that converts a list of strings to uppercase.
@@ -187,6 +500,50 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Filter lists using functions!
+      
+      ## 🎓 LESSON: filter() Function
+      
+      ### Part 1: What is filter()?
+      
+      `filter()` keeps only items where a function returns True:
+      
+      ```python
+      numbers = [1, 2, 3, 4, 5, 6]
+      
+      def is_even(x):
+          return x % 2 == 0
+      
+      evens = list(filter(is_even, numbers))
+      # [2, 4, 6]
+      ```
+      
+      **Syntax:** `filter(function, iterable)`
+      
+      ### Part 2: Using with Lambda
+      
+      ```python
+      numbers = [1, 2, 3, 4, 5, 6]
+      
+      evens = list(filter(lambda x: x % 2 == 0, numbers))
+      # [2, 4, 6]
+      
+      big_nums = list(filter(lambda x: x > 3, numbers))
+      # [4, 5, 6]
+      ```
+      
+      ### Part 3: Real Examples
+      
+      ```python
+      # Filter long words
+      words = ["cat", "elephant", "dog", "giraffe"]
+      long_words = list(filter(lambda w: len(w) > 3, words))
+      # ["elephant", "giraffe"]
+      
+      # Filter positive numbers
+      nums = [-2, 5, -1, 8, -3]
+      positive = list(filter(lambda x: x > 0, nums))
+      # [5, 8]
+      ```
     
     instructions: |
       Write a function that filters out short words.
@@ -221,6 +578,56 @@ challenges:
     time_estimate: "60-75 minutes"
     description: |
       Transform data using comprehensions and functional programming!
+      
+      ## 🎓 LESSON: Combining Comprehensions
+      
+      ### Part 1: The Power of Chaining
+      
+      You can combine filtering and transforming:
+      
+      ```python
+      numbers = [1, 2, 3, 4, 5, 6]
+      
+      # Get squares of even numbers
+      result = [x**2 for x in numbers if x % 2 == 0]
+      # [4, 16, 36]
+      ```
+      
+      **Reads as:** "Square of x, for each x, if x is even"
+      
+      ### Part 2: Working with Dictionaries
+      
+      Filter and transform dictionary data:
+      
+      ```python
+      people = [
+          {"name": "Alice", "age": 25},
+          {"name": "Bob", "age": 17},
+          {"name": "Charlie", "age": 30}
+      ]
+      
+      # Get names of adults
+      adult_names = [p["name"] for p in people if p["age"] >= 18]
+      # ["Alice", "Charlie"]
+      ```
+      
+      ### Part 3: Multiple Operations
+      
+      ```python
+      people = [
+          {"name": "alice", "age": 25},
+          {"name": "bob", "age": 17}
+      ]
+      
+      # Get uppercase names of adults
+      adults = [p["name"].upper() for p in people if p["age"] >= 18]
+      # ["ALICE"]
+      ```
+      
+      **Breakdown:**
+      - `p["name"].upper()` - Get name and make uppercase
+      - `for p in people` - For each person  
+      - `if p["age"] >= 18` - Only if adult
     
     instructions: |
       Write a function that processes a list of people.
