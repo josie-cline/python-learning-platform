@@ -1,6 +1,16 @@
 # 🐍 PyQuest - Your Python Learning Journey
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Flask](https://img.shields.io/badge/Flask-3.0-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 **Welcome!** This is your personal Python learning platform designed to take you from complete beginner to Scale AI Frontend Engineer level in 6 months.
+
+🎯 **Goal:** Master Python and pass Scale AI coding interviews  
+⏱️ **Time Commitment:** 30-60 minutes per day  
+📅 **Duration:** 6 months (26 weeks, 182 challenges)  
+🎓 **Target Role:** Scale AI Frontend Engineer
 
 ## 🎯 What This Does
 
