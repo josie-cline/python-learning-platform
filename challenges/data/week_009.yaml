@@ -19,6 +19,96 @@ challenges:
     time_estimate: "50-65 minutes"
     description: |
       Learn to create your first class!
+      
+      ## 🎓 LESSON: Introduction to Classes
+      
+      ### Part 1: What is a Class?
+      
+      A class is a **blueprint** for creating objects. Think of it like a cookie cutter - one cutter, many cookies!
+      
+      **Real-world analogy:**
+      - Blueprint (class) → House (object)
+      - Recipe (class) → Cake (object)
+      - Person class → Alice object, Bob object
+      
+      ### Part 2: Creating a Class
+      
+      Use the `class` keyword:
+      
+      ```python
+      class Person:
+          pass  # Empty for now
+      ```
+      
+      ### Part 3: The __init__ Method
+      
+      `__init__` runs when creating a new object:
+      
+      ```python
+      class Person:
+          def __init__(self, name, age):
+              self.name = name
+              self.age = age
+      ```
+      
+      **What `self` means:**
+      - `self` represents the specific object
+      - `self.name` = this object's name
+      - `self.age` = this object's age
+      
+      ### Part 4: Creating Objects
+      
+      ```python
+      # Create two Person objects
+      alice = Person("Alice", 25)
+      bob = Person("Bob", 30)
+      
+      print(alice.name)  # "Alice"
+      print(bob.name)    # "Bob"
+      
+      # Different objects, different data!
+      ```
+      
+      ### Part 5: Adding Methods
+      
+      Methods are functions inside a class:
+      
+      ```python
+      class Person:
+          def __init__(self, name, age):
+              self.name = name
+              self.age = age
+          
+          def greet(self):
+              return f"Hello, I'm {self.name}!"
+          
+          def have_birthday(self):
+              self.age += 1
+      
+      alice = Person("Alice", 25)
+      print(alice.greet())  # "Hello, I'm Alice!"
+      alice.have_birthday()
+      print(alice.age)      # 26
+      ```
+      
+      ### Part 6: Complete Example
+      
+      ```python
+      class Dog:
+          def __init__(self, name, breed):
+              self.name = name
+              self.breed = breed
+          
+          def bark(self):
+              return f"{self.name} says Woof!"
+      
+      # Create two dogs
+      dog1 = Dog("Buddy", "Golden Retriever")
+      dog2 = Dog("Max", "Poodle")
+      
+      print(dog1.bark())  # "Buddy says Woof!"
+      print(dog2.bark())  # "Max says Woof!"
+      ```
     
     instructions: |
       Create a Person class.
@@ -58,6 +148,64 @@ challenges:
     time_estimate: "55-70 minutes"
     description: |
       Model a bank account with methods!
+      
+      ## 🎓 LESSON: State Management in Classes
+      
+      ### Part 1: Objects Have State
+      
+      State = data that changes over time:
+      
+      ```python
+      class BankAccount:
+          def __init__(self):
+              self.balance = 0  # Initial state
+          
+          def deposit(self, amount):
+              self.balance += amount  # State changes!
+          
+          def get_balance(self):
+              return self.balance
+      
+      account = BankAccount()
+      print(account.get_balance())  # 0
+      account.deposit(100)
+      print(account.get_balance())  # 100
+      ```
+      
+      ### Part 2: Methods Modify State
+      
+      ```python
+      class Counter:
+          def __init__(self):
+              self.count = 0
+          
+          def increment(self):
+              self.count += 1
+          
+          def get_count(self):
+              return self.count
+      
+      c = Counter()
+      c.increment()
+      c.increment()
+      print(c.get_count())  # 2
+      ```
+      
+      ### Part 3: Protecting State
+      
+      Validate before changing:
+      
+      ```python
+      class BankAccount:
+          def __init__(self, balance=0):
+              self.balance = balance
+          
+          def withdraw(self, amount):
+              if amount > self.balance:
+                  return False  # Can't withdraw!
+              self.balance -= amount
+              return True
+      ```
     
     instructions: |
       Create a BankAccount class.
@@ -105,6 +253,58 @@ challenges:
     time_estimate: "50-65 minutes"
     description: |
       Create a class with calculated properties!
+      
+      ## 🎓 LESSON: Calculated Properties
+      
+      ### Part 1: Storing vs Calculating
+      
+      Some data is **stored**, some is **calculated**:
+      
+      ```python
+      class Rectangle:
+          def __init__(self, width, height):
+              self.width = width    # Stored
+              self.height = height  # Stored
+          
+          def area(self):
+              return self.width * self.height  # Calculated!
+      
+      rect = Rectangle(5, 3)
+      print(rect.area())  # 15 (calculated from width × height)
+      ```
+      
+      ### Part 2: Why Calculate?
+      
+      **Benefits:**
+      - Always up-to-date
+      - No need to update when width/height changes
+      - Saves memory
+      
+      ```python
+      rect = Rectangle(5, 3)
+      print(rect.area())  # 15
+      
+      rect.width = 10  # Change width
+      print(rect.area())  # 30 (automatically updates!)
+      ```
+      
+      ### Part 3: Real Example
+      
+      ```python
+      class Circle:
+          def __init__(self, radius):
+              self.radius = radius
+          
+          def diameter(self):
+              return self.radius * 2
+          
+          def area(self):
+              return 3.14159 * self.radius ** 2
+      
+      c = Circle(5)
+      print(c.diameter())  # 10
+      print(c.area())      # 78.54
+      ```
     
     instructions: |
       Create a Rectangle class.
@@ -144,6 +344,46 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Create a class that maintains state!
+      
+      ## 🎓 LESSON: Building a Counter Class
+      
+      ### Part 1: Simple State Example
+      
+      ```python
+      class Counter:
+          def __init__(self):
+              self.count = 0
+          
+          def increment(self):
+              self.count += 1
+          
+          def get_count(self):
+              return self.count
+      
+      c = Counter()
+      c.increment()
+      c.increment()
+      c.increment()
+      print(c.get_count())  # 3
+      ```
+      
+      ### Part 2: Multiple Counters
+      
+      Each object has its own state:
+      
+      ```python
+      counter1 = Counter()
+      counter2 = Counter()
+      
+      counter1.increment()
+      counter1.increment()
+      
+      counter2.increment()
+      
+      print(counter1.get_count())  # 2
+      print(counter2.get_count())  # 1
+      # Different objects, different counts!
+      ```
     
     instructions: |
       Create a Counter class.
@@ -195,6 +435,50 @@ challenges:
     time_estimate: "55-70 minutes"
     description: |
       Manage collections within a class!
+      
+      ## 🎓 LESSON: Collections in Classes
+      
+      ### Part 1: Storing Lists
+      
+      Classes can store lists as instance variables:
+      
+      ```python
+      class Student:
+          def __init__(self, name):
+              self.name = name
+              self.grades = []  # Empty list
+          
+          def add_grade(self, grade):
+              self.grades.append(grade)
+      
+      student = Student("Alice")
+      student.add_grade(90)
+      student.add_grade(85)
+      print(student.grades)  # [90, 85]
+      ```
+      
+      ### Part 2: Calculating from Lists
+      
+      ```python
+      class Student:
+          def __init__(self, name):
+              self.name = name
+              self.grades = []
+          
+          def add_grade(self, grade):
+              self.grades.append(grade)
+          
+          def get_average(self):
+              if len(self.grades) == 0:
+                  return 0
+              return sum(self.grades) / len(self.grades)
+      
+      alice = Student("Alice")
+      alice.add_grade(90)
+      alice.add_grade(85)
+      alice.add_grade(92)
+      print(alice.get_average())  # 89.0
+      ```
     
     instructions: |
       Create a Student class.
@@ -241,6 +525,39 @@ challenges:
     time_estimate: "60-75 minutes"
     description: |
       Build a shopping cart!
+      
+      ## 🎓 LESSON: Dictionaries in Classes
+      
+      ### Part 1: Using Dicts for Complex State
+      
+      ```python
+      class ShoppingCart:
+          def __init__(self):
+              self.items = {}  # item -> quantity
+          
+          def add_item(self, item, qty):
+              if item in self.items:
+                  self.items[item] += qty
+              else:
+                  self.items[item] = qty
+      
+      cart = ShoppingCart()
+      cart.add_item("apple", 3)
+      cart.add_item("banana", 2)
+      cart.add_item("apple", 2)  # Add 2 more
+      print(cart.items)  # {"apple": 5, "banana": 2}
+      ```
+      
+      ### Part 2: Dict Methods in Classes
+      
+      ```python
+      def get_total_items(self):
+          return sum(self.items.values())
+      
+      def remove_item(self, item):
+          if item in self.items:
+              del self.items[item]
+      ```
     
     instructions: |
       Create a ShoppingCart class.
@@ -287,6 +604,64 @@ challenges:
     time_estimate: "75-90 minutes"
     description: |
       Build a todo list manager!
+      
+      ## 🎓 LESSON: Building Complete Applications with Classes
+      
+      ### Part 1: Planning the Class
+      
+      Before coding, think about:
+      - What data do we store? (list of todos)
+      - What operations do we need? (add, complete, get)
+      - What's the structure of each todo? (dict with task + done)
+      
+      ### Part 2: Data Structure
+      
+      ```python
+      # Each todo is a dictionary
+      todo = {
+          "task": "Buy milk",
+          "done": False
+      }
+      
+      # Store list of todos
+      todos = [
+          {"task": "Buy milk", "done": False},
+          {"task": "Walk dog", "done": True}
+      ]
+      ```
+      
+      ### Part 3: Complete TodoList Class
+      
+      ```python
+      class TodoList:
+          def __init__(self):
+              self.todos = []
+          
+          def add_task(self, task):
+              self.todos.append({
+                  "task": task,
+                  "done": False
+              })
+          
+          def complete_task(self, index):
+              if 0 <= index < len(self.todos):
+                  self.todos[index]["done"] = True
+          
+          def get_pending(self):
+              return [t["task"] for t in self.todos if not t["done"]]
+          
+          def get_completed(self):
+              return [t["task"] for t in self.todos if t["done"]]
+      
+      # Usage
+      my_todos = TodoList()
+      my_todos.add_task("Buy milk")
+      my_todos.add_task("Walk dog")
+      my_todos.complete_task(0)
+      
+      print(my_todos.get_pending())     # ["Walk dog"]
+      print(my_todos.get_completed())   # ["Buy milk"]
+      ```
     
     instructions: |
       Create a TodoList class.
