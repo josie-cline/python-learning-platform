@@ -263,10 +263,14 @@ def random_challenge():
         challenge = random.choice(all_challenges)
         
         # Convert markdown to HTML for display
+        # Reset markdown converter to clear state
+        md.reset()
         if challenge.get('description'):
             challenge['description'] = md.convert(challenge['description'])
+            md.reset()
         if challenge.get('instructions'):
             challenge['instructions'] = md.convert(challenge['instructions'])
+            md.reset()
         
         return jsonify(challenge)
     else:
