@@ -1,6 +1,6 @@
 # Week 5: File I/O and Error Handling
 
-title: "Week 5: Working with Files"
+title: "Working with Files"
 description: "Learn to read from and write to files, handle errors gracefully, and work with different file formats."
 topics:
   - Reading files

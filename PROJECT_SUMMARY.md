@@ -2,7 +2,7 @@
 
 ## What I've Built for You
 
-I've created a complete, production-ready Python learning platform tailored specifically for your journey to becoming a Scale AI Frontend Engineer!
+I've created a complete, production-ready Python learning platform tailored specifically for your journey to becoming a Scale AI Field Engineer!
 
 ---
 
@@ -590,4 +590,4 @@ Built with care for Josie's Python learning journey. Good luck with Scale AI! �
 
 **Made with ❤️ and Python 🐍**
 
-*Your journey to becoming a Scale AI Frontend Engineer starts now!*
+*Your journey to becoming a Scale AI Field Engineer starts now!*

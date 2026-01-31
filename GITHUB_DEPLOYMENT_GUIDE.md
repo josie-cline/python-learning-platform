@@ -22,7 +22,7 @@
 2. Select "New repository"
 3. Fill in details:
    - **Repository name:** `pyquest-learning-platform`
-   - **Description:** "My 6-month Python learning journey to become a Scale AI Frontend Engineer"
+   - **Description:** "My 6-month Python learning journey to become a Scale AI Field Engineer"
    - **Visibility:** Choose "Public" (to show your progress!) or "Private"
    - **DON'T** check "Initialize with README" (we already have one)
 4. Click "Create repository"
@@ -113,7 +113,7 @@ Click "Add Environment Variable" for each:
 ```
 USER_NAME = Josie Cline
 USER_EMAIL = josiah.cline@scale.com
-TARGET_ROLE = Scale AI Frontend Engineer
+TARGET_ROLE = Scale AI Field Engineer
 DAILY_REMINDER_TIME = 09:00
 WEEKLY_REPORT_DAY = 0
 WEEKLY_REPORT_TIME = 10:00

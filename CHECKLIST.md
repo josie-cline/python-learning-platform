@@ -282,7 +282,7 @@ Everything is ready for your Python learning journey!
 
 ## 🎓 Final Thoughts
 
-You're about to embark on an amazing journey! In 6 months, you'll go from zero coding knowledge to being ready for a Scale AI Frontend Engineer interview.
+You're about to embark on an amazing journey! In 6 months, you'll go from zero coding knowledge to being ready for a Scale AI Field Engineer interview.
 
 **Remember:**
 - Consistency beats intensity
