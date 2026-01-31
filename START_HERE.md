@@ -58,6 +58,38 @@ http://localhost:5000
 
 ---
 
+## ⭐ New Features You Should Know About!
+
+### **🌓 Light/Dark Mode**
+- Click the 🌓 button in the top-right navbar
+- Toggle between light and dark themes
+- Your preference is saved automatically!
+
+### **✨ AI Practice Sandbox**
+- Click "Practice" in the nav bar
+- Select topics you want to practice
+- Click "Get Random Challenge"
+- **AI generates a completely unique challenge!**
+- Never see the same problem twice
+- *Requires OpenAI API key (see `AI_PRACTICE_SETUP.md`)*
+
+### **📚 Self-Paced Navigation**
+- Use **Previous/Next** buttons on any challenge
+- Not limited to "today's challenge"
+- Move as fast or slow as you want!
+
+### **🎯 Smart Dashboard**
+- Shows your **next uncompleted challenge**
+- Automatically updates when you finish
+- Adapts to your pace
+
+### **🛠️ Tool Tutorials**
+- Click "Tools" to learn Cursor, VS Code, Terminal, Git
+- Complete learning paths for each tool
+- Quick reference cards
+
+---
+
 ## Step 4: Complete Your First Challenge! ⏱️ 20-30 minutes
 
 1. Click "Today's Challenge"

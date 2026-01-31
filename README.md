@@ -12,13 +12,37 @@
 📅 **Duration:** 6 months (26 weeks, 182 challenges)  
 🎓 **Target Role:** Scale AI Field Engineer
 
-## 🎯 What This Does
+## 🎯 Features
 
-- **Daily Challenges**: 30-60 minute Python exercises tailored to your level
-- **Progress Tracking**: See your streak, completion rate, and skill development
-- **Interactive Learning**: Beautiful HTML game interface - learn by doing!
-- **Reminders**: Daily notifications and weekly progress reports
-- **Real Exam Prep**: Curriculum designed around actual Scale AI coding interviews
+### **📚 Learning Modes**
+- **Structured Curriculum**: 63 hand-crafted challenges across 9 weeks with comprehensive teaching
+- **Self-Paced Navigation**: Previous/Next buttons - move at your own speed
+- **Browse Mode**: Jump to any challenge in any week
+- **AI Practice Sandbox**: ✨ Generate unlimited unique challenges with OpenAI
+
+### **🎮 Interactive Platform**
+- **Code Editor**: Write and test Python code in your browser
+- **Auto-Grading**: Instant feedback on your solutions
+- **Progress Tracking**: Streaks, completion rate, time invested
+- **Smart Dashboard**: Shows your next uncompleted challenge
+
+### **🎨 Modern UI**
+- **Light/Dark Mode**: Toggle theme with one click (🌓)
+- **Beautiful Design**: Modern, responsive interface
+- **Markdown Rendering**: Rich lesson content with code examples
+- **Smooth Animations**: Professional transitions and effects
+
+### **🛠️ Tool Tutorials**
+- **Cursor IDE**: 4-lesson learning path
+- **VS Code**: Complete editor guide
+- **Terminal/CLI**: Command line mastery
+- **Git & GitHub**: Version control tutorials
+
+### **⚙️ Personalization**
+- **Daily Reminders**: Email/Slack notifications
+- **Weekly Reports**: Progress summaries
+- **Topic Filtering**: Practice specific weak areas
+- **Difficulty Levels**: Beginner, Intermediate, Advanced
 
 ## 📚 What You'll Learn
 
@@ -100,11 +124,26 @@ SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/WEBHOOK/URL
 
 ## 🎮 How to Use
 
-1. **Start Your Day**: Open http://localhost:5000
-2. **Get Today's Challenge**: Click "Today's Challenge"
-3. **Code Your Solution**: Write Python code in the interactive editor
-4. **Test & Submit**: Run tests to check your solution
-5. **Track Progress**: View your dashboard for stats and streaks
+### **Structured Learning Path**
+1. **Open Dashboard**: Visit http://localhost:5000
+2. **Start Next Challenge**: Click "Your Next Challenge" (dynamically shows next uncompleted)
+3. **Read the Lesson**: Comprehensive teaching before coding
+4. **Write Your Solution**: Interactive code editor
+5. **Run Tests**: Instant feedback
+6. **Navigate**: Use Previous/Next buttons to move at your pace
+
+### **Practice Mode (AI-Powered)**
+1. **Go to Practice**: Click "Practice" in nav bar
+2. **Select Topics**: Choose what you want to practice (functions, loops, etc.)
+3. **Choose Difficulty**: Beginner, Intermediate, or Advanced
+4. **Generate Challenge**: AI creates a unique problem in seconds!
+5. **Solve & Repeat**: Get unlimited fresh challenges
+
+### **Browse & Explore**
+1. **Browse All Challenges**: See all 63 challenges organized by week
+2. **Jump Anywhere**: Click any challenge to start it
+3. **Learn Tools**: Check out Cursor, VS Code, Terminal tutorials
+4. **Toggle Theme**: Click 🌓 in navbar for light/dark mode
 
 ## 📖 Beginner's Guide to Tools
 
