@@ -52,23 +52,11 @@ def index():
     """Homepage - Dashboard with progress overview"""
     stats = progress_tracker.get_stats()
     
-    # Get next uncompleted challenge instead of today's date-based challenge
-    completed_ids = progress_tracker.data.get('completed_challenges', [])
+    # Get next uncompleted challenge (progress-based, not calendar-based)
+    completed_ids = progress_tracker.get_completed_ids()
+    next_challenge = challenge_loader.get_next_uncompleted_challenge(completed_ids)
     
-    # Find first uncompleted challenge
-    next_challenge = None
-    for week in range(1, 27):  # Check up to week 26
-        for day in range(1, 8):
-            challenge = challenge_loader.get_challenge(week, day)
-            if challenge:
-                challenge_id = f"week{week:03d}_day{day}"
-                if challenge_id not in completed_ids:
-                    next_challenge = challenge
-                    break
-        if next_challenge:
-            break
-    
-    # Fallback to today's challenge if no uncompleted found
+    # Fallback to today's challenge if all completed
     if not next_challenge:
         next_challenge = challenge_loader.get_today_challenge()
     
