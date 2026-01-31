@@ -15,32 +15,95 @@ challenges:
     title: "Hello, World!"
     topic: "Your First Python Program"
     difficulty: beginner
-    time_estimate: "20-30 minutes"
+    time_estimate: "30-40 minutes"
     description: |
       Welcome to your Python journey! Every programmer's first program is "Hello, World!"
-      Today, you'll learn how to display text on the screen using Python's `print()` function.
       
-      **What you'll learn:**
-      - How to use the print() function
-      - What strings are (text in quotes)
-      - How to write and run Python code
+      ## 📚 What You'll Learn
       
-      **Concepts:**
-      - `print()` - displays text on the screen
-      - Strings - text enclosed in quotes: "like this" or 'like this'
+      In this lesson, you'll learn three fundamental concepts:
+      1. What the print() function does
+      2. What strings are (text in programming)
+      3. How to write a Python function
+      
+      ## 🎓 LESSON: Understanding the Basics
+      
+      ### Part 1: The print() Function
+      
+      `print()` is a built-in Python function that displays text on the screen.
+      
+      **How to use it:**
+      ```python
+      print("Hello!")
+      ```
+      
+      When you run this, it shows: `Hello!`
+      
+      ### Part 2: Strings (Text)
+      
+      Strings are how we represent text in programming. You create a string by putting text inside quotes:
+      
+      ```python
+      "This is a string"
+      'This is also a string'
+      ```
+      
+      Both single quotes (`'`) and double quotes (`"`) work the same way!
+      
+      ### Part 3: Functions
+      
+      A function is a named block of code that does something. Think of it like a recipe with a name.
+      
+      **Anatomy of a function:**
+      ```python
+      def function_name():
+          # Code goes here
+          print("This code runs when you call the function")
+      ```
+      
+      Let's break this down:
+      - `def` - This keyword means "define a function"
+      - `function_name` - The name you give your function
+      - `()` - Parentheses (required, we'll learn why later)
+      - `:` - Colon (marks the start of the function's code)
+      - Indentation (4 spaces) - Code inside the function MUST be indented
+      
+      **Example:**
+      ```python
+      def greet():
+          print("Hi there!")
+      ```
+      
+      To use (call) this function:
+      ```python
+      greet()  # This prints "Hi there!"
+      ```
     
     instructions: |
-      Create a function called `hello_world()` that prints "Hello, World!" to the screen.
+      Now it's your turn! Create a function called `hello_world()` that prints "Hello, World!" to the screen.
       
-      Example:
+      **Step-by-step:**
+      1. Start with `def hello_world():`
+      2. On the next line, indent 4 spaces (press Tab key)
+      3. Write `print("Hello, World!")`
+      
+      **What it should look like:**
       ```python
       def hello_world():
           print("Hello, World!")
       ```
+      
+      **Important:**
+      - The text must be EXACTLY "Hello, World!" (capital H, capital W)
+      - Don't forget the quotes around the text
+      - Don't forget to indent the print line
     
     starter_code: |
       def hello_world():
-          # Write your code here
+          # Step 1: Type the print() function on the line below
+          # Step 2: Inside the parentheses, put quotes: ""
+          # Step 3: Inside the quotes, type: Hello, World!
+          # Step 4: Delete this comment and the 'pass' below
           pass
     
     hints:
@@ -62,34 +125,127 @@ challenges:
     title: "Variables and Numbers"
     topic: "Storing and Using Data"
     difficulty: beginner
-    time_estimate: "30-40 minutes"
+    time_estimate: "40-50 minutes"
     description: |
       Variables are like labeled boxes where you store information.
-      Today you'll learn how to create variables and do math with numbers!
       
-      **What you'll learn:**
-      - Creating variables
-      - Using numbers (integers and floats)
-      - Basic math operations (+, -, *, /)
+      ## 🎓 LESSON: Variables and Math
       
-      **Concepts:**
-      - Variables store data: `name = "Josie"`
-      - Integers are whole numbers: `age = 25`
-      - Floats are decimal numbers: `price = 19.99`
+      ### Part 1: What Are Variables?
+      
+      A variable is a name that stores a value. Think of it as a labeled box.
+      
+      **Creating a variable:**
+      ```python
+      age = 25
+      ```
+      
+      This creates a variable called `age` and stores the number `25` in it.
+      
+      - `age` is the variable name (the label on the box)
+      - `=` means "assign" or "store"
+      - `25` is the value being stored
+      
+      **More examples:**
+      ```python
+      name = "Josie"        # Store text
+      score = 100           # Store a whole number
+      price = 19.99         # Store a decimal number
+      is_learning = True    # Store true/false
+      ```
+      
+      ### Part 2: Types of Numbers
+      
+      Python has two main types of numbers:
+      
+      **Integers** - Whole numbers (no decimal point)
+      ```python
+      age = 25
+      year = 2026
+      score = -10
+      ```
+      
+      **Floats** - Numbers with decimals
+      ```python
+      price = 19.99
+      temperature = 98.6
+      pi = 3.14159
+      ```
+      
+      ### Part 3: Math Operations
+      
+      Python can do math just like a calculator:
+      
+      ```python
+      5 + 3    # Addition = 8
+      10 - 4   # Subtraction = 6
+      3 * 4    # Multiplication = 12
+      20 / 5   # Division = 4.0
+      ```
+      
+      **Using variables in math:**
+      ```python
+      x = 10
+      y = 5
+      result = x + y  # result is now 15
+      ```
+      
+      ### Part 4: Function Parameters and Return
+      
+      Yesterday you learned about functions. Today we add two new concepts:
+      
+      **Parameters** - Values you pass TO a function
+      ```python
+      def greet(name):  # 'name' is a parameter
+          print(f"Hello, {name}!")
+      
+      greet("Josie")  # Pass "Josie" as the parameter
+      ```
+      
+      **Return** - A value the function gives BACK
+      ```python
+      def add(x, y):
+          result = x + y
+          return result  # Give back the answer
+      
+      answer = add(5, 3)  # answer is now 8
+      ```
+      
+      When you `return` a value, the function ends and gives that value back.
     
     instructions: |
-      Create a function called `calculate_sum(a, b)` that takes two numbers
-      and returns their sum.
+      Create a function called `calculate_sum(a, b)` that:
+      1. Takes two numbers as parameters (a and b)
+      2. Adds them together
+      3. Returns the sum
       
-      Example:
+      **Step-by-step:**
+      1. The function definition is already started: `def calculate_sum(a, b):`
+      2. Inside the function, add a and b: `result = a + b`
+      3. Return the result: `return result`
+      
+      **What it should look like:**
       ```python
-      calculate_sum(5, 3)  # Returns 8
-      calculate_sum(10, 20)  # Returns 30
+      def calculate_sum(a, b):
+          result = a + b
+          return result
       ```
+      
+      **Or the shorter version:**
+      ```python
+      def calculate_sum(a, b):
+          return a + b
+      ```
+      
+      Both versions work the same way!
     
     starter_code: |
       def calculate_sum(a, b):
-          # Add the two numbers and return the result
+          # Step 1: Add a and b together
+          # You can do: result = a + b
+          # Step 2: Return the result
+          # You can do: return result
+          # Or combine both: return a + b
           pass
     
     hints:
@@ -117,28 +273,104 @@ challenges:
     title: "String Basics"
     topic: "Working with Text"
     difficulty: beginner
-    time_estimate: "30-40 minutes"
+    time_estimate: "40-50 minutes"
     description: |
-      Strings are how we work with text in Python. You'll learn to combine strings,
-      find their length, and create personalized messages.
+      Strings are how we work with text in Python.
       
-      **What you'll learn:**
-      - String concatenation (combining strings)
-      - The len() function
-      - String formatting
+      ## 🎓 LESSON: String Operations
+      
+      ### Part 1: Creating Strings
+      
+      You already learned strings are text in quotes. Let's go deeper!
+      
+      ```python
+      name = "Josie"
+      message = 'Hello there!'
+      long_text = "This is a longer string with spaces and punctuation!"
+      ```
+      
+      ### Part 2: String Concatenation (Combining Strings)
+      
+      You can glue strings together using the `+` operator:
+      
+      ```python
+      first = "Hello"
+      second = "World"
+      combined = first + second  # "HelloWorld"
+      ```
+      
+      **Important:** Remember to add spaces!
+      ```python
+      greeting = "Hello" + " " + "World"  # "Hello World"
+      ```
+      
+      ### Part 3: F-Strings (String Formatting)
+      
+      F-strings are an easy way to put variables inside strings.
+      Put an `f` before the quotes and use `{}` for variables:
+      
+      ```python
+      name = "Josie"
+      age = 25
+      message = f"My name is {name} and I am {age} years old"
+      # Result: "My name is Josie and I am 25 years old"
+      ```
+      
+      The `{}` gets replaced with the variable's value!
+      
+      **More examples:**
+      ```python
+      score = 100
+      print(f"You scored {score} points!")  # "You scored 100 points!"
+      
+      x = 5
+      y = 3
+      print(f"{x} + {y} = {x + y}")  # "5 + 3 = 8"
+      ```
+      
+      ### Part 4: String Functions
+      
+      Strings come with built-in functions:
+      
+      ```python
+      text = "hello"
+      
+      text.upper()      # "HELLO"
+      text.capitalize() # "Hello"
+      len(text)         # 5 (length of the string)
+      ```
     
     instructions: |
-      Create a function called `greet_user(name)` that takes a name and returns
-      a greeting message: "Hello, [name]! Welcome to Python!"
+      Create a function called `greet_user(name)` that:
+      1. Takes a person's name as a parameter
+      2. Returns a greeting message: "Hello, [name]! Welcome to Python!"
       
-      Example:
+      **Step-by-step using f-strings:**
+      1. Function definition: `def greet_user(name):`
+      2. Create the message: `message = f"Hello, {name}! Welcome to Python!"`
+      3. Return it: `return message`
+      
+      **Or use concatenation:**
       ```python
-      greet_user("Josie")  # Returns "Hello, Josie! Welcome to Python!"
+      def greet_user(name):
+          return "Hello, " + name + "! Welcome to Python!"
+      ```
+      
+      **Examples of how it should work:**
+      ```python
+      greet_user("Josie")   # Returns "Hello, Josie! Welcome to Python!"
+      greet_user("Alice")   # Returns "Hello, Alice! Welcome to Python!"
       ```
     
     starter_code: |
       def greet_user(name):
-          # Create and return a greeting message
+          # Option 1: Use f-string
+          # return f"Hello, {name}! Welcome to Python!"
+          
+          # Option 2: Use concatenation
+          # return "Hello, " + name + "! Welcome to Python!"
+          
+          # Choose one method and delete the other option and this pass
           pass
     
     hints:
@@ -161,29 +393,140 @@ challenges:
     title: "Simple Calculator"
     topic: "Multiple Operations"
     difficulty: beginner
-    time_estimate: "40-50 minutes"
+    time_estimate: "50-60 minutes"
     description: |
-      Let's build a simple calculator! You'll create functions for addition,
-      subtraction, multiplication, and division.
+      Let's build a simple calculator using multiple functions!
+      
+      ## 🎓 LESSON: Math Operations & Multiple Functions
+      
+      ### Part 1: The Four Basic Operations
+      
+      **Addition (+)**
+      ```python
+      5 + 3  # Equals 8
+      ```
+      
+      **Subtraction (-)**
+      ```python
+      10 - 4  # Equals 6
+      ```
+      
+      **Multiplication (*)**
+      ```python
+      4 * 5  # Equals 20
+      ```
+      
+      **Division (/)**
+      ```python
+      10 / 2  # Equals 5.0 (notice it's a float!)
+      ```
+      
+      ### Part 2: Creating Multiple Functions
+      
+      You can create as many functions as you need in one program:
+      
+      ```python
+      def say_hello():
+          print("Hello!")
+      
+      def say_goodbye():
+          print("Goodbye!")
+      
+      def say_both():
+          say_hello()    # Call the first function
+          say_goodbye()  # Call the second function
+      ```
+      
+      Each function does one specific thing. This makes code easier to understand!
+      
+      ### Part 3: Functions That Return Values
+      
+      Remember: `return` gives back a value that you can use elsewhere
+      
+      ```python
+      def double(number):
+          return number * 2
+      
+      result = double(5)  # result is now 10
+      print(result)       # Prints: 10
+      ```
+      
+      ### Part 4: Why Create Separate Functions?
+      
+      Instead of one giant function that does everything, we create small functions that each do ONE thing well.
+      
+      **Bad approach (one function does everything):**
+      ```python
+      def do_math(a, b, operation):
+          if operation == "add":
+              return a + b
+          elif operation == "subtract":
+              return a - b
+          # This gets messy!
+      ```
+      
+      **Good approach (separate functions):**
+      ```python
+      def add(a, b):
+          return a + b
+      
+      def subtract(a, b):
+          return a - b
+      ```
+      
+      Much cleaner and easier to understand!
     
     instructions: |
-      Create four functions:
-      - `add(a, b)` - returns a + b
-      - `subtract(a, b)` - returns a - b
-      - `multiply(a, b)` - returns a * b
-      - `divide(a, b)` - returns a / b
+      Create FOUR functions to build a calculator:
+      
+      1. `add(a, b)` - returns a + b
+      2. `subtract(a, b)` - returns a - b
+      3. `multiply(a, b)` - returns a * b
+      4. `divide(a, b)` - returns a / b
+      
+      **Each function should:**
+      - Take two parameters (a and b)
+      - Do ONE math operation
+      - Return the result
+      
+      **Example:**
+      ```python
+      def add(a, b):
+          return a + b
+      
+      def subtract(a, b):
+          return a - b
+      
+      def multiply(a, b):
+          return a * b
+      
+      def divide(a, b):
+          return a / b
+      ```
+      
+      **Test your functions:**
+      ```python
+      add(10, 5)       # Should return 15
+      subtract(10, 5)  # Should return 5
+      multiply(4, 5)   # Should return 20
+      divide(10, 2)    # Should return 5.0
+      ```
     
     starter_code: |
       def add(a, b):
+          # Return a + b
           pass
       
       def subtract(a, b):
+          # Return a - b
           pass
       
       def multiply(a, b):
+          # Return a * b
           pass
       
       def divide(a, b):
+          # Return a / b
           pass
     
     hints:
@@ -216,28 +559,115 @@ challenges:
     title: "Temperature Converter"
     topic: "Real-World Application"
     difficulty: beginner
-    time_estimate: "40-50 minutes"
+    time_estimate: "50-60 minutes"
     description: |
-      Apply what you've learned by converting temperatures between
-      Celsius and Fahrenheit!
+      Apply what you've learned by converting temperatures!
       
-      **Formula:**
-      - Fahrenheit to Celsius: (F - 32) × 5/9
-      - Celsius to Fahrenheit: (C × 9/5) + 32
+      ## 🎓 LESSON: Order of Operations & Formulas
+      
+      ### Part 1: Math Order Matters!
+      
+      Python follows the same math rules you learned in school (PEMDAS):
+      1. **P**arentheses first
+      2. **E**xponents (powers)
+      3. **M**ultiplication and **D**ivision (left to right)
+      4. **A**ddition and **S**ubtraction (left to right)
+      
+      **Examples:**
+      ```python
+      5 + 3 * 2    # = 11 (not 16!)
+      # Multiplication happens first: 3 * 2 = 6, then 5 + 6 = 11
+      
+      (5 + 3) * 2  # = 16
+      # Parentheses first: 5 + 3 = 8, then 8 * 2 = 16
+      ```
+      
+      ### Part 2: Using Formulas in Code
+      
+      Math formulas translate directly to Python:
+      
+      **Math formula:** Area = length × width  
+      **Python code:**
+      ```python
+      area = length * width
+      ```
+      
+      **Math formula:** Average = (a + b + c) / 3  
+      **Python code:**
+      ```python
+      average = (a + b + c) / 3
+      ```
+      
+      ### Part 3: Temperature Conversion Formula
+      
+      To convert Celsius to Fahrenheit:
+      
+      **Math formula:** F = (C × 9/5) + 32  
+      **Python code:**
+      ```python
+      fahrenheit = (celsius * 9/5) + 32
+      ```
+      
+      Let's break down why:
+      - Multiply celsius by 9/5 (or 1.8) - this adjusts the scale
+      - Add 32 - this adjusts the starting point
+      
+      **Test examples:**
+      - 0°C = 32°F (water freezes)
+      - 100°C = 212°F (water boils)
+      - 25°C = 77°F (nice room temperature)
+      
+      ### Part 4: Verifying Your Code
+      
+      Always test with known values:
+      
+      ```python
+      def celsius_to_fahrenheit(celsius):
+          return (celsius * 9/5) + 32
+      
+      # Test it!
+      print(celsius_to_fahrenheit(0))    # Should print 32.0
+      print(celsius_to_fahrenheit(100))  # Should print 212.0
+      ```
     
     instructions: |
-      Create a function `celsius_to_fahrenheit(celsius)` that converts
-      Celsius to Fahrenheit.
+      Create a function `celsius_to_fahrenheit(celsius)` that converts 
+      Celsius temperatures to Fahrenheit.
       
-      Example:
+      **Formula:** (celsius × 9/5) + 32
+      
+      **Step-by-step:**
+      1. Multiply celsius by 9/5
+      2. Add 32 to the result
+      3. Return the final value
+      
+      **Code it:**
       ```python
-      celsius_to_fahrenheit(0)  # Returns 32.0
-      celsius_to_fahrenheit(100)  # Returns 212.0
+      def celsius_to_fahrenheit(celsius):
+          fahrenheit = (celsius * 9/5) + 32
+          return fahrenheit
       ```
+      
+      **Or the short version:**
+      ```python
+      def celsius_to_fahrenheit(celsius):
+          return (celsius * 9/5) + 32
+      ```
+      
+      **Test values:**
+      ```python
+      celsius_to_fahrenheit(0)    # Should return 32.0
+      celsius_to_fahrenheit(100)  # Should return 212.0
+      celsius_to_fahrenheit(25)   # Should return 77.0
+      ```
+      
+      **Remember:** Don't forget the parentheses around `(celsius * 9/5)`!
     
     starter_code: |
       def celsius_to_fahrenheit(celsius):
-          # Convert celsius to fahrenheit
+          # Step 1: Multiply celsius by 9/5
+          # Step 2: Add 32
+          # Step 3: Return the result
           # Formula: (celsius * 9/5) + 32
           pass
     
@@ -266,24 +696,108 @@ challenges:
     title: "String Length and Repeat"
     topic: "More String Operations"
     difficulty: beginner
-    time_estimate: "30-40 minutes"
+    time_estimate: "40-50 minutes"
     description: |
-      Learn more about working with strings - finding their length
-      and repeating them!
+      Learn more about working with strings!
+      
+      ## 🎓 LESSON: String Operations
+      
+      ### Part 1: String Repetition
+      
+      You can repeat a string by multiplying it by a number:
+      
+      ```python
+      "Ha" * 3        # "HaHaHa"
+      "Python" * 2    # "PythonPython"
+      "-" * 10        # "----------"
+      ```
+      
+      This is useful for creating patterns or dividers!
+      
+      ### Part 2: The len() Function
+      
+      `len()` tells you how many characters are in a string:
+      
+      ```python
+      len("Hello")      # 5
+      len("Python")     # 6
+      len("I am 25")    # 7 (spaces count!)
+      len("")           # 0 (empty string)
+      ```
+      
+      **Using len() with variables:**
+      ```python
+      name = "Josie"
+      length = len(name)  # 5
+      print(f"{name} has {length} letters")
+      ```
+      
+      ### Part 3: Combining Operations
+      
+      You can combine different string operations:
+      
+      ```python
+      word = "Hi"
+      repeated = word * 3       # "HiHiHi"
+      length = len(repeated)    # 6
+      
+      # Or all at once:
+      length = len("Hi" * 3)    # 6
+      ```
+      
+      ### Part 4: Why This Is Useful
+      
+      **Creating separators:**
+      ```python
+      def print_title(title):
+          separator = "=" * len(title)
+          print(separator)
+          print(title)
+          print(separator)
+      
+      print_title("Welcome")
+      # Output:
+      # =======
+      # Welcome
+      # =======
+      ```
+      
+      **Creating patterns:**
+      ```python
+      "* " * 5  # "* * * * * "
+      ```
     
     instructions: |
-      Create a function `repeat_string(text, times)` that repeats a string
-      a specified number of times.
+      Create a function `repeat_string(text, times)` that takes a string
+      and a number, then returns the string repeated that many times.
       
-      Example:
+      **What the function should do:**
+      - Parameter 1: `text` - the string to repeat
+      - Parameter 2: `times` - how many times to repeat it
+      - Return: the repeated string
+      
+      **How to do it:**
       ```python
-      repeat_string("Ha", 3)  # Returns "HaHaHa"
-      repeat_string("Python", 2)  # Returns "PythonPython"
+      def repeat_string(text, times):
+          return text * times
       ```
+      
+      That's it! Just multiply the string by the number!
+      
+      **Examples:**
+      ```python
+      repeat_string("Ha", 3)       # Returns "HaHaHa"
+      repeat_string("Python", 2)   # Returns "PythonPython"
+      repeat_string("!", 5)        # Returns "!!!!!"
+      ```
+      
+      **Try it:**
+      This is a short function, but it's powerful!
     
     starter_code: |
       def repeat_string(text, times):
-          # Repeat the string 'times' number of times
+          # Multiply the text by times
+          # Hint: text * times
           pass
     
     hints:
@@ -305,26 +819,144 @@ challenges:
     title: "Week 1 Challenge"
     topic: "Review and Practice"
     difficulty: beginner
-    time_estimate: "45-60 minutes"
+    time_estimate: "60 minutes"
     description: |
       Time to put it all together! This challenge combines everything
       you've learned this week.
+      
+      ## 🎓 LESSON REVIEW: Week 1 Recap
+      
+      Let's review everything you learned this week:
+      
+      ### ✅ Day 1: Functions and Print
+      ```python
+      def say_hello():
+          print("Hello!")
+      ```
+      
+      ### ✅ Day 2: Variables and Math
+      ```python
+      x = 10
+      y = 5
+      sum = x + y  # 15
+      ```
+      
+      ### ✅ Day 3: Strings and F-Strings
+      ```python
+      name = "Josie"
+      message = f"Hello, {name}!"  # "Hello, Josie!"
+      ```
+      
+      ### ✅ Day 4: Multiple Functions
+      ```python
+      def add(a, b):
+          return a + b
+      
+      def subtract(a, b):
+          return a - b
+      ```
+      
+      ### ✅ Day 5: Formulas and Order of Operations
+      ```python
+      result = (5 + 3) * 2  # Parentheses first!
+      ```
+      
+      ### ✅ Day 6: String Operations
+      ```python
+      "Ha" * 3  # "HaHaHa"
+      len("Hello")  # 5
+      ```
+      
+      ## 🎯 Today's Challenge
+      
+      You'll combine:
+      - Variables
+      - Function parameters
+      - F-strings (or concatenation)
+      - Returning values
+      
+      ### Part 1: Understanding the Task
+      
+      You need to create a sentence that includes three pieces of information:
+      - A person's name
+      - Their age (a number)
+      - The city they live in
+      
+      Format: "[name] is [age] years old and lives in [city]."
+      
+      ### Part 2: How to Build It
+      
+      **Option 1: Using f-strings (recommended)**
+      ```python
+      def personal_info(name, age, city):
+          return f"{name} is {age} years old and lives in {city}."
+      ```
+      
+      **Option 2: Using concatenation**
+      ```python
+      def personal_info(name, age, city):
+          # Convert age to string since you're combining with text
+          return name + " is " + str(age) + " years old and lives in " + city + "."
+      ```
+      
+      **Option 3: Using .format()**
+      ```python
+      def personal_info(name, age, city):
+          return "{} is {} years old and lives in {}.".format(name, age, city)
+      ```
+      
+      All three work! F-strings are usually easiest.
+      
+      ### Part 3: Key Details
+      
+      **Don't forget:**
+      - Spaces between words
+      - The period at the end
+      - Exact wording: "is" and "years old" and "lives in"
     
     instructions: |
       Create a function `personal_info(name, age, city)` that returns a
       formatted string with this information.
       
-      Format: "[name] is [age] years old and lives in [city]."
+      **Format:** "[name] is [age] years old and lives in [city]."
       
-      Example:
+      **Examples:**
       ```python
       personal_info("Josie", 25, "San Francisco")
-      # Returns "Josie is 25 years old and lives in San Francisco."
+      # Returns: "Josie is 25 years old and lives in San Francisco."
+      
+      personal_info("Alice", 30, "New York")
+      # Returns: "Alice is 30 years old and lives in New York."
       ```
+      
+      **Step-by-step:**
+      1. Define function with three parameters: name, age, city
+      2. Create the string using f-strings or concatenation
+      3. Make sure spacing and punctuation are exact!
+      4. Return the string
+      
+      **Recommended solution:**
+      ```python
+      def personal_info(name, age, city):
+          return f"{name} is {age} years old and lives in {city}."
+      ```
+      
+      **Tips:**
+      - Test with the examples above
+      - Check your spacing
+      - Don't forget the period at the end!
     
     starter_code: |
       def personal_info(name, age, city):
-          # Create and return the formatted string
+          # Create a string with the format:
+          # "[name] is [age] years old and lives in [city]."
+          
+          # Option 1 (easiest): Use f-string
+          # return f"{name} is {age} years old and lives in {city}."
+          
+          # Option 2: Use concatenation
+          # return name + " is " + str(age) + " years old and lives in " + city + "."
+          
           pass
     
     hints:
