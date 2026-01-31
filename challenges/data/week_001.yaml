@@ -118,8 +118,8 @@ challenges:
         expected: null  # We'll check output instead
     
     learning_resources:
-      - "Python print() function: https://docs.python.org/3/library/functions.html#print"
-      - "What are strings?: https://docs.python.org/3/tutorial/introduction.html#strings"
+      - "[Python print() function](https://docs.python.org/3/library/functions.html#print)"
+      - "[What are strings?](https://docs.python.org/3/tutorial/introduction.html#strings)"
 
   - day: 2
     title: "Variables and Numbers"

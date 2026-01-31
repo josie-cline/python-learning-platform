@@ -62,7 +62,7 @@
                         <h2>📚 Learning Resources</h2>
                         <ul class="resources-list">
                             {% for resource in challenge.learning_resources %}
-                            <li>{{ resource }}</li>
+                            <li class="markdown-content">{{ resource | markdown | safe }}</li>
                             {% endfor %}
                         </ul>
                     </div>
