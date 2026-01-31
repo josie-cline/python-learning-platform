@@ -261,6 +261,13 @@ def random_challenge():
     import random
     if all_challenges:
         challenge = random.choice(all_challenges)
+        
+        # Convert markdown to HTML for display
+        if challenge.get('description'):
+            challenge['description'] = md.convert(challenge['description'])
+        if challenge.get('instructions'):
+            challenge['instructions'] = md.convert(challenge['instructions'])
+        
         return jsonify(challenge)
     else:
         return jsonify({'error': 'No challenges match your filters'}), 404
