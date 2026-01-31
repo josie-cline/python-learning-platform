@@ -166,7 +166,7 @@
                     <div class="practice-meta">
                         <span class="difficulty-badge ${challenge.difficulty}">${challenge.difficulty}</span>
                         <span class="meta-item">⏱️ ${challenge.time_estimate}</span>
-                        <span class="meta-item">📅 Week ${challenge.week}, Day ${challenge.day}</span>
+                        ${challenge.week === 0 ? '<span class="ai-generated-badge">✨ AI Generated</span>' : `<span class="meta-item">📅 Week ${challenge.week}, Day ${challenge.day}</span>`}
                     </div>
                 </div>
 
@@ -180,11 +180,13 @@
                 </div>
 
                 <div class="practice-actions">
-                    <a href="/challenge?week=${challenge.week}&day_num=${challenge.day}" class="btn btn-primary">
-                        📝 Open Full Challenge
-                    </a>
-                    <button class="btn btn-secondary" onclick="getRandomChallenge()">
-                        🎲 Another Random Challenge
+                    ${challenge.week !== 0 ? `
+                        <a href="/challenge?week=${challenge.week}&day_num=${challenge.day}" class="btn btn-primary">
+                            📝 Open Full Challenge
+                        </a>
+                    ` : ''}
+                    <button class="btn ${challenge.week === 0 ? 'btn-primary' : 'btn-secondary'}" onclick="getRandomChallenge()">
+                        🎲 ${challenge.week === 0 ? 'Generate Another Challenge' : 'Another Random Challenge'}
                     </button>
                 </div>
             `;
