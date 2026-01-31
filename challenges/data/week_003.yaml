@@ -182,6 +182,83 @@ challenges:
     time_estimate: "30-40 minutes"
     description: |
       Learn how to set default values for function parameters!
+      
+      ## 🎓 LESSON: Default Arguments
+      
+      ### Part 1: What Are Default Arguments?
+      
+      Sometimes you want a parameter to be **optional**. Default arguments let callers skip parameters.
+      
+      **Without defaults:**
+      ```python
+      def greet(name, greeting):
+          return f"{greeting}, {name}!"
+      
+      greet("Alice", "Hello")  # Must provide both
+      greet("Bob")  # ERROR! Missing greeting
+      ```
+      
+      **With defaults:**
+      ```python
+      def greet(name, greeting="Hello"):
+          return f"{greeting}, {name}!"
+      
+      greet("Alice", "Hello")  # Hello, Alice!
+      greet("Bob")            # Hello, Bob! (uses default)
+      greet("Charlie", "Hi")  # Hi, Charlie!
+      ```
+      
+      ### Part 2: Syntax
+      
+      Set default by using `=` in parameter list:
+      
+      ```python
+      def function_name(required_param, optional_param="default value"):
+          # Function body
+      ```
+      
+      **Rules:**
+      - Parameters with defaults come **after** required ones
+      - Can have multiple default parameters
+      
+      ### Part 3: Examples
+      
+      **Example 1: Welcome message**
+      ```python
+      def welcome(name, title="Guest"):
+          return f"Welcome, {title} {name}!"
+      
+      print(welcome("Alice"))           # Welcome, Guest Alice!
+      print(welcome("Bob", "Dr."))      # Welcome, Dr. Bob!
+      ```
+      
+      **Example 2: Multiple defaults**
+      ```python
+      def create_user(username, role="user", active=True):
+          return {
+              "username": username,
+              "role": role,
+              "active": active
+          }
+      
+      create_user("alice")                    # Uses both defaults
+      create_user("bob", "admin")             # Overrides role
+      create_user("charlie", "user", False)   # Overrides both
+      ```
+      
+      ### Part 4: Common Mistakes
+      
+      ❌ **Required after optional:**
+      ```python
+      def bad(optional="default", required):  # SyntaxError!
+          pass
+      ```
+      
+      ✅ **Required before optional:**
+      ```python
+      def good(required, optional="default"):
+          pass
+      ```
     
     instructions: |
       Create a function `greet(name, greeting="Hello")` that greets someone.
@@ -216,6 +293,79 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Lists are Python's most versatile data structure. Learn to manipulate them!
+      
+      ## 🎓 LESSON: List Methods
+      
+      ### Part 1: Lists Are Mutable
+      
+      Unlike strings, lists can be **changed** after creation:
+      
+      ```python
+      numbers = [1, 2, 3]
+      numbers.append(4)  # Changes the list!
+      print(numbers)     # [1, 2, 3, 4]
+      ```
+      
+      ### Part 2: Adding Items - append()
+      
+      `.append()` adds one item to the **end**:
+      
+      ```python
+      fruits = ["apple", "banana"]
+      fruits.append("cherry")
+      print(fruits)  # ["apple", "banana", "cherry"]
+      ```
+      
+      ### Part 3: Adding Items - insert()
+      
+      `.insert()` adds at a **specific position**:
+      
+      ```python
+      colors = ["red", "blue"]
+      colors.insert(1, "green")  # Insert at index 1
+      print(colors)  # ["red", "green", "blue"]
+      ```
+      
+      ### Part 4: Removing Items - remove()
+      
+      `.remove()` deletes the first occurrence of a value:
+      
+      ```python
+      numbers = [1, 2, 3, 2]
+      numbers.remove(2)  # Removes first 2
+      print(numbers)     # [1, 3, 2]
+      ```
+      
+      ### Part 5: Removing Items - pop()
+      
+      `.pop()` removes and **returns** the last item:
+      
+      ```python
+      stack = [1, 2, 3]
+      last = stack.pop()  # Returns 3
+      print(last)         # 3
+      print(stack)        # [1, 2]
+      ```
+      
+      `.pop(index)` can remove from any position:
+      
+      ```python
+      items = ["a", "b", "c"]
+      items.pop(1)  # Remove index 1
+      print(items)  # ["a", "c"]
+      ```
+      
+      ### Part 6: Common Methods Summary
+      
+      ```python
+      my_list = [1, 2, 3]
+      
+      my_list.append(4)      # Add to end: [1, 2, 3, 4]
+      my_list.insert(0, 0)   # Add at index: [0, 1, 2, 3, 4]
+      my_list.remove(2)      # Remove value: [0, 1, 3, 4]
+      my_list.pop()          # Remove last: [0, 1, 3]
+      my_list.clear()        # Remove all: []
+      ```
     
     instructions: |
       Create a function `add_to_list(my_list, item)` that adds an item to
