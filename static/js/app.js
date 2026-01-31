@@ -45,16 +45,67 @@ if (codeEditor) {
     
     // Load saved code
     const savedCode = localStorage.getItem(`code_${challengeId}`);
-    if (savedCode && confirm('Resume from saved code?')) {
-        codeEditor.value = savedCode;
+    const starterCode = codeEditor.value;
+    
+    // Only prompt if saved code exists and is different from starter code
+    if (savedCode && savedCode !== starterCode && savedCode.trim() !== '') {
+        // Check if user disabled auto-resume prompts
+        const autoResumeDisabled = localStorage.getItem('disable_auto_resume_prompt') === 'true';
+        
+        if (!autoResumeDisabled) {
+            // Show a less intrusive notification instead of blocking confirm
+            const resumeDiv = document.createElement('div');
+            resumeDiv.className = 'auto-save-notification';
+            resumeDiv.innerHTML = `
+                <div class="notification-content">
+                    <span>💾 You have saved code from a previous session.</span>
+                    <div class="notification-actions">
+                        <button onclick="resumeSavedCode('${challengeId}')" class="btn btn-small btn-primary">Resume</button>
+                        <button onclick="dismissResume()" class="btn btn-small btn-secondary">Start Fresh</button>
+                        <button onclick="neverAskResume()" class="btn btn-small btn-text">Don't ask again</button>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.challenge-editor').prepend(resumeDiv);
+        }
     }
     
     // Save code periodically
     setInterval(() => {
-        if (codeEditor.value) {
+        if (codeEditor.value && codeEditor.value.trim() !== '') {
             localStorage.setItem(`code_${challengeId}`, codeEditor.value);
         }
     }, 30000); // Every 30 seconds
+}
+
+// Resume saved code function
+function resumeSavedCode(challengeId) {
+    const savedCode = localStorage.getItem(`code_${challengeId}`);
+    if (savedCode && codeEditor) {
+        codeEditor.value = savedCode;
+    }
+    dismissResume();
+}
+
+// Dismiss resume notification
+function dismissResume() {
+    const notification = document.querySelector('.auto-save-notification');
+    if (notification) {
+        notification.remove();
+    }
+}
+
+// Never ask to resume again
+function neverAskResume() {
+    localStorage.setItem('disable_auto_resume_prompt', 'true');
+    dismissResume();
+    
+    // Show feedback
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback-message';
+    feedback.textContent = '✓ Auto-resume prompts disabled. You can re-enable in Settings.';
+    document.querySelector('.challenge-editor').prepend(feedback);
+    setTimeout(() => feedback.remove(), 3000);
 }
 
 // Keyboard shortcuts
