@@ -10,6 +10,7 @@ import os
 from datetime import datetime, timedelta
 import json
 from pathlib import Path
+import markdown
 
 # Load environment variables
 load_dotenv()
@@ -24,6 +25,17 @@ from progress.tracker import ProgressTracker
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
 CORS(app)
+
+# Initialize Markdown converter
+md = markdown.Markdown(extensions=['fenced_code', 'tables', 'nl2br'])
+
+# Add custom filter for markdown
+@app.template_filter('markdown')
+def markdown_filter(text):
+    """Convert markdown to HTML"""
+    if text:
+        return markdown.markdown(text, extensions=['fenced_code', 'tables', 'nl2br'])
+    return ''
 
 # Initialize components
 challenge_loader = ChallengeLoader()

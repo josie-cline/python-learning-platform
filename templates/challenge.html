@@ -41,12 +41,12 @@
 
                     <div class="section">
                         <h2>📖 Description</h2>
-                        <div class="description-content">{{ challenge.description }}</div>
+                        <div class="description-content markdown-content">{{ challenge.description | markdown | safe }}</div>
                     </div>
 
                     <div class="section">
                         <h2>🎯 Instructions</h2>
-                        <div class="instructions-content">{{ challenge.instructions }}</div>
+                        <div class="instructions-content markdown-content">{{ challenge.instructions | markdown | safe }}</div>
                     </div>
 
                     <div class="section hints-section" id="hintsSection" style="display: none;">
