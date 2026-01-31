@@ -14,6 +14,7 @@ challenges:
   - day: 1
     title: "Even or Odd?"
     topic: "If/Else Statements"
+    keywords: ["conditions", "math"]
     difficulty: beginner
     time_estimate: "45-60 minutes"
     description: |
@@ -194,6 +195,7 @@ challenges:
   - day: 2
     title: "Grade Calculator"
     topic: "Multiple Conditions"
+    keywords: ["conditions", "math"]
     difficulty: beginner
     time_estimate: "50-60 minutes"
     description: |
@@ -360,6 +362,7 @@ challenges:
   - day: 3
     title: "Count to Ten"
     topic: "While Loops"
+    keywords: ["loops", "variables"]
     difficulty: beginner
     time_estimate: "50-60 minutes"
     description: |
@@ -541,6 +544,7 @@ challenges:
   - day: 4
     title: "FizzBuzz (Part 1)"
     topic: "Combining Conditions and Loops"
+    keywords: ["loops", "conditions", "math"]
     difficulty: intermediate
     time_estimate: "60-75 minutes"
     description: |
@@ -738,6 +742,7 @@ challenges:
   - day: 5
     title: "Sum of List"
     topic: "For Loops"
+    keywords: ["loops", "lists", "math"]
     difficulty: beginner
     time_estimate: "50-60 minutes"
     description: |
@@ -898,6 +903,7 @@ challenges:
   - day: 6
     title: "Find Maximum"
     topic: "Loops and Comparisons"
+    keywords: ["loops", "lists", "conditions"]
     difficulty: beginner
     time_estimate: "50-60 minutes"
     description: |
@@ -1054,6 +1060,7 @@ challenges:
   - day: 7
     title: "Week 2 Challenge: Password Validator"
     topic: "Review - Conditions and Loops"
+    keywords: ["loops", "conditions", "strings"]
     difficulty: intermediate
     time_estimate: "75-90 minutes"
     description: |

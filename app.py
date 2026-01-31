@@ -246,8 +246,16 @@ def random_challenge():
     
     # Filter by topics if specified
     if topics:
-        all_challenges = [ch for ch in all_challenges 
-                         if ch.get('topic') and any(t.lower() in ch.get('topic', '').lower() for t in topics)]
+        filtered = []
+        for ch in all_challenges:
+            # Check both 'keywords' field and 'topic' field
+            keywords = ch.get('keywords', [])
+            topic = ch.get('topic', '').lower()
+            
+            # If challenge has any of the requested topics in keywords or topic
+            if any(t.lower() in keywords or t.lower() in topic for t in topics):
+                filtered.append(ch)
+        all_challenges = filtered
     
     # Return random challenge
     import random

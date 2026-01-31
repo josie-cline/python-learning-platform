@@ -13,6 +13,7 @@ challenges:
   - day: 1
     title: "Function Basics"
     topic: "Parameters and Return Values"
+    keywords: ["functions"]
     difficulty: beginner
     time_estimate: "50-60 minutes"
     description: |
@@ -176,6 +177,7 @@ challenges:
   - day: 2
     title: "Default Arguments"
     topic: "Optional Parameters"
+    keywords: ["functions"]
     difficulty: beginner
     time_estimate: "30-40 minutes"
     description: |
@@ -209,6 +211,7 @@ challenges:
   - day: 3
     title: "List Operations"
     topic: "Adding and Removing Items"
+    keywords: ["lists", "functions"]
     difficulty: beginner
     time_estimate: "40-50 minutes"
     description: |
@@ -236,6 +239,7 @@ challenges:
   - day: 4
     title: "List Slicing"
     topic: "Accessing Parts of Lists"
+    keywords: ["lists"]
     difficulty: intermediate
     time_estimate: "40-50 minutes"
     description: |
@@ -263,6 +267,7 @@ challenges:
   - day: 5
     title: "List Reverse"
     topic: "Reversing and Sorting"
+    keywords: ["lists", "functions"]
     difficulty: beginner
     time_estimate: "30-40 minutes"
     description: |
@@ -290,6 +295,7 @@ challenges:
   - day: 6
     title: "Remove Duplicates"
     topic: "List Processing"
+    keywords: ["lists", "loops"]
     difficulty: intermediate
     time_estimate: "45-60 minutes"
     description: |
@@ -317,6 +323,7 @@ challenges:
   - day: 7
     title: "Week 3 Challenge: List Statistics"
     topic: "Combining Everything"
+    keywords: ["lists", "functions", "loops", "math"]
     difficulty: intermediate
     time_estimate: "60 minutes"
     description: |

@@ -13,6 +13,7 @@ challenges:
   - day: 1
     title: "Dictionary Basics"
     topic: "Creating and Accessing Dictionaries"
+    keywords: ["dictionaries"]
     difficulty: beginner
     time_estimate: "30-40 minutes"
     description: |
@@ -49,6 +50,7 @@ challenges:
   - day: 2
     title: "Dictionary Methods"
     topic: "get(), keys(), values()"
+    keywords: ["dictionaries", "functions"]
     difficulty: beginner
     time_estimate: "40-50 minutes"
     description: |
@@ -80,6 +82,7 @@ challenges:
   - day: 3
     title: "Word Counter"
     topic: "Real-World Dictionary Application"
+    keywords: ["dictionaries", "loops", "strings"]
     difficulty: intermediate
     time_estimate: "50-60 minutes"
     description: |
@@ -110,6 +113,7 @@ challenges:
   - day: 4
     title: "Merge Dictionaries"
     topic: "Combining Dictionaries"
+    keywords: ["dictionaries", "functions"]
     difficulty: intermediate
     time_estimate: "40-50 minutes"
     description: |
@@ -137,6 +141,7 @@ challenges:
   - day: 5
     title: "Sets Basics"
     topic: "Unique Collections"
+    keywords: ["lists"]
     difficulty: beginner
     time_estimate: "30-40 minutes"
     description: |
@@ -164,6 +169,7 @@ challenges:
   - day: 6
     title: "Set Operations"
     topic: "Union, Intersection, Difference"
+    keywords: ["lists", "functions"]
     difficulty: intermediate
     time_estimate: "45-60 minutes"
     description: |
@@ -191,6 +197,7 @@ challenges:
   - day: 7
     title: "Week 4 Challenge: Phonebook"
     topic: "Dictionary Application"
+    keywords: ["dictionaries", "functions", "loops"]
     difficulty: intermediate
     time_estimate: "60 minutes"
     description: |
