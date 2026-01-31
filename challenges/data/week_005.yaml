@@ -19,6 +19,94 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Learn to read content from text files!
+      
+      ## 🎓 LESSON: Working with Files
+      
+      ### Part 1: Why Files?
+      
+      Files let your programs save and load data! Without files, everything you do disappears when the program ends.
+      
+      **Common uses:**
+      - Reading configuration settings
+      - Loading data to process
+      - Reading user documents
+      - Accessing logs
+      
+      ### Part 2: The open() Function
+      
+      Python's `open()` function opens a file for reading or writing.
+      
+      **Basic syntax:**
+      ```python
+      file = open("filename.txt", "r")  # "r" means read mode
+      ```
+      
+      **What this does:**
+      - Finds the file "filename.txt"
+      - Opens it in read mode
+      - Returns a file object you can work with
+      
+      ### Part 3: Reading File Contents
+      
+      Once a file is open, use `.read()` to get all its contents:
+      
+      ```python
+      file = open("story.txt", "r")
+      content = file.read()  # Reads entire file as one string
+      print(content)
+      file.close()  # IMPORTANT: Always close files!
+      ```
+      
+      ### Part 4: The 'with' Statement (Better Way!)
+      
+      Manually closing files is easy to forget. Use `with` to auto-close:
+      
+      ```python
+      with open("story.txt", "r") as file:
+          content = file.read()
+          print(content)
+      # File automatically closes here!
+      ```
+      
+      **Why `with` is better:**
+      - File closes automatically, even if errors happen
+      - Cleaner, more "Pythonic" code
+      - Prevents file handle leaks
+      
+      ### Part 5: Complete Example
+      
+      ```python
+      def read_greeting():
+          with open("greeting.txt", "r") as file:
+              message = file.read()
+          return message
+      
+      result = read_greeting()
+      print(result)  # Prints whatever was in greeting.txt
+      ```
+      
+      **Step-by-step:**
+      1. `with open(...)` - Opens file in read mode
+      2. `as file` - Names the file object
+      3. `file.read()` - Reads all contents
+      4. Indented code runs while file is open
+      5. File auto-closes when leaving the with block
+      
+      ### Common Mistakes:
+      
+      ❌ **Forgetting to close:**
+      ```python
+      file = open("data.txt", "r")
+      content = file.read()
+      # Forgot file.close()!
+      ```
+      
+      ✅ **Using with (auto-closes):**
+      ```python
+      with open("data.txt", "r") as file:
+          content = file.read()
+      # Automatically closed!
+      ```
     
     instructions: |
       Write a function that reads a text file and returns its contents as a string.
@@ -55,6 +143,91 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Learn to save data to files!
+      
+      ## 🎓 LESSON: Writing Files
+      
+      ### Part 1: Write Mode
+      
+      To write to a file, open it in write mode with `"w"`:
+      
+      ```python
+      file = open("output.txt", "w")
+      ```
+      
+      ⚠️ **Warning:** `"w"` mode **erases** the file if it exists! It creates a new empty file.
+      
+      ### Part 2: Writing Content
+      
+      Use `.write()` to put text in the file:
+      
+      ```python
+      file = open("message.txt", "w")
+      file.write("Hello, World!")
+      file.close()
+      ```
+      
+      After this runs, "message.txt" contains: `Hello, World!`
+      
+      ### Part 3: Writing with 'with' (Recommended)
+      
+      ```python
+      with open("message.txt", "w") as file:
+          file.write("Hello, World!")
+      # File automatically saved and closed
+      ```
+      
+      ### Part 4: Writing Multiple Lines
+      
+      `.write()` doesn't add newlines automatically:
+      
+      ```python
+      with open("poem.txt", "w") as file:
+          file.write("Roses are red\n")  # \n = newline
+          file.write("Violets are blue\n")
+          file.write("Python is awesome\n")
+      ```
+      
+      **Result in poem.txt:**
+      ```
+      Roses are red
+      Violets are blue
+      Python is awesome
+      ```
+      
+      ### Part 5: Different File Modes
+      
+      | Mode | What it does |
+      |------|--------------|
+      | `"r"` | Read only (file must exist) |
+      | `"w"` | Write (creates new or overwrites) |
+      | `"a"` | Append (adds to end, we'll learn this later) |
+      
+      ### Complete Example:
+      
+      ```python
+      def save_score(name, score):
+          with open("highscore.txt", "w") as file:
+              file.write(f"{name}: {score}")
+      
+      save_score("Alice", 9500)
+      # highscore.txt now contains: Alice: 9500
+      ```
+      
+      ### Common Mistakes:
+      
+      ❌ **Forgetting newlines:**
+      ```python
+      file.write("Line 1")
+      file.write("Line 2")
+      # Result: Line 1Line 2 (all on one line!)
+      ```
+      
+      ✅ **Adding newlines:**
+      ```python
+      file.write("Line 1\n")
+      file.write("Line 2\n")
+      # Result: Two separate lines
+      ```
     
     instructions: |
       Write a function that writes text to a file.
@@ -90,6 +263,114 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Handle errors gracefully instead of crashing!
+      
+      ## 🎓 LESSON: Error Handling
+      
+      ### Part 1: What Are Errors?
+      
+      Errors (exceptions) happen when something goes wrong:
+      
+      ```python
+      result = 10 / 0  # ZeroDivisionError!
+      ```
+      
+      Without handling, this **crashes** your program. Not good!
+      
+      ### Part 2: The try-except Block
+      
+      `try-except` lets you catch errors and handle them gracefully:
+      
+      **Basic structure:**
+      ```python
+      try:
+          # Code that might cause an error
+          risky_operation()
+      except:
+          # Code that runs if error occurs
+          print("Oops, something went wrong!")
+      ```
+      
+      ### Part 3: Real Example - Division
+      
+      ```python
+      try:
+          result = 10 / 0
+          print(result)
+      except ZeroDivisionError:
+          print("Can't divide by zero!")
+      
+      # Output: Can't divide by zero!
+      # Program continues running!
+      ```
+      
+      **Without try-except:**
+      ```python
+      result = 10 / 0  # CRASH! Program stops!
+      print("This never runs")
+      ```
+      
+      ### Part 4: Catching Specific Errors
+      
+      You can catch specific error types:
+      
+      ```python
+      try:
+          number = int("hello")  # Can't convert to int!
+      except ValueError:
+          print("That's not a number!")
+      ```
+      
+      **Common error types:**
+      - `ZeroDivisionError` - Dividing by zero
+      - `ValueError` - Wrong value (like int("hello"))
+      - `FileNotFoundError` - File doesn't exist
+      - `KeyError` - Dictionary key doesn't exist
+      
+      ### Part 5: Using Return in Except
+      
+      Functions can return from except blocks:
+      
+      ```python
+      def safe_divide(a, b):
+          try:
+              return a / b
+          except ZeroDivisionError:
+              return "Error: Cannot divide by zero"
+      
+      print(safe_divide(10, 2))  # 5.0
+      print(safe_divide(10, 0))  # Error: Cannot divide by zero
+      ```
+      
+      ### Part 6: Try-Except Flow
+      
+      ```python
+      try:
+          print("1. Starting")
+          result = 10 / 0  # Error happens here
+          print("2. This won't print")  # Skipped!
+      except:
+          print("3. Error caught!")  # Jumps here
+      print("4. Program continues")  # Always runs
+      ```
+      
+      **Output:**
+      ```
+      1. Starting
+      3. Error caught!
+      4. Program continues
+      ```
+      
+      ### Common Mistakes:
+      
+      ❌ **Catching all errors blindly:**
+      ```python
+      except:  # Too broad! Hides real problems
+      ```
+      
+      ✅ **Catching specific errors:**
+      ```python
+      except ZeroDivisionError:  # Clear and specific
+      ```
     
     instructions: |
       Write a function that safely divides two numbers.
@@ -128,6 +409,84 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Process files line by line!
+      
+      ## 🎓 LESSON: Reading Files Line by Line
+      
+      ### Part 1: Why Line by Line?
+      
+      Sometimes files are huge! Reading the entire file at once uses lots of memory.
+      
+      **Better:** Read one line at a time.
+      
+      ### Part 2: The .readlines() Method
+      
+      `.readlines()` returns a **list** of all lines:
+      
+      ```python
+      with open("data.txt", "r") as file:
+          lines = file.readlines()
+      
+      # lines = ["First line\n", "Second line\n", "Third line\n"]
+      print(len(lines))  # 3
+      ```
+      
+      Each line is a string, including the `\n` newline!
+      
+      ### Part 3: Looping Through Lines
+      
+      You can loop directly over a file object:
+      
+      ```python
+      with open("data.txt", "r") as file:
+          for line in file:
+              print(line)
+      ```
+      
+      This is **memory efficient** - reads one line at a time!
+      
+      ### Part 4: Counting Lines
+      
+      **Method 1: Using readlines()**
+      ```python
+      with open("data.txt", "r") as file:
+          lines = file.readlines()
+          count = len(lines)
+      print(count)
+      ```
+      
+      **Method 2: Using a counter**
+      ```python
+      count = 0
+      with open("data.txt", "r") as file:
+          for line in file:
+              count += 1
+      print(count)
+      ```
+      
+      Both work! Method 1 is simpler, Method 2 uses less memory for huge files.
+      
+      ### Part 5: Removing Newlines
+      
+      Lines include `\n` at the end. Remove it with `.strip()`:
+      
+      ```python
+      with open("names.txt", "r") as file:
+          for line in file:
+              clean_line = line.strip()  # Removes \n
+              print(f"Hello, {clean_line}!")
+      ```
+      
+      ### Complete Example:
+      
+      ```python
+      def count_words_in_file(filename):
+          word_count = 0
+          with open(filename, "r") as file:
+              for line in file:
+                  words = line.split()  # Split by spaces
+                  word_count += len(words)
+          return word_count
+      ```
     
     instructions: |
       Write a function that counts how many lines are in a text file.
@@ -163,6 +522,66 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Add content to files without overwriting!
+      
+      ## 🎓 LESSON: Append Mode
+      
+      ### Part 1: The Problem with Write Mode
+      
+      Remember `"w"` mode? It **erases** the file:
+      
+      ```python
+      with open("log.txt", "w") as file:
+          file.write("First entry\n")
+      
+      with open("log.txt", "w") as file:
+          file.write("Second entry\n")
+      
+      # log.txt only contains: Second entry
+      # First entry was erased!
+      ```
+      
+      ### Part 2: Append Mode `"a"`
+      
+      Append mode adds to the **end** without erasing:
+      
+      ```python
+      with open("log.txt", "a") as file:
+          file.write("First entry\n")
+      
+      with open("log.txt", "a") as file:
+          file.write("Second entry\n")
+      
+      # log.txt contains both:
+      # First entry
+      # Second entry
+      ```
+      
+      ### Part 3: File Mode Comparison
+      
+      | Mode | Creates if missing? | Erases existing? | Adds to end? |
+      |------|---------------------|------------------|--------------|
+      | `"r"` | ❌ No (error) | N/A | N/A |
+      | `"w"` | ✅ Yes | ✅ Yes | ❌ No |
+      | `"a"` | ✅ Yes | ❌ No | ✅ Yes |
+      
+      ### Part 4: Real Use Case - Logging
+      
+      Logs should add entries, not erase old ones:
+      
+      ```python
+      import datetime
+      
+      def log_event(message):
+          with open("activity.log", "a") as file:
+              timestamp = datetime.datetime.now()
+              file.write(f"[{timestamp}] {message}\n")
+      
+      log_event("User logged in")
+      log_event("User viewed page")
+      log_event("User logged out")
+      ```
+      
+      Each call **adds** a line without erasing previous logs!
     
     instructions: |
       Write a function that appends text to the end of a file.
@@ -197,6 +616,57 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Check if files exist before working with them!
+      
+      ## 🎓 LESSON: Checking File Existence
+      
+      ### Part 1: Why Check First?
+      
+      Opening a file that doesn't exist causes an error:
+      
+      ```python
+      file = open("missing.txt", "r")  # FileNotFoundError!
+      ```
+      
+      Better to check first!
+      
+      ### Part 2: Using os.path.exists()
+      
+      The `os` module has path tools:
+      
+      ```python
+      import os
+      
+      if os.path.exists("data.txt"):
+          print("File exists!")
+      else:
+          print("File not found")
+      ```
+      
+      ### Part 3: Complete Example
+      
+      ```python
+      import os
+      
+      def read_if_exists(filename):
+          if os.path.exists(filename):
+              with open(filename, "r") as file:
+                  return file.read()
+          else:
+              return f"Error: {filename} not found"
+      
+      content = read_if_exists("story.txt")
+      ```
+      
+      ### Part 4: Other Useful os.path Functions
+      
+      ```python
+      import os
+      
+      os.path.exists("file.txt")    # File or folder exists?
+      os.path.isfile("file.txt")    # Is it a file?
+      os.path.isdir("folder")       # Is it a folder?
+      os.path.getsize("file.txt")   # File size in bytes
+      ```
     
     instructions: |
       Write a function that checks if a file exists.
@@ -237,6 +707,96 @@ challenges:
     time_estimate: "60-75 minutes"
     description: |
       Build a log file analyzer!
+      
+      ## 🎓 LESSON: Real-World File Processing
+      
+      ### Part 1: What is a Log File?
+      
+      Log files record events in applications:
+      
+      ```
+      2024-01-15 09:15:23 INFO: Server started
+      2024-01-15 09:16:45 ERROR: Connection failed
+      2024-01-15 09:17:12 WARNING: High memory usage
+      2024-01-15 09:18:30 INFO: Request processed
+      2024-01-15 09:19:01 ERROR: Database timeout
+      ```
+      
+      Each line has a **log level**: INFO, WARNING, ERROR
+      
+      ### Part 2: The Goal
+      
+      Count how many times each level appears:
+      ```python
+      {
+          "INFO": 2,
+          "WARNING": 1,
+          "ERROR": 2
+      }
+      ```
+      
+      ### Part 3: Strategy
+      
+      1. Check if file exists
+      2. Read file line by line
+      3. Look for log levels in each line
+      4. Count occurrences
+      5. Return dictionary of counts
+      
+      ### Part 4: Finding Patterns in Strings
+      
+      Check if a word is in a line:
+      
+      ```python
+      line = "2024-01-15 ERROR: Connection failed"
+      
+      if "ERROR" in line:
+          print("Found an error!")  # This prints
+      
+      if "INFO" in line:
+          print("Found info")  # This doesn't print
+      ```
+      
+      ### Part 5: Building the Counter
+      
+      ```python
+      # Start with zero counts
+      counts = {
+          "INFO": 0,
+          "WARNING": 0,
+          "ERROR": 0
+      }
+      
+      # For each line, check and increment
+      if "ERROR" in line:
+          counts["ERROR"] += 1
+      ```
+      
+      ### Part 6: Putting It Together
+      
+      ```python
+      import os
+      
+      def analyze_logs(filename):
+          # Step 1: Check if file exists
+          if not os.path.exists(filename):
+              return {"ERROR": 0, "WARNING": 0, "INFO": 0}
+          
+          # Step 2: Initialize counters
+          counts = {"ERROR": 0, "WARNING": 0, "INFO": 0}
+          
+          # Step 3: Read and count
+          with open(filename, "r") as file:
+              for line in file:
+                  if "ERROR" in line:
+                      counts["ERROR"] += 1
+                  if "WARNING" in line:
+                      counts["WARNING"] += 1
+                  if "INFO" in line:
+                      counts["INFO"] += 1
+          
+          return counts
+      ```
     
     instructions: |
       Write a function that analyzes a log file.
