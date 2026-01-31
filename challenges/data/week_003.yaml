@@ -14,21 +14,149 @@ challenges:
     title: "Function Basics"
     topic: "Parameters and Return Values"
     difficulty: beginner
-    time_estimate: "30-40 minutes"
+    time_estimate: "50-60 minutes"
     description: |
-      Functions are reusable blocks of code. Learn to create functions that
-      accept parameters and return values!
+      Deep dive into functions!
+      
+      ## 🎓 LESSON: Functions with Parameters
+      
+      ### Part 1: Review - What Are Functions?
+      
+      Functions are named blocks of code that you can reuse:
+      
+      ```python
+      def say_hello():
+          print("Hello!")
+      
+      say_hello()  # Call it
+      ```
+      
+      ### Part 2: Parameters (Inputs)
+      
+      Parameters let you pass data INTO a function:
+      
+      ```python
+      def greet(name):  # 'name' is a parameter
+          print(f"Hello, {name}!")
+      
+      greet("Josie")  # "Josie" is the argument
+      greet("Alice")  # "Alice" is the argument
+      ```
+      
+      **Terminology:**
+      - **Parameter** - The variable in the function definition (`name`)
+      - **Argument** - The actual value you pass in (`"Josie"`)
+      
+      ### Part 3: Multiple Parameters
+      
+      Functions can take multiple parameters:
+      
+      ```python
+      def add(a, b):  # Two parameters
+          return a + b
+      
+      result = add(5, 3)  # Two arguments: 5 and 3
+      # result is 8
+      ```
+      
+      **Order matters!**
+      ```python
+      def introduce(name, age):
+          print(f"{name} is {age} years old")
+      
+      introduce("Josie", 25)  # Correct
+      introduce(25, "Josie")  # Wrong order!
+      ```
+      
+      ### Part 4: Return Values (Outputs)
+      
+      `return` gives back a value to whoever called the function:
+      
+      ```python
+      def double(x):
+          return x * 2
+      
+      result = double(5)  # result is 10
+      print(result)       # Prints: 10
+      ```
+      
+      **Without return:**
+      ```python
+      def double(x):
+          x * 2  # Calculates but doesn't return!
+      
+      result = double(5)  # result is None
+      ```
+      
+      ### Part 5: Return vs Print
+      
+      **These are different!**
+      
+      ```python
+      def add_print(a, b):
+          print(a + b)  # Shows on screen
+      
+      def add_return(a, b):
+          return a + b  # Gives back a value
+      
+      x = add_print(5, 3)   # Prints 8, x is None
+      y = add_return(5, 3)  # y is 8
+      ```
+      
+      **When to use each:**
+      - `print()` - Show information to the user
+      - `return` - Give a value back to use in code
+      
+      ### Part 6: Using Returned Values
+      
+      You can use returned values in more calculations:
+      
+      ```python
+      def square(x):
+          return x * x
+      
+      a = square(3)      # 9
+      b = square(4)      # 16
+      total = a + b      # 25
+      
+      # Or all at once:
+      total = square(3) + square(4)  # 25
+      ```
     
     instructions: |
       Create a function `calculate_area(length, width)` that calculates
-      the area of a rectangle.
+      the area of a rectangle and returns it.
       
-      Example:
-      calculate_area(5, 3) returns 15
+      **Formula:** Area = length × width
+      
+      **Step-by-step:**
+      1. Multiply length by width
+      2. Return the result
+      
+      **Solution:**
+      ```python
+      def calculate_area(length, width):
+          area = length * width
+          return area
+      ```
+      
+      **Or shorter:**
+      ```python
+      def calculate_area(length, width):
+          return length * width
+      ```
+      
+      **Test it:**
+      ```python
+      calculate_area(5, 3)   # 15
+      calculate_area(10, 2)  # 20
+      calculate_area(4, 4)   # 16
+      ```
     
     starter_code: |
       def calculate_area(length, width):
-          # Calculate and return the area
+          # Multiply length by width
+          # Return the result
           pass
     
     hints:
