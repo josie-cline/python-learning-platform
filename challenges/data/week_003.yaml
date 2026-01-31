@@ -1,0 +1,219 @@
+# Week 3: Functions and Data Structures
+
+title: "Week 3: Functions and Lists"
+description: "Master functions and dive deep into Python's most versatile data structure: lists!"
+topics:
+  - Function parameters and return values
+  - Default arguments
+  - List operations and methods
+  - List slicing
+  - List comprehensions (intro)
+
+challenges:
+  - day: 1
+    title: "Function Basics"
+    topic: "Parameters and Return Values"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Functions are reusable blocks of code. Learn to create functions that
+      accept parameters and return values!
+    
+    instructions: |
+      Create a function `calculate_area(length, width)` that calculates
+      the area of a rectangle.
+      
+      Example:
+      calculate_area(5, 3) returns 15
+    
+    starter_code: |
+      def calculate_area(length, width):
+          # Calculate and return the area
+          pass
+    
+    hints:
+      - "Area = length * width"
+      - "Use the return keyword"
+      - "return length * width"
+    
+    tests:
+      - function: calculate_area
+        input: [5, 3]
+        expected: 15
+      
+      - function: calculate_area
+        input: [10, 2]
+        expected: 20
+
+  - day: 2
+    title: "Default Arguments"
+    topic: "Optional Parameters"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Learn how to set default values for function parameters!
+    
+    instructions: |
+      Create a function `greet(name, greeting="Hello")` that greets someone.
+      If no greeting is provided, use "Hello" as default.
+      
+      Return: "{greeting}, {name}!"
+    
+    starter_code: |
+      def greet(name, greeting="Hello"):
+          # Return the greeting message
+          pass
+    
+    hints:
+      - "Use f-strings or concatenation"
+      - "f'{greeting}, {name}!'"
+      - "Default arguments come after required ones"
+    
+    tests:
+      - function: greet
+        input: ["Alice"]
+        expected: "Hello, Alice!"
+      
+      - function: greet
+        input: ["Bob", "Hi"]
+        expected: "Hi, Bob!"
+
+  - day: 3
+    title: "List Operations"
+    topic: "Adding and Removing Items"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Lists are Python's most versatile data structure. Learn to manipulate them!
+    
+    instructions: |
+      Create a function `add_to_list(my_list, item)` that adds an item to
+      the end of a list and returns the modified list.
+    
+    starter_code: |
+      def add_to_list(my_list, item):
+          # Add item to list and return it
+          pass
+    
+    hints:
+      - "Use the append() method"
+      - "my_list.append(item)"
+      - "Don't forget to return the list"
+    
+    tests:
+      - function: add_to_list
+        input: [[1, 2, 3], 4]
+        expected: [1, 2, 3, 4]
+
+  - day: 4
+    title: "List Slicing"
+    topic: "Accessing Parts of Lists"
+    difficulty: intermediate
+    time_estimate: "40-50 minutes"
+    description: |
+      Slicing lets you get subsets of lists. It's powerful and elegant!
+    
+    instructions: |
+      Create a function `get_first_three(my_list)` that returns the first
+      three elements of a list.
+    
+    starter_code: |
+      def get_first_three(my_list):
+          # Return first three elements
+          pass
+    
+    hints:
+      - "Use list slicing: my_list[start:end]"
+      - "my_list[0:3] or my_list[:3]"
+      - "Start at 0, end before 3"
+    
+    tests:
+      - function: get_first_three
+        input: [[1, 2, 3, 4, 5]]
+        expected: [1, 2, 3]
+
+  - day: 5
+    title: "List Reverse"
+    topic: "Reversing and Sorting"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Learn to reverse and sort lists!
+    
+    instructions: |
+      Create a function `reverse_list(my_list)` that returns a reversed
+      copy of the list.
+    
+    starter_code: |
+      def reverse_list(my_list):
+          # Return reversed list
+          pass
+    
+    hints:
+      - "Use list slicing: my_list[::-1]"
+      - "Or use the reversed() function"
+      - "return list(reversed(my_list))"
+    
+    tests:
+      - function: reverse_list
+        input: [[1, 2, 3, 4]]
+        expected: [4, 3, 2, 1]
+
+  - day: 6
+    title: "Remove Duplicates"
+    topic: "List Processing"
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Remove duplicate values from a list!
+    
+    instructions: |
+      Create a function `remove_duplicates(my_list)` that returns a new list
+      with duplicates removed (keep original order).
+    
+    starter_code: |
+      def remove_duplicates(my_list):
+          # Remove duplicates and return new list
+          pass
+    
+    hints:
+      - "Keep track of seen items"
+      - "Loop through and only add if not seen before"
+      - "Or convert to set and back: list(set(my_list))"
+    
+    tests:
+      - function: remove_duplicates
+        input: [[1, 2, 2, 3, 1, 4]]
+        expected: [1, 2, 3, 4]
+
+  - day: 7
+    title: "Week 3 Challenge: List Statistics"
+    topic: "Combining Everything"
+    difficulty: intermediate
+    time_estimate: "60 minutes"
+    description: |
+      Create a function that calculates statistics for a list of numbers!
+    
+    instructions: |
+      Create a function `calculate_stats(numbers)` that returns a dictionary with:
+      - "min": minimum value
+      - "max": maximum value
+      - "average": average value (rounded to 2 decimals)
+      
+      Example:
+      calculate_stats([1, 2, 3, 4, 5]) returns {"min": 1, "max": 5, "average": 3.0}
+    
+    starter_code: |
+      def calculate_stats(numbers):
+          # Calculate and return statistics
+          pass
+    
+    hints:
+      - "Use min(), max(), and sum() functions"
+      - "Average = sum / length"
+      - "round(value, 2) rounds to 2 decimals"
+    
+    tests:
+      - function: calculate_stats
+        input: [[1, 2, 3, 4, 5]]
+        expected: {"min": 1, "max": 5, "average": 3.0}

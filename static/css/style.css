@@ -1,0 +1,898 @@
+/* PyQuest - Modern Learning Platform Styles */
+
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --code-bg: #1e293b;
+    --code-text: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.main-content {
+    min-height: calc(100vh - 200px);
+    padding: 3rem 0;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-sub {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Challenge Cards */
+.today-challenge {
+    margin-bottom: 3rem;
+}
+
+.today-challenge h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    transition: all 0.3s;
+}
+
+.challenge-card.featured {
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.challenge-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px var(--shadow);
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.challenge-header h3 {
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+.challenge-topic {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.challenge-description {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.challenge-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.meta-item {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.difficulty-badge {
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.difficulty-badge.beginner {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.difficulty-badge.intermediate {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.difficulty-badge.advanced {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: var(--text-secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--text);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Action Grid */
+.quick-actions {
+    margin-bottom: 3rem;
+}
+
+.quick-actions h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.action-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px var(--shadow);
+}
+
+.action-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.action-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.action-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Motivation Section */
+.motivation {
+    margin-bottom: 3rem;
+}
+
+.motivation-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.motivation-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.motivation-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.3);
+    height: 1.5rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    background: white;
+    height: 100%;
+    border-radius: 0.75rem;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+/* Challenge Page Layout */
+.challenge-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.challenge-instructions {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    height: fit-content;
+}
+
+.back-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.challenge-header-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.challenge-meta-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.description-content,
+.instructions-content {
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.hints-section {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.hint-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--warning);
+}
+
+/* Code Editor */
+.challenge-workspace {
+    position: sticky;
+    top: 5rem;
+}
+
+.editor-header {
+    background: var(--code-bg);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem 1rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-header h3 {
+    font-size: 1.1rem;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.code-editor {
+    background: var(--code-bg);
+    border-radius: 0 0 1rem 1rem;
+    overflow: hidden;
+}
+
+#codeEditor {
+    width: 100%;
+    min-height: 500px;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1.5rem;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border: none;
+    resize: vertical;
+    outline: none;
+}
+
+.timer-display {
+    background: var(--surface);
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+.test-results {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+.test-results h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.test-summary {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.test-summary.success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.test-summary.failure {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.test-result {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid;
+}
+
+.test-result.success {
+    background: #f0fdf4;
+    border-color: var(--success);
+}
+
+.test-result.failure {
+    background: #fef2f2;
+    border-color: var(--error);
+}
+
+.success-message {
+    background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.success-message h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+/* Progress Page */
+.weekly-summary {
+    margin-bottom: 3rem;
+}
+
+.summary-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.summary-stat {
+    text-align: center;
+}
+
+.summary-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.completions-list {
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    overflow: hidden;
+}
+
+.completion-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.completion-item:last-child {
+    border-bottom: none;
+}
+
+.completion-icon {
+    font-size: 1.5rem;
+}
+
+.completion-details {
+    flex: 1;
+}
+
+.completion-id {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.completion-date {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.completion-time {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.progress-bar-large {
+    background: var(--border);
+    height: 3rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill-large {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    height: 100%;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s ease;
+}
+
+.progress-label {
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.chart-description {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* Curriculum Page */
+.curriculum-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.phase-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    border-top: 4px solid var(--primary);
+}
+
+.phase-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.week-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.week-header h3 {
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+.challenge-count {
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.week-description {
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.week-topics ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.week-topics li {
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+/* Resources Page */
+.resource-section {
+    margin-bottom: 3rem;
+}
+
+.resource-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resource-card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    border-left: 4px solid var(--primary);
+}
+
+.resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+.resource-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.resource-card p {
+    color: var(--text-secondary);
+}
+
+.tool-list,
+.book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tool-item,
+.book-item {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+.tool-item h3,
+.book-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+.tool-item p,
+.book-item p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.interview-prep {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+.interview-prep ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.interview-prep li {
+    margin-bottom: 0.5rem;
+}
+
+/* Error Page */
+.error-page {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.error-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.error-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Footer */
+.footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 4rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .challenge-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .challenge-workspace {
+        position: static;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .summary-card {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem;
+    font-style: italic;
+}

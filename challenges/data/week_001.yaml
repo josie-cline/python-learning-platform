@@ -1,0 +1,344 @@
+# Week 1: Python Basics - Variables and Data Types
+
+title: "Week 1: Hello Python!"
+description: "Welcome to Python! This week you'll learn the building blocks of programming: variables, numbers, strings, and basic operations."
+topics:
+  - Variables and assignment
+  - Numbers (integers and floats)
+  - Strings and text
+  - Basic operations
+  - Print statements
+  - Input from users
+
+challenges:
+  - day: 1
+    title: "Hello, World!"
+    topic: "Your First Python Program"
+    difficulty: beginner
+    time_estimate: "20-30 minutes"
+    description: |
+      Welcome to your Python journey! Every programmer's first program is "Hello, World!"
+      Today, you'll learn how to display text on the screen using Python's `print()` function.
+      
+      **What you'll learn:**
+      - How to use the print() function
+      - What strings are (text in quotes)
+      - How to write and run Python code
+      
+      **Concepts:**
+      - `print()` - displays text on the screen
+      - Strings - text enclosed in quotes: "like this" or 'like this'
+    
+    instructions: |
+      Create a function called `hello_world()` that prints "Hello, World!" to the screen.
+      
+      Example:
+      ```python
+      def hello_world():
+          print("Hello, World!")
+      ```
+    
+    starter_code: |
+      def hello_world():
+          # Write your code here
+          pass
+    
+    hints:
+      - "The print() function displays text to the screen"
+      - "Text (strings) must be enclosed in quotes"
+      - "Make sure your text matches exactly: 'Hello, World!'"
+    
+    tests:
+      - function: hello_world
+        description: "Prints 'Hello, World!'"
+        input: null
+        expected: null  # We'll check output instead
+    
+    learning_resources:
+      - "Python print() function: https://docs.python.org/3/library/functions.html#print"
+      - "What are strings?: https://docs.python.org/3/tutorial/introduction.html#strings"
+
+  - day: 2
+    title: "Variables and Numbers"
+    topic: "Storing and Using Data"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Variables are like labeled boxes where you store information.
+      Today you'll learn how to create variables and do math with numbers!
+      
+      **What you'll learn:**
+      - Creating variables
+      - Using numbers (integers and floats)
+      - Basic math operations (+, -, *, /)
+      
+      **Concepts:**
+      - Variables store data: `name = "Josie"`
+      - Integers are whole numbers: `age = 25`
+      - Floats are decimal numbers: `price = 19.99`
+    
+    instructions: |
+      Create a function called `calculate_sum(a, b)` that takes two numbers
+      and returns their sum.
+      
+      Example:
+      ```python
+      calculate_sum(5, 3)  # Returns 8
+      calculate_sum(10, 20)  # Returns 30
+      ```
+    
+    starter_code: |
+      def calculate_sum(a, b):
+          # Add the two numbers and return the result
+          pass
+    
+    hints:
+      - "Use the + operator to add numbers"
+      - "Use the return keyword to send back the result"
+      - "return a + b"
+    
+    tests:
+      - function: calculate_sum
+        description: "Adding 5 + 3"
+        input: [5, 3]
+        expected: 8
+      
+      - function: calculate_sum
+        description: "Adding 10 + 20"
+        input: [10, 20]
+        expected: 30
+      
+      - function: calculate_sum
+        description: "Adding negative numbers: -5 + 3"
+        input: [-5, 3]
+        expected: -2
+
+  - day: 3
+    title: "String Basics"
+    topic: "Working with Text"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Strings are how we work with text in Python. You'll learn to combine strings,
+      find their length, and create personalized messages.
+      
+      **What you'll learn:**
+      - String concatenation (combining strings)
+      - The len() function
+      - String formatting
+    
+    instructions: |
+      Create a function called `greet_user(name)` that takes a name and returns
+      a greeting message: "Hello, [name]! Welcome to Python!"
+      
+      Example:
+      ```python
+      greet_user("Josie")  # Returns "Hello, Josie! Welcome to Python!"
+      ```
+    
+    starter_code: |
+      def greet_user(name):
+          # Create and return a greeting message
+          pass
+    
+    hints:
+      - "You can combine strings with the + operator"
+      - "Don't forget spaces: 'Hello, ' + name"
+      - "Or use f-strings: f'Hello, {name}! Welcome to Python!'"
+    
+    tests:
+      - function: greet_user
+        description: "Greet Josie"
+        input: "Josie"
+        expected: "Hello, Josie! Welcome to Python!"
+      
+      - function: greet_user
+        description: "Greet Alice"
+        input: "Alice"
+        expected: "Hello, Alice! Welcome to Python!"
+
+  - day: 4
+    title: "Simple Calculator"
+    topic: "Multiple Operations"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Let's build a simple calculator! You'll create functions for addition,
+      subtraction, multiplication, and division.
+    
+    instructions: |
+      Create four functions:
+      - `add(a, b)` - returns a + b
+      - `subtract(a, b)` - returns a - b
+      - `multiply(a, b)` - returns a * b
+      - `divide(a, b)` - returns a / b
+    
+    starter_code: |
+      def add(a, b):
+          pass
+      
+      def subtract(a, b):
+          pass
+      
+      def multiply(a, b):
+          pass
+      
+      def divide(a, b):
+          pass
+    
+    hints:
+      - "Addition uses +, subtraction uses -"
+      - "Multiplication uses *, division uses /"
+      - "Don't forget to return the result!"
+    
+    tests:
+      - function: add
+        description: "Add 10 + 5"
+        input: [10, 5]
+        expected: 15
+      
+      - function: subtract
+        description: "Subtract 10 - 5"
+        input: [10, 5]
+        expected: 5
+      
+      - function: multiply
+        description: "Multiply 4 * 5"
+        input: [4, 5]
+        expected: 20
+      
+      - function: divide
+        description: "Divide 10 / 2"
+        input: [10, 2]
+        expected: 5.0
+
+  - day: 5
+    title: "Temperature Converter"
+    topic: "Real-World Application"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Apply what you've learned by converting temperatures between
+      Celsius and Fahrenheit!
+      
+      **Formula:**
+      - Fahrenheit to Celsius: (F - 32) × 5/9
+      - Celsius to Fahrenheit: (C × 9/5) + 32
+    
+    instructions: |
+      Create a function `celsius_to_fahrenheit(celsius)` that converts
+      Celsius to Fahrenheit.
+      
+      Example:
+      ```python
+      celsius_to_fahrenheit(0)  # Returns 32.0
+      celsius_to_fahrenheit(100)  # Returns 212.0
+      ```
+    
+    starter_code: |
+      def celsius_to_fahrenheit(celsius):
+          # Convert celsius to fahrenheit
+          # Formula: (celsius * 9/5) + 32
+          pass
+    
+    hints:
+      - "Use the formula: (celsius * 9/5) + 32"
+      - "Remember operator precedence: multiply before add"
+      - "Test with 0°C = 32°F and 100°C = 212°F"
+    
+    tests:
+      - function: celsius_to_fahrenheit
+        description: "Convert 0°C to Fahrenheit"
+        input: 0
+        expected: 32.0
+      
+      - function: celsius_to_fahrenheit
+        description: "Convert 100°C to Fahrenheit"
+        input: 100
+        expected: 212.0
+      
+      - function: celsius_to_fahrenheit
+        description: "Convert 25°C to Fahrenheit"
+        input: 25
+        expected: 77.0
+
+  - day: 6
+    title: "String Length and Repeat"
+    topic: "More String Operations"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Learn more about working with strings - finding their length
+      and repeating them!
+    
+    instructions: |
+      Create a function `repeat_string(text, times)` that repeats a string
+      a specified number of times.
+      
+      Example:
+      ```python
+      repeat_string("Ha", 3)  # Returns "HaHaHa"
+      repeat_string("Python", 2)  # Returns "PythonPython"
+      ```
+    
+    starter_code: |
+      def repeat_string(text, times):
+          # Repeat the string 'times' number of times
+          pass
+    
+    hints:
+      - "You can multiply a string by a number: 'Hi' * 3 = 'HiHiHi'"
+      - "Or use a loop (we'll learn more about loops next week!)"
+    
+    tests:
+      - function: repeat_string
+        description: "Repeat 'Ha' 3 times"
+        input: ["Ha", 3]
+        expected: "HaHaHa"
+      
+      - function: repeat_string
+        description: "Repeat 'Python' 2 times"
+        input: ["Python", 2]
+        expected: "PythonPython"
+
+  - day: 7
+    title: "Week 1 Challenge"
+    topic: "Review and Practice"
+    difficulty: beginner
+    time_estimate: "45-60 minutes"
+    description: |
+      Time to put it all together! This challenge combines everything
+      you've learned this week.
+    
+    instructions: |
+      Create a function `personal_info(name, age, city)` that returns a
+      formatted string with this information.
+      
+      Format: "[name] is [age] years old and lives in [city]."
+      
+      Example:
+      ```python
+      personal_info("Josie", 25, "San Francisco")
+      # Returns "Josie is 25 years old and lives in San Francisco."
+      ```
+    
+    starter_code: |
+      def personal_info(name, age, city):
+          # Create and return the formatted string
+          pass
+    
+    hints:
+      - "Use string concatenation or f-strings"
+      - "f'{name} is {age} years old and lives in {city}.'"
+      - "Don't forget the period at the end!"
+    
+    tests:
+      - function: personal_info
+        description: "Format personal info"
+        input: ["Josie", 25, "San Francisco"]
+        expected: "Josie is 25 years old and lives in San Francisco."
+      
+      - function: personal_info
+        description: "Format different info"
+        input: ["Alice", 30, "New York"]
+        expected: "Alice is 30 years old and lives in New York."

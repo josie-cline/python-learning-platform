@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Progress - PyQuest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🐍</span>
+                <span class="brand-text">PyQuest</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/challenge" class="nav-link">Today's Challenge</a>
+                <a href="/curriculum" class="nav-link">Curriculum</a>
+                <a href="/progress" class="nav-link active">Progress</a>
+                <a href="/resources" class="nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>📊 Your Progress</h1>
+            <p class="page-subtitle">Track your Python learning journey</p>
+
+            <!-- Overall Stats -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value">{{ stats.total_challenges_completed }}</div>
+                    <div class="stat-label">Total Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-value">{{ stats.current_streak }}</div>
+                    <div class="stat-label">Current Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-value">{{ stats.longest_streak }}</div>
+                    <div class="stat-label">Longest Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-value">{{ stats.total_time_hours }}h</div>
+                    <div class="stat-label">Time Invested</div>
+                </div>
+            </section>
+
+            <!-- Weekly Summary -->
+            <section class="weekly-summary">
+                <h2>📅 This Week</h2>
+                <div class="summary-card">
+                    <div class="summary-stat">
+                        <span class="summary-label">Challenges Completed</span>
+                        <span class="summary-value">{{ weekly_summary.challenges_completed }}/7</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-label">Time Spent</span>
+                        <span class="summary-value">{{ weekly_summary.time_spent }} min</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-label">Active Days</span>
+                        <span class="summary-value">{{ weekly_summary.days_active }}/7</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Completions -->
+            <section class="recent-completions">
+                <h2>🎉 Recent Completions</h2>
+                {% if recent_completions %}
+                <div class="completions-list">
+                    {% for completion in recent_completions %}
+                    <div class="completion-item">
+                        <div class="completion-icon">✅</div>
+                        <div class="completion-details">
+                            <div class="completion-id">{{ completion.challenge_id }}</div>
+                            <div class="completion-date">{{ completion.date }}</div>
+                        </div>
+                        <div class="completion-time">{{ completion.time_spent }} min</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="empty-state">No completions yet. Start your first challenge today!</p>
+                {% endif %}
+            </section>
+
+            <!-- Progress Chart -->
+            <section class="progress-chart">
+                <h2>📈 Completion Rate</h2>
+                <div class="chart-container">
+                    <div class="progress-bar-large">
+                        <div class="progress-fill-large" style="width: {{ stats.completion_rate }}%">
+                            <span class="progress-label">{{ stats.completion_rate }}%</span>
+                        </div>
+                    </div>
+                    <p class="chart-description">
+                        You've completed {{ stats.total_challenges_completed }} out of {{ stats.expected_challenges }} expected challenges
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 PyQuest - Your Path to Python Mastery 🐍</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

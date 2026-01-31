@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-Month Curriculum - PyQuest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🐍</span>
+                <span class="brand-text">PyQuest</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/challenge" class="nav-link">Today's Challenge</a>
+                <a href="/curriculum" class="nav-link active">Curriculum</a>
+                <a href="/progress" class="nav-link">Progress</a>
+                <a href="/resources" class="nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>🗺️ 6-Month Python Curriculum</h1>
+            <p class="page-subtitle">Your complete roadmap to Scale AI Frontend Engineer level</p>
+
+            <div class="curriculum-overview">
+                <div class="phase-card">
+                    <h3>📚 Phase 1: Foundations (Months 1-2)</h3>
+                    <p>Master Python basics: variables, data types, control flow, functions, and core data structures</p>
+                </div>
+                <div class="phase-card">
+                    <h3>🔧 Phase 2: Intermediate (Months 3-4)</h3>
+                    <p>Level up with OOP, file handling, APIs, error handling, and advanced Python features</p>
+                </div>
+                <div class="phase-card">
+                    <h3>🚀 Phase 3: Advanced & Interview Prep (Months 5-6)</h3>
+                    <p>Master algorithms, data structures, and tackle real Scale AI coding interview problems</p>
+                </div>
+            </div>
+
+            <div class="curriculum-roadmap">
+                {% for week in roadmap %}
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week {{ week.week }}: {{ week.title }}</h3>
+                        <span class="challenge-count">{{ week.challenge_count }} challenges</span>
+                    </div>
+                    <p class="week-description">{{ week.description }}</p>
+                    {% if week.topics %}
+                    <div class="week-topics">
+                        <strong>Topics:</strong>
+                        <ul>
+                            {% for topic in week.topics %}
+                            <li>{{ topic }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 PyQuest - Your Path to Python Mastery 🐍</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

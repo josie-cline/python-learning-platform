@@ -1,0 +1,222 @@
+# Week 4: Dictionaries and Sets
+
+title: "Week 4: Dictionaries and Sets"
+description: "Learn Python's powerful key-value storage and unique collections!"
+topics:
+  - Dictionary basics
+  - Dictionary methods
+  - Nested dictionaries
+  - Sets and set operations
+  - When to use each data structure
+
+challenges:
+  - day: 1
+    title: "Dictionary Basics"
+    topic: "Creating and Accessing Dictionaries"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Dictionaries store key-value pairs, like a real dictionary stores word-definition pairs!
+      
+      **Concepts:**
+      - Creating dictionaries: {"key": "value"}
+      - Accessing values: my_dict["key"]
+      - Adding new keys: my_dict["new_key"] = "new_value"
+    
+    instructions: |
+      Create a function `create_user(name, age, email)` that returns a dictionary
+      with these keys and their corresponding values.
+      
+      Example:
+      create_user("Josie", 25, "josie@example.com")
+      returns {"name": "Josie", "age": 25, "email": "josie@example.com"}
+    
+    starter_code: |
+      def create_user(name, age, email):
+          # Create and return a dictionary
+          pass
+    
+    hints:
+      - "Use curly braces: {}"
+      - "Format: {'key': value}"
+      - "return {'name': name, 'age': age, 'email': email}"
+    
+    tests:
+      - function: create_user
+        input: ["Josie", 25, "josie@example.com"]
+        expected: {"name": "Josie", "age": 25, "email": "josie@example.com"}
+
+  - day: 2
+    title: "Dictionary Methods"
+    topic: "get(), keys(), values()"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Learn useful dictionary methods for accessing and manipulating data!
+    
+    instructions: |
+      Create a function `get_value(dictionary, key, default="Not found")` that
+      safely gets a value from a dictionary, returning the default if key doesn't exist.
+    
+    starter_code: |
+      def get_value(dictionary, key, default="Not found"):
+          # Return value for key, or default if not found
+          pass
+    
+    hints:
+      - "Use the .get() method"
+      - "dictionary.get(key, default)"
+      - "This is safer than dictionary[key]"
+    
+    tests:
+      - function: get_value
+        input: [{"name": "Josie"}, "name", "Unknown"]
+        expected: "Josie"
+      
+      - function: get_value
+        input: [{"name": "Josie"}, "age", "Unknown"]
+        expected: "Unknown"
+
+  - day: 3
+    title: "Word Counter"
+    topic: "Real-World Dictionary Application"
+    difficulty: intermediate
+    time_estimate: "50-60 minutes"
+    description: |
+      Count how many times each word appears in a sentence!
+    
+    instructions: |
+      Create a function `count_words(sentence)` that returns a dictionary
+      where keys are words and values are their counts.
+      
+      Example:
+      count_words("hello world hello") returns {"hello": 2, "world": 1}
+    
+    starter_code: |
+      def count_words(sentence):
+          # Count words and return dictionary
+          pass
+    
+    hints:
+      - "Split sentence into words: sentence.split()"
+      - "Loop through words and count"
+      - "Use dictionary.get(word, 0) + 1"
+    
+    tests:
+      - function: count_words
+        input: "hello world hello"
+        expected: {"hello": 2, "world": 1}
+
+  - day: 4
+    title: "Merge Dictionaries"
+    topic: "Combining Dictionaries"
+    difficulty: intermediate
+    time_estimate: "40-50 minutes"
+    description: |
+      Learn to combine multiple dictionaries into one!
+    
+    instructions: |
+      Create a function `merge_dicts(dict1, dict2)` that merges two dictionaries.
+      If a key exists in both, use the value from dict2.
+    
+    starter_code: |
+      def merge_dicts(dict1, dict2):
+          # Merge and return combined dictionary
+          pass
+    
+    hints:
+      - "Start with a copy of dict1"
+      - "Update with dict2: result.update(dict2)"
+      - "Or use: {**dict1, **dict2}"
+    
+    tests:
+      - function: merge_dicts
+        input: [{"a": 1, "b": 2}, {"b": 3, "c": 4}]
+        expected: {"a": 1, "b": 3, "c": 4}
+
+  - day: 5
+    title: "Sets Basics"
+    topic: "Unique Collections"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Sets are collections that automatically remove duplicates!
+    
+    instructions: |
+      Create a function `get_unique(items)` that returns a list of unique
+      items from the input list (no duplicates).
+    
+    starter_code: |
+      def get_unique(items):
+          # Return list of unique items
+          pass
+    
+    hints:
+      - "Convert to set to remove duplicates"
+      - "Convert back to list"
+      - "return list(set(items))"
+    
+    tests:
+      - function: get_unique
+        input: [[1, 2, 2, 3, 1, 4]]
+        expected: [1, 2, 3, 4]
+
+  - day: 6
+    title: "Set Operations"
+    topic: "Union, Intersection, Difference"
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Use mathematical set operations to find common elements!
+    
+    instructions: |
+      Create a function `common_elements(list1, list2)` that returns
+      elements that appear in both lists.
+    
+    starter_code: |
+      def common_elements(list1, list2):
+          # Return common elements
+          pass
+    
+    hints:
+      - "Convert both to sets"
+      - "Use intersection: set1 & set2"
+      - "Convert back to list"
+    
+    tests:
+      - function: common_elements
+        input: [[1, 2, 3], [2, 3, 4]]
+        expected: [2, 3]
+
+  - day: 7
+    title: "Week 4 Challenge: Phonebook"
+    topic: "Dictionary Application"
+    difficulty: intermediate
+    time_estimate: "60 minutes"
+    description: |
+      Build a simple phonebook using dictionaries!
+    
+    instructions: |
+      Create a function `add_contact(phonebook, name, number)` that adds
+      a contact to the phonebook dictionary and returns the updated phonebook.
+      
+      Example:
+      add_contact({}, "Josie", "555-1234") returns {"Josie": "555-1234"}
+    
+    starter_code: |
+      def add_contact(phonebook, name, number):
+          # Add contact and return phonebook
+          pass
+    
+    hints:
+      - "Simply add to dictionary: phonebook[name] = number"
+      - "Don't forget to return the phonebook"
+    
+    tests:
+      - function: add_contact
+        input: [{}, "Josie", "555-1234"]
+        expected: {"Josie": "555-1234"}
+      
+      - function: add_contact
+        input: [{"Alice": "555-0000"}, "Bob", "555-1111"]
+        expected: {"Alice": "555-0000", "Bob": "555-1111"}

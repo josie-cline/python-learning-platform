@@ -1,0 +1,284 @@
+# Week 2: Control Flow - Making Decisions
+
+title: "Week 2: If, Else, and Loops"
+description: "Learn how to make your code make decisions and repeat actions! Control flow is what makes programs smart and dynamic."
+topics:
+  - If/else statements
+  - Comparison operators
+  - Boolean logic
+  - While loops
+  - For loops
+  - Range function
+
+challenges:
+  - day: 1
+    title: "Even or Odd?"
+    topic: "If/Else Statements"
+    difficulty: beginner
+    time_estimate: "30-40 minutes"
+    description: |
+      Learn to make decisions in your code! If statements let your program
+      choose different paths based on conditions.
+      
+      **What you'll learn:**
+      - If/else statements
+      - The modulo operator (%)
+      - Comparison operators
+    
+    instructions: |
+      Create a function `is_even(number)` that returns True if the number
+      is even, and False if it's odd.
+      
+      Hint: A number is even if dividing by 2 has no remainder.
+      Use the modulo operator: number % 2 == 0
+    
+    starter_code: |
+      def is_even(number):
+          # Return True if even, False if odd
+          pass
+    
+    hints:
+      - "Use the modulo operator: % gives the remainder"
+      - "number % 2 == 0 means the number is even"
+      - "Use an if statement to check the condition"
+    
+    tests:
+      - function: is_even
+        input: 4
+        expected: true
+      
+      - function: is_even
+        input: 7
+        expected: false
+      
+      - function: is_even
+        input: 0
+        expected: true
+
+  - day: 2
+    title: "Grade Calculator"
+    topic: "Multiple Conditions"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Use multiple if/elif/else statements to convert a numeric score
+      into a letter grade.
+    
+    instructions: |
+      Create a function `get_grade(score)` that returns a letter grade:
+      - 90-100: "A"
+      - 80-89: "B"
+      - 70-79: "C"
+      - 60-69: "D"
+      - Below 60: "F"
+    
+    starter_code: |
+      def get_grade(score):
+          # Return the letter grade
+          pass
+    
+    hints:
+      - "Use if, elif, and else"
+      - "Check from highest to lowest: if score >= 90"
+      - "Use elif (else if) for multiple conditions"
+    
+    tests:
+      - function: get_grade
+        input: 95
+        expected: "A"
+      
+      - function: get_grade
+        input: 85
+        expected: "B"
+      
+      - function: get_grade
+        input: 75
+        expected: "C"
+      
+      - function: get_grade
+        input: 55
+        expected: "F"
+
+  - day: 3
+    title: "Count to Ten"
+    topic: "While Loops"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Loops let you repeat code! Learn how while loops work by counting from 1 to 10.
+    
+    instructions: |
+      Create a function `count_to_n(n)` that returns a list of numbers from 1 to n.
+      
+      Example:
+      count_to_n(5) returns [1, 2, 3, 4, 5]
+    
+    starter_code: |
+      def count_to_n(n):
+          # Create a list of numbers from 1 to n
+          pass
+    
+    hints:
+      - "Start with an empty list: numbers = []"
+      - "Use a while loop: while i <= n"
+      - "Append to the list: numbers.append(i)"
+    
+    tests:
+      - function: count_to_n
+        input: 5
+        expected: [1, 2, 3, 4, 5]
+      
+      - function: count_to_n
+        input: 3
+        expected: [1, 2, 3]
+
+  - day: 4
+    title: "FizzBuzz (Part 1)"
+    topic: "Combining Conditions and Loops"
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      FizzBuzz is a classic programming challenge! It combines loops,
+      conditions, and the modulo operator.
+    
+    instructions: |
+      Create a function `fizzbuzz_single(n)` that:
+      - Returns "Fizz" if n is divisible by 3
+      - Returns "Buzz" if n is divisible by 5
+      - Returns "FizzBuzz" if divisible by both 3 and 5
+      - Returns the number as a string otherwise
+    
+    starter_code: |
+      def fizzbuzz_single(n):
+          # Check conditions and return appropriate value
+          pass
+    
+    hints:
+      - "Check divisibility by both 3 AND 5 first!"
+      - "Use the modulo operator: n % 3 == 0"
+      - "Convert number to string: str(n)"
+    
+    tests:
+      - function: fizzbuzz_single
+        input: 3
+        expected: "Fizz"
+      
+      - function: fizzbuzz_single
+        input: 5
+        expected: "Buzz"
+      
+      - function: fizzbuzz_single
+        input: 15
+        expected: "FizzBuzz"
+      
+      - function: fizzbuzz_single
+        input: 7
+        expected: "7"
+
+  - day: 5
+    title: "Sum of List"
+    topic: "For Loops"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      For loops are perfect for going through lists! Calculate the sum
+      of all numbers in a list.
+    
+    instructions: |
+      Create a function `sum_list(numbers)` that returns the sum of all
+      numbers in the list.
+      
+      Example:
+      sum_list([1, 2, 3, 4]) returns 10
+    
+    starter_code: |
+      def sum_list(numbers):
+          # Calculate and return the sum
+          pass
+    
+    hints:
+      - "Start with total = 0"
+      - "Loop through each number: for num in numbers:"
+      - "Add to total: total += num"
+    
+    tests:
+      - function: sum_list
+        input: [[1, 2, 3, 4]]
+        expected: 10
+      
+      - function: sum_list
+        input: [[10, 20, 30]]
+        expected: 60
+
+  - day: 6
+    title: "Find Maximum"
+    topic: "Loops and Comparisons"
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Find the largest number in a list by comparing each number!
+    
+    instructions: |
+      Create a function `find_max(numbers)` that returns the largest number
+      in the list.
+      
+      Example:
+      find_max([3, 7, 2, 9, 1]) returns 9
+    
+    starter_code: |
+      def find_max(numbers):
+          # Find and return the maximum number
+          pass
+    
+    hints:
+      - "Start with max_num = numbers[0]"
+      - "Loop through and compare: if num > max_num"
+      - "Update max_num if you find a larger number"
+    
+    tests:
+      - function: find_max
+        input: [[3, 7, 2, 9, 1]]
+        expected: 9
+      
+      - function: find_max
+        input: [[10, 5, 8]]
+        expected: 10
+
+  - day: 7
+    title: "Week 2 Challenge: Password Validator"
+    topic: "Review - Conditions and Loops"
+    difficulty: intermediate
+    time_estimate: "60-75 minutes"
+    description: |
+      Create a password validator that checks if a password meets requirements!
+    
+    instructions: |
+      Create a function `is_valid_password(password)` that returns True if:
+      - Password is at least 8 characters long
+      - Contains at least one number
+      - Contains at least one uppercase letter
+      
+      Otherwise return False.
+    
+    starter_code: |
+      def is_valid_password(password):
+          # Check all password requirements
+          pass
+    
+    hints:
+      - "Check length first: len(password) >= 8"
+      - "Loop through characters to find numbers: char.isdigit()"
+      - "Check for uppercase: char.isupper()"
+    
+    tests:
+      - function: is_valid_password
+        input: "Pass1234"
+        expected: true
+      
+      - function: is_valid_password
+        input: "short"
+        expected: false
+      
+      - function: is_valid_password
+        input: "toolongbutnonumber"
+        expected: false
