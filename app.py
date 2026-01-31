@@ -68,7 +68,7 @@ def index():
 
 @app.route('/challenge')
 def challenge():
-    """Today's challenge page"""
+    """Challenge page - shows next uncompleted or specific challenge"""
     day_offset = request.args.get('day', 0, type=int)
     week = request.args.get('week', type=int)
     day = request.args.get('day_num', type=int)
@@ -76,9 +76,17 @@ def challenge():
     # If specific week/day requested
     if week is not None and day is not None:
         challenge_data = challenge_loader.get_challenge(week, day)
-    else:
+    elif day_offset != 0:
         # Use day offset from today
         challenge_data = challenge_loader.get_challenge_by_day(day_offset)
+    else:
+        # No parameters - show next uncompleted challenge
+        completed_ids = progress_tracker.get_completed_ids()
+        challenge_data = challenge_loader.get_next_uncompleted_challenge(completed_ids)
+        
+        # Fallback to today's challenge if all completed
+        if not challenge_data:
+            challenge_data = challenge_loader.get_today_challenge()
     
     if not challenge_data:
         return render_template('error.html', 
