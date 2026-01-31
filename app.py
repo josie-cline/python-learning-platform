@@ -165,6 +165,16 @@ def progress_page():
     recent_completions = progress_tracker.get_recent_completions(10)
     weekly_summary = progress_tracker.get_weekly_summary()
     
+    # Enhance completions with challenge titles
+    for completion in recent_completions:
+        challenge = challenge_loader.get_challenge_by_id(completion['challenge_id'])
+        if challenge:
+            completion['title'] = challenge.get('title', 'Unknown Challenge')
+            completion['week'] = challenge.get('week', 0)
+            completion['day'] = challenge.get('day', 0)
+        else:
+            completion['title'] = completion['challenge_id']
+    
     return render_template('progress.html',
                          stats=stats,
                          recent_completions=recent_completions,

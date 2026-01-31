@@ -81,8 +81,11 @@
                     <div class="completion-item">
                         <div class="completion-icon">✅</div>
                         <div class="completion-details">
-                            <div class="completion-id">{{ completion.challenge_id }}</div>
-                            <div class="completion-date">{{ completion.date }}</div>
+                            <div class="completion-title">{{ completion.title }}</div>
+                            <div class="completion-meta">
+                                <span class="completion-week">Week {{ completion.week }}, Day {{ completion.day }}</span>
+                                <span class="completion-date">{{ completion.date }}</span>
+                            </div>
                         </div>
                         <div class="completion-time">{{ completion.time_spent }} min</div>
                     </div>
