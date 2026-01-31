@@ -81,7 +81,7 @@
                             {{ today_challenge.difficulty }}
                         </span>
                     </div>
-                    <p class="challenge-description">{{ today_challenge.description|truncate(200) }}</p>
+                    <p class="challenge-description">{{ today_challenge.preview if today_challenge.preview else today_challenge.description[:200] }}</p>
                     <div class="challenge-meta">
                         <span class="meta-item">⏱️ {{ today_challenge.time_estimate }}</span>
                         <span class="meta-item">📅 Day {{ today_challenge.day }}, Week {{ today_challenge.week }}</span>

@@ -60,6 +60,16 @@ def index():
     if not next_challenge:
         next_challenge = challenge_loader.get_today_challenge()
     
+    # Create clean preview (text before ## LESSON section)
+    if next_challenge and next_challenge.get('description'):
+        desc = next_challenge['description']
+        # Get text before first ## heading
+        if '##' in desc:
+            preview = desc.split('##')[0].strip()
+        else:
+            preview = desc
+        next_challenge['preview'] = preview[:200] + '...' if len(preview) > 200 else preview
+    
     return render_template('index.html', 
                          stats=stats, 
                          today_challenge=next_challenge,
