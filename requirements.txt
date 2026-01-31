@@ -32,3 +32,6 @@ pytest==7.4.3
 
 # Markdown rendering
 markdown==3.5.1
+
+# LLM for practice challenge generation
+openai==1.12.0

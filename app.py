@@ -20,6 +20,7 @@ from challenges.loader import ChallengeLoader
 from grader.test_runner import TestRunner
 from reminders.scheduler import ReminderScheduler
 from progress.tracker import ProgressTracker
+from practice.generator import ChallengeGenerator
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -42,6 +43,7 @@ challenge_loader = ChallengeLoader()
 test_runner = TestRunner()
 progress_tracker = ProgressTracker()
 reminder_scheduler = ReminderScheduler()
+challenge_generator = ChallengeGenerator()
 
 # Start reminder scheduler in background
 reminder_scheduler.start()
@@ -258,11 +260,27 @@ def practice():
 
 @app.route('/api/random-challenge')
 def random_challenge():
-    """Get a random challenge based on filters"""
+    """Generate a new AI-powered practice challenge"""
     topics = request.args.getlist('topics')
-    difficulty = request.args.get('difficulty')
+    difficulty = request.args.get('difficulty') or 'beginner'
     
-    # Get all available challenges
+    # Try to generate with AI first
+    if challenge_generator.is_enabled():
+        challenge = challenge_generator.generate_challenge(topics, difficulty)
+        
+        if challenge:
+            # Convert markdown to HTML for display
+            md.reset()
+            if challenge.get('description'):
+                challenge['description'] = md.convert(challenge['description'])
+                md.reset()
+            if challenge.get('instructions'):
+                challenge['instructions'] = md.convert(challenge['instructions'])
+                md.reset()
+            
+            return jsonify(challenge)
+    
+    # Fallback: Use curriculum challenges if AI not available
     all_challenges = []
     roadmap = challenge_loader.get_roadmap()
     
@@ -283,22 +301,18 @@ def random_challenge():
     if topics:
         filtered = []
         for ch in all_challenges:
-            # Check both 'keywords' field and 'topic' field
             keywords = ch.get('keywords', [])
             topic = ch.get('topic', '').lower()
             
-            # If challenge has any of the requested topics in keywords or topic
             if any(t.lower() in keywords or t.lower() in topic for t in topics):
                 filtered.append(ch)
         all_challenges = filtered
     
-    # Return random challenge
+    # Return random challenge from curriculum
     import random
     if all_challenges:
         challenge = random.choice(all_challenges)
         
-        # Convert markdown to HTML for display
-        # Reset markdown converter to clear state
         md.reset()
         if challenge.get('description'):
             challenge['description'] = md.convert(challenge['description'])
@@ -309,7 +323,10 @@ def random_challenge():
         
         return jsonify(challenge)
     else:
-        return jsonify({'error': 'No challenges match your filters'}), 404
+        return jsonify({
+            'error': 'AI generation not configured',
+            'message': 'Add OPENAI_API_KEY to .env to generate custom challenges'
+        }), 404
 
 
 @app.route('/tools')

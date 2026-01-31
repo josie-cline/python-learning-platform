@@ -31,7 +31,8 @@
     <main class="main-content">
         <div class="container-wide">
             <h1>🎮 Practice Sandbox</h1>
-            <p class="page-subtitle">Practice with random challenges based on topics you choose</p>
+            <p class="page-subtitle">AI-generated unique challenges based on topics you choose</p>
+            <div class="ai-badge">✨ Powered by AI - Every challenge is unique!</div>
 
             <div class="practice-layout">
                 <!-- Filters Sidebar -->
@@ -71,9 +72,18 @@
                         <ul>
                             <li>Select topics you're uncomfortable with</li>
                             <li>Start with beginner difficulty</li>
+                            <li>Each challenge is unique!</li>
                             <li>Try solving without hints first</li>
                             <li>Practice makes perfect!</li>
                         </ul>
+                    </div>
+                    
+                    <div class="practice-tips">
+                        <h3>🔑 Enable AI Generation</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">
+                            To unlock unlimited unique challenges, add your OpenAI API key to the .env file. 
+                            <a href="https://platform.openai.com/api-keys" target="_blank" style="color: var(--primary);">Get a key here</a>
+                        </p>
                     </div>
                 </div>
 
@@ -81,10 +91,13 @@
                 <div class="practice-content">
                     <div id="practiceChallenge" class="practice-empty">
                         <div class="empty-state-large">
-                            <div class="empty-icon">🎯</div>
-                            <h2>Ready to Practice?</h2>
-                            <p>Select your difficulty and topics on the left, then click "Get Random Challenge"</p>
-                            <p class="empty-hint">Or click the button now to get any random challenge!</p>
+                            <div class="empty-icon">✨</div>
+                            <h2>Ready for AI-Generated Practice?</h2>
+                            <p>Select your difficulty and topics, then click "Get Random Challenge"</p>
+                            <p class="empty-hint">AI will create a unique problem just for you!</p>
+                            <p class="empty-hint" style="margin-top: 1rem; font-size: 0.85rem;">
+                                💡 Tip: Add OPENAI_API_KEY to your .env file for AI generation
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -104,6 +117,9 @@
             const topicsCheckboxes = document.querySelectorAll('input[name="topics"]:checked');
             const topics = Array.from(topicsCheckboxes).map(cb => cb.value);
 
+            // Show loading state
+            displayLoading();
+
             // Build query string
             const params = new URLSearchParams();
             if (difficulty) params.append('difficulty', difficulty);
@@ -114,13 +130,28 @@
                 const challenge = await response.json();
 
                 if (challenge.error) {
-                    displayError(challenge.error);
+                    displayError(challenge.error, challenge.message, challenge.instructions);
                 } else {
                     displayChallenge(challenge);
                 }
             } catch (error) {
-                displayError('Failed to load challenge. Try again!');
+                displayError('Failed to generate challenge', 'Please try again or check your connection.');
             }
+        }
+
+        function displayLoading() {
+            const container = document.getElementById('practiceChallenge');
+            container.className = 'practice-loading';
+            container.innerHTML = `
+                <div class="loading-state">
+                    <div class="loading-spinner">✨</div>
+                    <h2>Generating Your Challenge...</h2>
+                    <p>AI is creating a unique problem just for you!</p>
+                    <div class="loading-dots">
+                        <span>.</span><span>.</span><span>.</span>
+                    </div>
+                </div>
+            `;
         }
 
         function displayChallenge(challenge) {
@@ -159,15 +190,24 @@
             `;
         }
 
-        function displayError(message) {
+        function displayError(title, message, instructions) {
             const container = document.getElementById('practiceChallenge');
             container.className = 'practice-empty';
+            
+            let instructionsHTML = '';
+            if (instructions && Array.isArray(instructions)) {
+                instructionsHTML = '<ol class="error-instructions">' +
+                    instructions.map(i => `<li>${i}</li>`).join('') +
+                    '</ol>';
+            }
+            
             container.innerHTML = `
                 <div class="empty-state-large">
                     <div class="empty-icon">⚠️</div>
-                    <h2>No Challenges Found</h2>
-                    <p>${message}</p>
-                    <p class="empty-hint">Try selecting different filters or click "Get Random Challenge" without filters</p>
+                    <h2>${title || 'Error'}</h2>
+                    <p>${message || 'Something went wrong'}</p>
+                    ${instructionsHTML}
+                    <button class="btn btn-primary" onclick="getRandomChallenge()">Try Again</button>
                 </div>
             `;
         }
