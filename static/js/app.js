@@ -9,10 +9,21 @@ function toggleTheme() {
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     
-    // Update icon
+    // Update icon and text
+    updateThemeButton(newTheme);
+}
+
+// Update theme button icon and text
+function updateThemeButton(theme) {
     const icon = document.querySelector('.theme-toggle-icon');
-    if (icon) {
-        icon.textContent = newTheme === 'dark' ? '☀️' : '🌓';
+    const text = document.querySelector('.theme-toggle-text');
+    
+    if (theme === 'dark') {
+        if (icon) icon.textContent = '☀️';
+        if (text) text.textContent = 'Light Mode';
+    } else {
+        if (icon) icon.textContent = '🌓';
+        if (text) text.textContent = 'Dark Mode';
     }
 }
 
@@ -21,11 +32,8 @@ function toggleTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
-    // Update icon if toggle exists
-    const icon = document.querySelector('.theme-toggle-icon');
-    if (icon) {
-        icon.textContent = savedTheme === 'dark' ? '☀️' : '🌓';
-    }
+    // Update button to match saved theme
+    updateThemeButton(savedTheme);
 })();
 
 // Smooth scroll for anchor links
