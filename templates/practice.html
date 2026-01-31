@@ -155,7 +155,10 @@
             `;
         }
 
+        let currentChallenge = null;
+
         function displayChallenge(challenge) {
+            currentChallenge = challenge;
             const container = document.getElementById('practiceChallenge');
             container.className = 'practice-challenge-display';
             container.innerHTML = `
@@ -176,21 +179,95 @@
                 </div>
 
                 <div class="practice-instructions markdown-content">
-                    <h3>Instructions:</h3>
+                    <h3>📝 Instructions:</h3>
                     ${challenge.instructions || 'No instructions available'}
+                </div>
+
+                <div class="practice-code-section">
+                    <div class="editor-header">
+                        <h3>💻 Your Solution</h3>
+                        <div class="editor-buttons">
+                            <button class="btn btn-primary" onclick="runPracticeTests()">▶️ Run Tests</button>
+                            <button class="btn btn-secondary" onclick="resetPracticeCode()">🔄 Reset</button>
+                        </div>
+                    </div>
+                    <textarea id="practiceCodeEditor" class="code-input">${challenge.starter_code || '# Write your code here\n'}</textarea>
+                    
+                    <div id="practiceTestResults"></div>
                 </div>
 
                 <div class="practice-actions">
                     ${challenge.week !== 0 ? `
-                        <a href="/challenge?week=${challenge.week}&day_num=${challenge.day}" class="btn btn-primary">
-                            📝 Open Full Challenge
+                        <a href="/challenge?week=${challenge.week}&day_num=${challenge.day}" class="btn btn-secondary btn-small">
+                            📚 View Full Lesson
                         </a>
                     ` : ''}
                     <button class="btn ${challenge.week === 0 ? 'btn-primary' : 'btn-secondary'}" onclick="getRandomChallenge()">
-                        🎲 ${challenge.week === 0 ? 'Generate Another Challenge' : 'Another Random Challenge'}
+                        🎲 ${challenge.week === 0 ? 'Generate Another' : 'Another Random Challenge'}
                     </button>
                 </div>
             `;
+        }
+
+        function resetPracticeCode() {
+            const editor = document.getElementById('practiceCodeEditor');
+            if (editor && currentChallenge) {
+                editor.value = currentChallenge.starter_code || '# Write your code here\n';
+            }
+        }
+
+        async function runPracticeTests() {
+            const code = document.getElementById('practiceCodeEditor').value;
+            const resultsDiv = document.getElementById('practiceTestResults');
+            
+            if (!currentChallenge || !currentChallenge.id) {
+                resultsDiv.innerHTML = '<div class="test-result failure">No challenge loaded</div>';
+                return;
+            }
+            
+            resultsDiv.innerHTML = '<div class="test-running">🔄 Running tests...</div>';
+            
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        challenge_id: currentChallenge.id,
+                        code: code,
+                        time_spent: 0
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.passed) {
+                    resultsDiv.innerHTML = `
+                        <div class="test-result success">
+                            <h3>✅ All Tests Passed!</h3>
+                            <p>Great work! Try another challenge to keep practicing.</p>
+                        </div>
+                    `;
+                } else {
+                    let failuresHTML = result.failures ? result.failures.map(f => 
+                        `<div class="test-failure">❌ ${f}</div>`
+                    ).join('') : '';
+                    
+                    resultsDiv.innerHTML = `
+                        <div class="test-result failure">
+                            <h3>❌ Some Tests Failed</h3>
+                            ${failuresHTML}
+                            <p>Keep trying! Check the hints if you're stuck.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="test-result failure">
+                        <h3>Error running tests</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
         }
 
         function displayError(title, message, instructions) {
