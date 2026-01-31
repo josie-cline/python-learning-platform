@@ -19,6 +19,107 @@ challenges:
     time_estimate: "35-45 minutes"
     description: |
       Use Python's math module for advanced calculations!
+      
+      ## 🎓 LESSON: Python Modules
+      
+      ### Part 1: What is a Module?
+      
+      A module is a file containing Python code (functions, variables) that you can use in your programs.
+      
+      **Why modules?**
+      - Organize code into logical pieces
+      - Reuse code across multiple programs
+      - Access pre-written functions (don't reinvent the wheel!)
+      
+      ### Part 2: Built-in Modules
+      
+      Python comes with **many** modules already installed:
+      
+      - `math` - Mathematical functions
+      - `random` - Random number generation
+      - `datetime` - Dates and times
+      - `os` - Operating system operations
+      - `json` - Working with JSON data
+      
+      You don't need to install these - they're ready to use!
+      
+      ### Part 3: Importing a Module
+      
+      Use the `import` statement at the top of your file:
+      
+      ```python
+      import math
+      
+      print(math.pi)  # 3.141592653589793
+      ```
+      
+      ### Part 4: Using Module Functions
+      
+      Access functions with **dot notation**: `module.function()`
+      
+      ```python
+      import math
+      
+      # math.sqrt() calculates square root
+      result = math.sqrt(16)
+      print(result)  # 4.0
+      
+      # math.pi is the value of pi
+      print(math.pi)  # 3.141592653589793
+      
+      # math.pow() raises to a power
+      print(math.pow(2, 3))  # 8.0 (2^3)
+      ```
+      
+      ### Part 5: Math Module Useful Functions
+      
+      ```python
+      import math
+      
+      math.pi           # Pi constant: 3.14159...
+      math.e            # Euler's number: 2.71828...
+      math.sqrt(x)      # Square root
+      math.pow(x, y)    # x to the power of y
+      math.floor(x)     # Round down: 3.7 → 3
+      math.ceil(x)      # Round up: 3.2 → 4
+      math.sin(x)       # Trigonometry (radians)
+      math.cos(x)
+      math.tan(x)
+      ```
+      
+      ### Part 6: Circle Area Example
+      
+      Formula: Area = π × r²
+      
+      ```python
+      import math
+      
+      def circle_area(radius):
+          area = math.pi * radius ** 2
+          return round(area, 2)  # Round to 2 decimals
+      
+      print(circle_area(5))    # 78.54
+      print(circle_area(10))   # 314.16
+      ```
+      
+      **Step-by-step:**
+      1. Import math module
+      2. Use math.pi for π (3.14159...)
+      3. Multiply by radius squared (radius ** 2)
+      4. Round result to 2 decimal places
+      
+      ### Common Mistakes:
+      
+      ❌ **Forgetting to import:**
+      ```python
+      print(math.pi)  # NameError: name 'math' is not defined
+      ```
+      
+      ✅ **Import first:**
+      ```python
+      import math
+      print(math.pi)  # Works!
+      ```
     
     instructions: |
       Write a function that calculates the area of a circle.
