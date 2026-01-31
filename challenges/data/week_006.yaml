@@ -1,0 +1,277 @@
+# Week 6: Python Modules and Imports
+
+title: "Week 6: Modules and Packages"
+description: "Learn to organize code into modules, import built-in libraries, and work with external packages."
+topics:
+  - Creating modules
+  - Importing functions
+  - Built-in modules (math, random, datetime)
+  - Installing packages with pip
+  - __name__ == '__main__'
+  - Module structure
+
+challenges:
+  - day: 1
+    title: "Using Math Module"
+    topic: "Built-in Modules"
+    keywords: ["functions", "math"]
+    difficulty: beginner
+    time_estimate: "35-45 minutes"
+    description: |
+      Use Python's math module for advanced calculations!
+    
+    instructions: |
+      Write a function that calculates the area of a circle.
+      
+      Your function should:
+      - Take the radius as input
+      - Use math.pi for π
+      - Calculate area using the formula: π × r²
+      - Return the area rounded to 2 decimal places
+    
+    starter_code: |
+      import math
+      
+      def circle_area(radius):
+          # Your code here
+          pass
+    
+    hints:
+      - "Import math at the top: import math"
+      - "Use math.pi for the value of pi"
+      - "Formula: area = pi * radius**2"
+      - "Use round(value, 2) to round to 2 decimals"
+      - "Example: return round(math.pi * radius**2, 2)"
+    
+    tests:
+      - function: circle_area
+        input: 5
+        expected: 78.54
+
+  - day: 2
+    title: "Random Number Generator"
+    topic: "Random Module"
+    keywords: ["functions", "math"]
+    difficulty: beginner
+    time_estimate: "35-45 minutes"
+    description: |
+      Generate random numbers for games and simulations!
+    
+    instructions: |
+      Write a function that simulates rolling a dice.
+      
+      Your function should:
+      - Take no parameters
+      - Return a random integer between 1 and 6 (inclusive)
+      - Use the random module
+    
+    starter_code: |
+      import random
+      
+      def roll_dice():
+          # Your code here
+          pass
+    
+    hints:
+      - "Import random: import random"
+      - "Use random.randint(a, b) for random integer"
+      - "randint is inclusive on both ends"
+      - "Example: return random.randint(1, 6)"
+    
+    tests:
+      - function: roll_dice
+        input: []
+        expected_range: [1, 6]
+
+  - day: 3
+    title: "Date Formatter"
+    topic: "Datetime Module"
+    keywords: ["strings", "functions"]
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Work with dates and times!
+    
+    instructions: |
+      Write a function that returns the current date in a specific format.
+      
+      Your function should:
+      - Get the current date
+      - Return it as a string in format: "YYYY-MM-DD"
+      - Use the datetime module
+    
+    starter_code: |
+      from datetime import datetime
+      
+      def get_current_date():
+          # Your code here
+          pass
+    
+    hints:
+      - "Import datetime: from datetime import datetime"
+      - "Get current date: datetime.now()"
+      - "Format date: .strftime('%Y-%m-%d')"
+      - "%Y = 4-digit year, %m = month, %d = day"
+      - "Example: return datetime.now().strftime('%Y-%m-%d')"
+    
+    tests:
+      - function: get_current_date
+        input: []
+        expected_format: "YYYY-MM-DD"
+
+  - day: 4
+    title: "Random Choice"
+    topic: "Random Selections"
+    keywords: ["lists", "functions"]
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Pick random items from lists!
+    
+    instructions: |
+      Write a function that picks a random element from a list.
+      
+      Your function should:
+      - Take a list as input
+      - Return one random element from the list
+      - Use random.choice()
+    
+    starter_code: |
+      import random
+      
+      def pick_random(items):
+          # Your code here
+          pass
+    
+    hints:
+      - "Use random.choice(list) to pick random element"
+      - "choice() picks one item from the list"
+      - "Example: return random.choice(items)"
+    
+    tests:
+      - function: pick_random
+        input: [["apple", "banana", "cherry"]]
+        expected_in: ["apple", "banana", "cherry"]
+
+  - day: 5
+    title: "Password Generator"
+    topic: "Using Multiple Modules"
+    keywords: ["strings", "functions", "loops"]
+    difficulty: intermediate
+    time_estimate: "50-65 minutes"
+    description: |
+      Generate secure random passwords!
+    
+    instructions: |
+      Write a function that generates a random password.
+      
+      Your function should:
+      - Take a length parameter (how many characters)
+      - Include uppercase, lowercase, and numbers
+      - Return a random password string
+      - Use string and random modules
+    
+    starter_code: |
+      import random
+      import string
+      
+      def generate_password(length):
+          # Your code here
+          pass
+    
+    hints:
+      - "string.ascii_letters has all letters (a-z, A-Z)"
+      - "string.digits has all numbers (0-9)"
+      - "Combine them: chars = string.ascii_letters + string.digits"
+      - "Use random.choice() in a loop to pick characters"
+      - "Or use random.choices(chars, k=length) for multiple picks"
+      - "Join the list into a string: ''.join(result)"
+    
+    tests:
+      - function: generate_password
+        input: 8
+        expected_length: 8
+
+  - day: 6
+    title: "Calculator Module"
+    topic: "Creating Your Own Module"
+    keywords: ["functions", "math"]
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Organize related functions into a module!
+    
+    instructions: |
+      Create a calculator module with basic operations.
+      
+      Write four functions in a module:
+      - add(a, b) - returns sum
+      - subtract(a, b) - returns difference
+      - multiply(a, b) - returns product
+      - divide(a, b) - returns quotient (handle division by zero)
+    
+    starter_code: |
+      # calculator.py
+      def add(a, b):
+          pass
+      
+      def subtract(a, b):
+          pass
+      
+      def multiply(a, b):
+          pass
+      
+      def divide(a, b):
+          pass
+    
+    hints:
+      - "Each function takes two parameters"
+      - "add: return a + b"
+      - "subtract: return a - b"
+      - "multiply: return a * b"
+      - "divide: check if b == 0, return 'Error' if so"
+      - "Otherwise return a / b"
+    
+    tests:
+      - function: add
+        input: [5, 3]
+        expected: 8
+
+  - day: 7
+    title: "Week 6 Challenge: Lottery Simulator"
+    topic: "Random Number Generation"
+    keywords: ["lists", "functions", "loops"]
+    difficulty: intermediate
+    time_estimate: "60-75 minutes"
+    description: |
+      Simulate a lottery drawing!
+    
+    instructions: |
+      Write a function that simulates a lottery.
+      
+      Your function should:
+      - Generate 6 unique random numbers between 1 and 49
+      - Return them as a sorted list
+      - No duplicates allowed
+      - Use random module
+    
+    starter_code: |
+      import random
+      
+      def lottery_numbers():
+          # Your code here
+          pass
+    
+    hints:
+      - "Use random.sample(range(1, 50), 6) for unique numbers"
+      - "sample() picks unique items without replacement"
+      - "Or use a loop with a set to ensure uniqueness"
+      - "Sort the result: sorted(numbers)"
+      - "Return the sorted list"
+    
+    tests:
+      - function: lottery_numbers
+        input: []
+        expected_length: 6
+        expected_unique: true
+        expected_sorted: true

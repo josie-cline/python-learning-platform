@@ -1,0 +1,335 @@
+# Week 9: Object-Oriented Programming Basics
+
+title: "Week 9: Classes and Objects"
+description: "Introduction to Object-Oriented Programming - creating classes, objects, and understanding encapsulation."
+topics:
+  - Classes and objects
+  - __init__ method
+  - Instance variables
+  - Methods
+  - self parameter
+  - Creating multiple objects
+
+challenges:
+  - day: 1
+    title: "Create a Simple Class"
+    topic: "Class Basics"
+    keywords: ["functions"]
+    difficulty: intermediate
+    time_estimate: "50-65 minutes"
+    description: |
+      Learn to create your first class!
+    
+    instructions: |
+      Create a Person class.
+      
+      Your class should:
+      - Have an __init__ method that takes name and age
+      - Store these as instance variables
+      - Have a method greet() that returns "Hello, I'm {name}"
+    
+    starter_code: |
+      class Person:
+          def __init__(self, name, age):
+              # Your code here
+              pass
+          
+          def greet(self):
+              # Your code here
+              pass
+    
+    hints:
+      - "Store parameters as instance variables: self.name = name"
+      - "self refers to the current object"
+      - "Access instance variables in methods: self.name"
+      - "Example: return f'Hello, I\\'m {self.name}'"
+    
+    tests:
+      - class: Person
+        init: ["Alice", 25]
+        method: greet
+        expected: "Hello, I'm Alice"
+
+  - day: 2
+    title: "Bank Account Class"
+    topic: "Methods and State"
+    keywords: ["functions", "math"]
+    difficulty: intermediate
+    time_estimate: "55-70 minutes"
+    description: |
+      Model a bank account with methods!
+    
+    instructions: |
+      Create a BankAccount class.
+      
+      Your class should:
+      - Initialize with a balance (default 0)
+      - Have deposit(amount) method to add money
+      - Have withdraw(amount) method to remove money
+      - Have get_balance() method to check balance
+      - Prevent negative balance on withdraw
+    
+    starter_code: |
+      class BankAccount:
+          def __init__(self, balance=0):
+              pass
+          
+          def deposit(self, amount):
+              pass
+          
+          def withdraw(self, amount):
+              pass
+          
+          def get_balance(self):
+              pass
+    
+    hints:
+      - "Store balance: self.balance = balance"
+      - "deposit: self.balance += amount"
+      - "withdraw: check if self.balance >= amount first"
+      - "Return False if insufficient funds, True if successful"
+    
+    tests:
+      - class: BankAccount
+        operations:
+          - method: deposit
+            args: [100]
+          - method: get_balance
+            expected: 100
+
+  - day: 3
+    title: "Rectangle Class"
+    topic: "Calculated Properties"
+    keywords: ["functions", "math"]
+    difficulty: intermediate
+    time_estimate: "50-65 minutes"
+    description: |
+      Create a class with calculated properties!
+    
+    instructions: |
+      Create a Rectangle class.
+      
+      Your class should:
+      - Initialize with width and height
+      - Have area() method that returns width * height
+      - Have perimeter() method that returns 2 * (width + height)
+    
+    starter_code: |
+      class Rectangle:
+          def __init__(self, width, height):
+              pass
+          
+          def area(self):
+              pass
+          
+          def perimeter(self):
+              pass
+    
+    hints:
+      - "Store dimensions: self.width = width, self.height = height"
+      - "area: return self.width * self.height"
+      - "perimeter: return 2 * (self.width + self.height)"
+    
+    tests:
+      - class: Rectangle
+        init: [5, 3]
+        method: area
+        expected: 15
+
+  - day: 4
+    title: "Counter Class"
+    topic: "State Management"
+    keywords: ["functions"]
+    difficulty: beginner
+    time_estimate: "45-60 minutes"
+    description: |
+      Create a class that maintains state!
+    
+    instructions: |
+      Create a Counter class.
+      
+      Your class should:
+      - Start at 0
+      - Have increment() method to add 1
+      - Have decrement() method to subtract 1
+      - Have get_count() method to return current count
+      - Have reset() method to go back to 0
+    
+    starter_code: |
+      class Counter:
+          def __init__(self):
+              pass
+          
+          def increment(self):
+              pass
+          
+          def decrement(self):
+              pass
+          
+          def get_count(self):
+              pass
+          
+          def reset(self):
+              pass
+    
+    hints:
+      - "Initialize counter: self.count = 0"
+      - "increment: self.count += 1"
+      - "decrement: self.count -= 1"
+      - "get_count: return self.count"
+      - "reset: self.count = 0"
+    
+    tests:
+      - class: Counter
+        operations:
+          - method: increment
+          - method: increment
+          - method: get_count
+            expected: 2
+
+  - day: 5
+    title: "Student Class"
+    topic: "Lists in Classes"
+    keywords: ["functions", "lists"]
+    difficulty: intermediate
+    time_estimate: "55-70 minutes"
+    description: |
+      Manage collections within a class!
+    
+    instructions: |
+      Create a Student class.
+      
+      Your class should:
+      - Initialize with name
+      - Have an empty grades list
+      - Have add_grade(grade) method
+      - Have get_average() method that calculates average of all grades
+    
+    starter_code: |
+      class Student:
+          def __init__(self, name):
+              pass
+          
+          def add_grade(self, grade):
+              pass
+          
+          def get_average(self):
+              pass
+    
+    hints:
+      - "Initialize empty list: self.grades = []"
+      - "add_grade: self.grades.append(grade)"
+      - "get_average: return sum(self.grades) / len(self.grades)"
+      - "Handle case where no grades: return 0 if len == 0"
+    
+    tests:
+      - class: Student
+        init: ["Alice"]
+        operations:
+          - method: add_grade
+            args: [90]
+          - method: add_grade
+            args: [85]
+          - method: get_average
+            expected: 87.5
+
+  - day: 6
+    title: "Shopping Cart"
+    topic: "Dictionaries in Classes"
+    keywords: ["functions", "dictionaries"]
+    difficulty: intermediate
+    time_estimate: "60-75 minutes"
+    description: |
+      Build a shopping cart!
+    
+    instructions: |
+      Create a ShoppingCart class.
+      
+      Your class should:
+      - Have an empty cart (dictionary: item -> quantity)
+      - add_item(item, quantity) - adds items
+      - remove_item(item) - removes an item completely
+      - get_total_items() - returns total quantity of all items
+    
+    starter_code: |
+      class ShoppingCart:
+          def __init__(self):
+              pass
+          
+          def add_item(self, item, quantity):
+              pass
+          
+          def remove_item(self, item):
+              pass
+          
+          def get_total_items(self):
+              pass
+    
+    hints:
+      - "Initialize cart: self.cart = {}"
+      - "add_item: self.cart[item] = self.cart.get(item, 0) + quantity"
+      - "remove_item: del self.cart[item] if item in self.cart"
+      - "get_total_items: return sum(self.cart.values())"
+    
+    tests:
+      - class: ShoppingCart
+        operations:
+          - method: add_item
+            args: ["apple", 3]
+          - method: get_total_items
+            expected: 3
+
+  - day: 7
+    title: "Week 9 Challenge: Todo List"
+    topic: "Complete Class Application"
+    keywords: ["functions", "lists", "dictionaries"]
+    difficulty: intermediate
+    time_estimate: "75-90 minutes"
+    description: |
+      Build a todo list manager!
+    
+    instructions: |
+      Create a TodoList class.
+      
+      Your class should:
+      - Store todos as a list of dictionaries: {"task": str, "done": bool}
+      - add_task(task) - adds new task (not done)
+      - complete_task(index) - marks task at index as done
+      - get_pending() - returns list of tasks that aren't done
+      - get_completed() - returns list of completed tasks
+    
+    starter_code: |
+      class TodoList:
+          def __init__(self):
+              pass
+          
+          def add_task(self, task):
+              pass
+          
+          def complete_task(self, index):
+              pass
+          
+          def get_pending(self):
+              pass
+          
+          def get_completed(self):
+              pass
+    
+    hints:
+      - "Initialize: self.todos = []"
+      - "add_task: self.todos.append({'task': task, 'done': False})"
+      - "complete_task: self.todos[index]['done'] = True"
+      - "get_pending: [t['task'] for t in self.todos if not t['done']]"
+      - "get_completed: [t['task'] for t in self.todos if t['done']]"
+    
+    tests:
+      - class: TodoList
+        operations:
+          - method: add_task
+            args: ["Buy milk"]
+          - method: add_task
+            args: ["Walk dog"]
+          - method: complete_task
+            args: [0]
+          - method: get_pending
+            expected: ["Walk dog"]

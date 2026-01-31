@@ -1,0 +1,273 @@
+# Week 8: String Operations and Regular Expressions
+
+title: "Week 8: Text Processing Mastery"
+description: "Master advanced string manipulation and pattern matching with regular expressions."
+topics:
+  - String methods
+  - String formatting (f-strings)
+  - Regular expressions basics
+  - Pattern matching
+  - Text search and replace
+  - String validation
+
+challenges:
+  - day: 1
+    title: "String Methods Practice"
+    topic: "String Manipulation"
+    keywords: ["strings", "functions"]
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Master Python's built-in string methods!
+    
+    instructions: |
+      Write a function that cleans and formats a name.
+      
+      Your function should:
+      - Take a name string (may have extra spaces, wrong case)
+      - Remove leading/trailing whitespace
+      - Capitalize first letter of each word
+      - Return the cleaned name
+      
+      Example: "  john doe  " → "John Doe"
+    
+    starter_code: |
+      def format_name(name):
+          # Your code here
+          pass
+    
+    hints:
+      - "Use .strip() to remove leading/trailing spaces"
+      - "Use .title() to capitalize first letter of each word"
+      - "Chain methods: name.strip().title()"
+      - "Example: return name.strip().title()"
+    
+    tests:
+      - function: format_name
+        input: "  john doe  "
+        expected: "John Doe"
+
+  - day: 2
+    title: "F-String Formatting"
+    topic: "Modern String Formatting"
+    keywords: ["strings", "variables"]
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Use f-strings for elegant string formatting!
+    
+    instructions: |
+      Write a function that creates a formatted greeting.
+      
+      Your function should:
+      - Take name and age as parameters
+      - Return a formatted string: "Hello, {name}! You are {age} years old."
+      - Use an f-string (not .format() or %)
+    
+    starter_code: |
+      def create_greeting(name, age):
+          # Your code here using f-string
+          pass
+    
+    hints:
+      - "F-string syntax: f'text {variable} more text'"
+      - "Put f before the opening quote"
+      - "Variables go inside curly braces {}"
+      - "Example: return f'Hello, {name}! You are {age} years old.'"
+    
+    tests:
+      - function: create_greeting
+        input: ["Alice", 25]
+        expected: "Hello, Alice! You are 25 years old."
+
+  - day: 3
+    title: "Email Validator"
+    topic: "String Validation"
+    keywords: ["strings", "conditions"]
+    difficulty: intermediate
+    time_estimate: "50-65 minutes"
+    description: |
+      Check if an email address is valid!
+    
+    instructions: |
+      Write a function that validates email addresses.
+      
+      Your function should:
+      - Take an email string
+      - Return True if valid, False otherwise
+      - Valid means: has exactly one @, has a dot after @, not empty before/after @
+      - Don't use regex for now (basic string methods only)
+    
+    starter_code: |
+      def is_valid_email(email):
+          # Your code here
+          pass
+    
+    hints:
+      - "Check if @ is in email: '@' in email"
+      - "Count @ symbols: email.count('@') == 1"
+      - "Split by @: parts = email.split('@')"
+      - "Check parts[0] and parts[1] are not empty"
+      - "Check if . is in parts[1]: '.' in parts[1]"
+    
+    tests:
+      - function: is_valid_email
+        input: "user@example.com"
+        expected: true
+      
+      - function: is_valid_email
+        input: "invalid.email"
+        expected: false
+
+  - day: 4
+    title: "Regex Basics"
+    topic: "Pattern Matching"
+    keywords: ["strings"]
+    difficulty: intermediate
+    time_estimate: "50-65 minutes"
+    description: |
+      Find patterns in text with regular expressions!
+    
+    instructions: |
+      Write a function that finds all phone numbers in text.
+      
+      Your function should:
+      - Take a text string
+      - Find all phone numbers in format XXX-XXX-XXXX
+      - Return a list of found phone numbers
+      - Use the re module
+    
+    starter_code: |
+      import re
+      
+      def find_phone_numbers(text):
+          # Your code here
+          pass
+    
+    hints:
+      - "Import re: import re"
+      - "Pattern for digits: \\d (one digit) or \\d{3} (three digits)"
+      - "Pattern for phone: \\d{3}-\\d{3}-\\d{4}"
+      - "Use re.findall(pattern, text) to find all matches"
+      - "Example: return re.findall(r'\\d{3}-\\d{3}-\\d{4}', text)"
+      - "Use r'' for raw strings to avoid escaping issues"
+    
+    tests:
+      - function: find_phone_numbers
+        input: "Call me at 555-123-4567 or 555-987-6543"
+        expected: ["555-123-4567", "555-987-6543"]
+
+  - day: 5
+    title: "Extract Numbers"
+    topic: "Regex Extraction"
+    keywords: ["strings", "lists"]
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Extract all numbers from a string!
+    
+    instructions: |
+      Write a function that extracts all numbers from text.
+      
+      Your function should:
+      - Take a text string
+      - Find all integers in the text
+      - Return them as a list of integers
+      - Use regex
+    
+    starter_code: |
+      import re
+      
+      def extract_numbers(text):
+          # Your code here
+          pass
+    
+    hints:
+      - "Pattern for one or more digits: \\d+"
+      - "Use re.findall(r'\\d+', text) to get all numbers"
+      - "This returns strings, convert to int: [int(x) for x in matches]"
+      - "Example: return [int(x) for x in re.findall(r'\\d+', text)]"
+    
+    tests:
+      - function: extract_numbers
+        input: "I have 3 cats and 2 dogs"
+        expected: [3, 2]
+
+  - day: 6
+    title: "Password Strength Checker"
+    topic: "String Validation"
+    keywords: ["strings", "conditions"]
+    difficulty: intermediate
+    time_estimate: "50-65 minutes"
+    description: |
+      Check if a password is strong enough!
+    
+    instructions: |
+      Write a function that checks password strength.
+      
+      Your function should:
+      - Take a password string
+      - Return "Strong", "Medium", or "Weak"
+      - Strong: 12+ chars, has uppercase, lowercase, digit, special char
+      - Medium: 8+ chars, has 3 of the 4 requirements
+      - Weak: anything else
+    
+    starter_code: |
+      def check_password_strength(password):
+          # Your code here
+          pass
+    
+    hints:
+      - "Check length: len(password)"
+      - "Check for uppercase: any(c.isupper() for c in password)"
+      - "Check for lowercase: any(c.islower() for c in password)"
+      - "Check for digit: any(c.isdigit() for c in password)"
+      - "Check for special: any(not c.isalnum() for c in password)"
+      - "Count how many requirements are met"
+    
+    tests:
+      - function: check_password_strength
+        input: "MyP@ssw0rd123"
+        expected: "Strong"
+      
+      - function: check_password_strength
+        input: "password"
+        expected: "Weak"
+
+  - day: 7
+    title: "Week 8 Challenge: URL Parser"
+    topic: "Advanced String Processing"
+    keywords: ["strings", "dictionaries"]
+    difficulty: intermediate
+    time_estimate: "60-75 minutes"
+    description: |
+      Parse URLs and extract components!
+    
+    instructions: |
+      Write a function that parses a URL.
+      
+      Your function should:
+      - Take a URL string
+      - Extract: protocol, domain, path, query parameters
+      - Return a dictionary with these components
+      
+      Example: "https://example.com/page?id=5&name=test"
+      Returns: {"protocol": "https", "domain": "example.com", "path": "/page", "params": {"id": "5", "name": "test"}}
+    
+    starter_code: |
+      def parse_url(url):
+          # Your code here
+          pass
+    
+    hints:
+      - "Split by '://': parts = url.split('://')"
+      - "Protocol is parts[0]"
+      - "Split rest by '?': main, query = parts[1].split('?')"
+      - "Split main by '/': domain is first part, path is rest"
+      - "Parse query params: split by '&', then by '='"
+      - "Build dictionary with all parts"
+    
+    tests:
+      - function: parse_url
+        input: "https://example.com/page?id=5"
+        expected: {"protocol": "https", "domain": "example.com", "path": "/page", "params": {"id": "5"}}

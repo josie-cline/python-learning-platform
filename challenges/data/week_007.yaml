@@ -1,0 +1,251 @@
+# Week 7: List Comprehensions and Lambda Functions
+
+title: "Week 7: Pythonic Code"
+description: "Write more elegant, concise Python code with comprehensions and lambda functions."
+topics:
+  - List comprehensions
+  - Dictionary comprehensions
+  - Set comprehensions
+  - Lambda functions
+  - map(), filter(), reduce()
+  - Generator expressions
+
+challenges:
+  - day: 1
+    title: "Basic List Comprehension"
+    topic: "List Comprehensions"
+    keywords: ["lists", "loops"]
+    difficulty: intermediate
+    time_estimate: "40-50 minutes"
+    description: |
+      Learn to create lists in one elegant line!
+    
+    instructions: |
+      Write a function that creates a list of squares.
+      
+      Your function should:
+      - Take a number n as input
+      - Return a list of squares from 1² to n²
+      - Use a list comprehension (not a regular loop)
+      
+      Example: squares(5) → [1, 4, 9, 16, 25]
+    
+    starter_code: |
+      def squares(n):
+          # Your code here using list comprehension
+          pass
+    
+    hints:
+      - "List comprehension syntax: [expression for item in range()]"
+      - "Example: [x**2 for x in range(1, n+1)]"
+      - "This replaces: result = [] ... for x in range() ... result.append()"
+      - "Much more concise and Pythonic!"
+    
+    tests:
+      - function: squares
+        input: 5
+        expected: [1, 4, 9, 16, 25]
+
+  - day: 2
+    title: "Filter with Comprehension"
+    topic: "Conditional Comprehensions"
+    keywords: ["lists", "conditions"]
+    difficulty: intermediate
+    time_estimate: "45-55 minutes"
+    description: |
+      Filter lists elegantly with comprehensions!
+    
+    instructions: |
+      Write a function that returns only even numbers from a list.
+      
+      Your function should:
+      - Take a list of numbers
+      - Return a new list with only the even numbers
+      - Use a list comprehension with a condition
+    
+    starter_code: |
+      def get_evens(numbers):
+          # Your code here
+          pass
+    
+    hints:
+      - "Add 'if' condition to comprehension: [x for x in list if condition]"
+      - "Check if even: x % 2 == 0"
+      - "Example: [x for x in numbers if x % 2 == 0]"
+    
+    tests:
+      - function: get_evens
+        input: [[1, 2, 3, 4, 5, 6]]
+        expected: [2, 4, 6]
+
+  - day: 3
+    title: "Lambda Basics"
+    topic: "Anonymous Functions"
+    keywords: ["functions"]
+    difficulty: intermediate
+    time_estimate: "40-50 minutes"
+    description: |
+      Create quick, small functions without def!
+    
+    instructions: |
+      Create a lambda function that doubles a number.
+      
+      Your task:
+      - Assign a lambda function to variable 'double'
+      - It should take one parameter and return it multiplied by 2
+      - Lambda functions are one-line anonymous functions
+    
+    starter_code: |
+      # Create the lambda function
+      double = None  # Replace with lambda
+    
+    hints:
+      - "Lambda syntax: lambda parameters: expression"
+      - "Example: lambda x: x * 2"
+      - "No parentheses around parameter for single param"
+      - "No return keyword - the expression is automatically returned"
+      - "Assign it: double = lambda x: x * 2"
+    
+    tests:
+      - function: double
+        input: 5
+        expected: 10
+
+  - day: 4
+    title: "Dictionary Comprehension"
+    topic: "Dict Comprehensions"
+    keywords: ["dictionaries", "loops"]
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Create dictionaries elegantly!
+    
+    instructions: |
+      Write a function that creates a dictionary of numbers and their squares.
+      
+      Your function should:
+      - Take a number n
+      - Return a dict where keys are 1 to n, values are their squares
+      - Use a dictionary comprehension
+      
+      Example: number_squares(3) → {1: 1, 2: 4, 3: 9}
+    
+    starter_code: |
+      def number_squares(n):
+          # Your code here
+          pass
+    
+    hints:
+      - "Dict comprehension syntax: {key: value for item in range()}"
+      - "Example: {x: x**2 for x in range(1, n+1)}"
+      - "Creates dict in one line instead of loop with dict[key] = value"
+    
+    tests:
+      - function: number_squares
+        input: 3
+        expected: {1: 1, 2: 4, 3: 9}
+
+  - day: 5
+    title: "Using map()"
+    topic: "Functional Programming"
+    keywords: ["functions", "lists"]
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Apply functions to every item in a list!
+    
+    instructions: |
+      Write a function that converts a list of strings to uppercase.
+      
+      Your function should:
+      - Take a list of strings
+      - Return a new list with all strings in uppercase
+      - Use map() with lambda or str.upper
+    
+    starter_code: |
+      def uppercase_all(words):
+          # Your code here using map()
+          pass
+    
+    hints:
+      - "map() applies a function to each item: map(function, list)"
+      - "Use str.upper as the function: map(str.upper, words)"
+      - "map() returns a map object, convert to list: list(map(...))"
+      - "Example: return list(map(str.upper, words))"
+      - "Or with lambda: list(map(lambda x: x.upper(), words))"
+    
+    tests:
+      - function: uppercase_all
+        input: [["hello", "world"]]
+        expected: ["HELLO", "WORLD"]
+
+  - day: 6
+    title: "Using filter()"
+    topic: "Filtering with Functions"
+    keywords: ["functions", "lists", "conditions"]
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Filter lists using functions!
+    
+    instructions: |
+      Write a function that filters out short words.
+      
+      Your function should:
+      - Take a list of words and minimum length
+      - Return only words with length >= minimum
+      - Use filter() with a lambda function
+    
+    starter_code: |
+      def filter_short_words(words, min_length):
+          # Your code here using filter()
+          pass
+    
+    hints:
+      - "filter() keeps items where function returns True"
+      - "Syntax: filter(function, list)"
+      - "Use lambda to check length: lambda x: len(x) >= min_length"
+      - "filter() returns a filter object, convert to list"
+      - "Example: list(filter(lambda x: len(x) >= min_length, words))"
+    
+    tests:
+      - function: filter_short_words
+        input: [["hi", "hello", "hey", "goodbye"], 4]
+        expected: ["hello", "goodbye"]
+
+  - day: 7
+    title: "Week 7 Challenge: Data Transformation"
+    topic: "Combining All Concepts"
+    keywords: ["lists", "dictionaries", "functions"]
+    difficulty: intermediate
+    time_estimate: "60-75 minutes"
+    description: |
+      Transform data using comprehensions and functional programming!
+    
+    instructions: |
+      Write a function that processes a list of people.
+      
+      Given a list of dictionaries like: [{"name": "Alice", "age": 25}, ...]
+      
+      Your function should:
+      - Filter to only people over 21
+      - Create a new list with just their names in uppercase
+      - Use list comprehension or filter/map
+      - Return the list of uppercase names
+    
+    starter_code: |
+      def get_adult_names(people):
+          # Your code here
+          pass
+    
+    hints:
+      - "First filter by age: [p for p in people if p['age'] > 21]"
+      - "Then get names: [p['name'] for p in filtered]"
+      - "Convert to uppercase: [p['name'].upper() for p in filtered]"
+      - "Or combine in one comprehension"
+      - "Example: [p['name'].upper() for p in people if p['age'] > 21]"
+    
+    tests:
+      - function: get_adult_names
+        input: [[{"name": "Alice", "age": 25}, {"name": "Bob", "age": 17}, {"name": "Charlie", "age": 30}]]
+        expected: ["ALICE", "CHARLIE"]

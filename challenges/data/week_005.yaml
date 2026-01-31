@@ -1,0 +1,268 @@
+# Week 5: File I/O and Error Handling
+
+title: "Week 5: Working with Files"
+description: "Learn to read from and write to files, handle errors gracefully, and work with different file formats."
+topics:
+  - Reading files
+  - Writing files
+  - File paths and directories
+  - Error handling with try/except
+  - Context managers (with statement)
+  - CSV files
+
+challenges:
+  - day: 1
+    title: "Read a Text File"
+    topic: "File Reading Basics"
+    keywords: ["files", "strings"]
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Learn to read content from text files!
+    
+    instructions: |
+      Write a function that reads a text file and returns its contents as a string.
+      
+      Your function should:
+      - Take a filename (string) as input
+      - Open and read the entire file
+      - Return the file contents as a string
+      - Handle the file properly (close it after reading)
+    
+    starter_code: |
+      def read_file(filename):
+          # Your code here
+          pass
+    
+    hints:
+      - "Use the open() function: file = open(filename, 'r')"
+      - "The 'r' mode means read-only"
+      - "Use .read() to get all contents: content = file.read()"
+      - "Don't forget to close: file.close()"
+      - "Better: use 'with' statement to auto-close"
+      - "Example: with open(filename, 'r') as file: content = file.read()"
+    
+    tests:
+      - function: read_file
+        input: "test.txt"
+        expected: "Hello, World!"
+
+  - day: 2
+    title: "Write to a File"
+    topic: "File Writing"
+    keywords: ["files", "strings"]
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Learn to save data to files!
+    
+    instructions: |
+      Write a function that writes text to a file.
+      
+      Your function should:
+      - Take a filename and text content as inputs
+      - Create/overwrite the file with the content
+      - Return True if successful
+      - Use proper file handling
+    
+    starter_code: |
+      def write_file(filename, content):
+          # Your code here
+          pass
+    
+    hints:
+      - "Use open() with 'w' mode for writing: open(filename, 'w')"
+      - "Use .write() to write content: file.write(content)"
+      - "The 'w' mode creates a new file or overwrites existing"
+      - "Use 'with' statement for automatic closing"
+      - "Example: with open(filename, 'w') as file: file.write(content)"
+    
+    tests:
+      - function: write_file
+        input: ["output.txt", "Test content"]
+        expected: true
+
+  - day: 3
+    title: "Try-Except Basics"
+    topic: "Error Handling"
+    keywords: ["conditions", "functions"]
+    difficulty: beginner
+    time_estimate: "45-60 minutes"
+    description: |
+      Handle errors gracefully instead of crashing!
+    
+    instructions: |
+      Write a function that safely divides two numbers.
+      
+      Your function should:
+      - Take two numbers (a and b)
+      - Return the result of a / b
+      - If division by zero occurs, return "Error: Cannot divide by zero"
+      - Use try-except to handle the error
+    
+    starter_code: |
+      def safe_divide(a, b):
+          # Your code here
+          pass
+    
+    hints:
+      - "Wrap risky code in try block: try: result = a / b"
+      - "Catch errors with except: except ZeroDivisionError:"
+      - "Return error message in the except block"
+      - "Example structure: try: ... except ZeroDivisionError: return 'Error'"
+    
+    tests:
+      - function: safe_divide
+        input: [10, 2]
+        expected: 5.0
+      
+      - function: safe_divide
+        input: [10, 0]
+        expected: "Error: Cannot divide by zero"
+
+  - day: 4
+    title: "Count Lines in File"
+    topic: "File Reading with Loops"
+    keywords: ["files", "loops"]
+    difficulty: intermediate
+    time_estimate: "45-60 minutes"
+    description: |
+      Process files line by line!
+    
+    instructions: |
+      Write a function that counts how many lines are in a text file.
+      
+      Your function should:
+      - Take a filename as input
+      - Open and read the file
+      - Count the number of lines
+      - Return the count as an integer
+    
+    starter_code: |
+      def count_lines(filename):
+          # Your code here
+          pass
+    
+    hints:
+      - "Use .readlines() to get a list of lines"
+      - "Or use 'for line in file:' to iterate"
+      - "Count with a counter variable or use len()"
+      - "Example: lines = file.readlines() then return len(lines)"
+      - "Or: count = 0, for line in file: count += 1"
+    
+    tests:
+      - function: count_lines
+        input: "test.txt"
+        expected: 5
+
+  - day: 5
+    title: "Append to File"
+    topic: "File Modes"
+    keywords: ["files", "strings"]
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Add content to files without overwriting!
+    
+    instructions: |
+      Write a function that appends text to the end of a file.
+      
+      Your function should:
+      - Take filename and new content
+      - Add the content to the end of the file (don't overwrite)
+      - Create the file if it doesn't exist
+      - Return True if successful
+    
+    starter_code: |
+      def append_to_file(filename, content):
+          # Your code here
+          pass
+    
+    hints:
+      - "Use 'a' mode for append: open(filename, 'a')"
+      - "Append mode adds to the end without erasing existing content"
+      - "Use .write() just like write mode"
+      - "Example: with open(filename, 'a') as file: file.write(content)"
+    
+    tests:
+      - function: append_to_file
+        input: ["log.txt", "New entry\n"]
+        expected: true
+
+  - day: 6
+    title: "File Exists Check"
+    topic: "Path Operations"
+    keywords: ["files", "conditions"]
+    difficulty: beginner
+    time_estimate: "40-50 minutes"
+    description: |
+      Check if files exist before working with them!
+    
+    instructions: |
+      Write a function that checks if a file exists.
+      
+      Your function should:
+      - Take a filename as input
+      - Return True if the file exists
+      - Return False if it doesn't
+      - Use the os or pathlib module
+    
+    starter_code: |
+      import os
+      
+      def file_exists(filename):
+          # Your code here
+          pass
+    
+    hints:
+      - "Use os.path.exists(filename) to check"
+      - "It returns True if file exists, False otherwise"
+      - "Example: return os.path.exists(filename)"
+      - "Alternative: from pathlib import Path, then Path(filename).exists()"
+    
+    tests:
+      - function: file_exists
+        input: "existing.txt"
+        expected: true
+      
+      - function: file_exists
+        input: "missing.txt"
+        expected: false
+
+  - day: 7
+    title: "Week 5 Challenge: Log Parser"
+    topic: "Combining File I/O and Data Processing"
+    keywords: ["files", "strings", "loops", "dictionaries"]
+    difficulty: intermediate
+    time_estimate: "60-75 minutes"
+    description: |
+      Build a log file analyzer!
+    
+    instructions: |
+      Write a function that analyzes a log file.
+      
+      Your function should:
+      - Read a log file (one entry per line)
+      - Count how many times each log level appears (ERROR, WARNING, INFO)
+      - Return a dictionary with counts
+      - Handle the case where the file doesn't exist
+      
+      Example log line: "2024-01-15 ERROR: Connection failed"
+    
+    starter_code: |
+      def analyze_logs(filename):
+          # Your code here
+          pass
+    
+    hints:
+      - "Check if file exists first"
+      - "Create a dictionary: counts = {'ERROR': 0, 'WARNING': 0, 'INFO': 0}"
+      - "Read file line by line: for line in file:"
+      - "Check if level is in line: if 'ERROR' in line:"
+      - "Increment the counter: counts['ERROR'] += 1"
+      - "Return the dictionary"
+    
+    tests:
+      - function: analyze_logs
+        input: "server.log"
+        expected: {"ERROR": 5, "WARNING": 12, "INFO": 48}
