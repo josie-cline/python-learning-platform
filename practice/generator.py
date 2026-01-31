@@ -6,7 +6,7 @@ Generates unique practice challenges using OpenAI
 import os
 import json
 from typing import Dict, List, Optional
-import openai
+from openai import OpenAI
 
 
 class ChallengeGenerator:
@@ -15,14 +15,20 @@ class ChallengeGenerator:
     def __init__(self):
         self.api_key = os.getenv('OPENAI_API_KEY')
         if self.api_key:
-            openai.api_key = self.api_key
-            self.enabled = True
+            try:
+                self.client = OpenAI(api_key=self.api_key)
+                self.enabled = True
+            except Exception as e:
+                print(f"OpenAI initialization error: {e}")
+                self.enabled = False
+                self.client = None
         else:
             self.enabled = False
+            self.client = None
     
     def is_enabled(self) -> bool:
         """Check if AI generation is available"""
-        return self.enabled and self.api_key
+        return self.enabled and self.client is not None
     
     def generate_challenge(self, topics: List[str], difficulty: str = "beginner") -> Optional[Dict]:
         """Generate a unique practice challenge"""
@@ -66,8 +72,8 @@ Return JSON with this EXACT structure:
 Make it creative and practical. Focus on {topic_str}. Difficulty: {difficulty}."""
 
         try:
-            response = openai.chat.completions.create(
-                model="gpt-4",
+            response = self.client.chat.completions.create(
+                model="gpt-4o-mini",  # More cost-effective
                 messages=[
                     {"role": "system", "content": "You are a Python programming instructor creating practice challenges for students learning to code. Generate creative, practical challenges that teach real-world skills."},
                     {"role": "user", "content": prompt}
