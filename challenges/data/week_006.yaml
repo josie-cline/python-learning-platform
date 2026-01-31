@@ -157,6 +157,74 @@ challenges:
     time_estimate: "35-45 minutes"
     description: |
       Generate random numbers for games and simulations!
+      
+      ## 🎓 LESSON: Random Module
+      
+      ### Part 1: Why Random Numbers?
+      
+      Random numbers are used in:
+      - Games (dice rolls, card shuffles)
+      - Simulations (testing, modeling)
+      - Security (passwords, tokens)
+      - Sampling data
+      
+      ### Part 2: Importing random
+      
+      ```python
+      import random
+      ```
+      
+      ### Part 3: random.randint()
+      
+      `randint(a, b)` returns random integer from a to b (inclusive):
+      
+      ```python
+      import random
+      
+      dice = random.randint(1, 6)  # Could be 1, 2, 3, 4, 5, or 6
+      coin = random.randint(0, 1)  # 0 or 1
+      ```
+      
+      **Both endpoints included!**
+      
+      ### Part 4: Other Useful random Functions
+      
+      ```python
+      import random
+      
+      # Random float 0.0 to 1.0
+      random.random()  # 0.7284...
+      
+      # Random float in range
+      random.uniform(1.5, 3.5)  # 2.831...
+      
+      # Random choice from list
+      random.choice(["red", "blue", "green"])  # "blue"
+      
+      # Shuffle a list
+      cards = [1, 2, 3, 4, 5]
+      random.shuffle(cards)  # Randomly reorders in-place
+      ```
+      
+      ### Part 5: Simulating a Dice Roll
+      
+      ```python
+      import random
+      
+      def roll_dice():
+          return random.randint(1, 6)
+      
+      # Test it
+      for i in range(5):
+          print(f"Roll {i+1}: {roll_dice()}")
+      
+      # Output (random each time):
+      # Roll 1: 4
+      # Roll 2: 1
+      # Roll 3: 6
+      # Roll 4: 2
+      # Roll 5: 4
+      ```
     
     instructions: |
       Write a function that simulates rolling a dice.
@@ -192,6 +260,73 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Work with dates and times!
+      
+      ## 🎓 LESSON: Datetime Module
+      
+      ### Part 1: Working with Dates
+      
+      The `datetime` module handles dates and times:
+      
+      ```python
+      from datetime import datetime
+      
+      # Get current date and time
+      now = datetime.now()
+      print(now)  # 2024-01-15 14:30:45.123456
+      ```
+      
+      ### Part 2: Getting Parts of a Date
+      
+      ```python
+      from datetime import datetime
+      
+      now = datetime.now()
+      
+      print(now.year)    # 2024
+      print(now.month)   # 1
+      print(now.day)     # 15
+      print(now.hour)    # 14
+      print(now.minute)  # 30
+      ```
+      
+      ### Part 3: Formatting Dates - strftime()
+      
+      `.strftime()` converts datetime to formatted string:
+      
+      ```python
+      from datetime import datetime
+      
+      now = datetime.now()
+      
+      # Different formats
+      now.strftime("%Y-%m-%d")          # "2024-01-15"
+      now.strftime("%m/%d/%Y")          # "01/15/2024"
+      now.strftime("%B %d, %Y")         # "January 15, 2024"
+      now.strftime("%I:%M %p")          # "02:30 PM"
+      ```
+      
+      **Common format codes:**
+      - `%Y` - 4-digit year (2024)
+      - `%m` - Month as number (01-12)
+      - `%d` - Day of month (01-31)
+      - `%B` - Full month name (January)
+      - `%A` - Full day name (Monday)
+      - `%H` - Hour 24-hour (00-23)
+      - `%I` - Hour 12-hour (01-12)
+      - `%M` - Minute (00-59)
+      - `%p` - AM/PM
+      
+      ### Part 4: Complete Example
+      
+      ```python
+      from datetime import datetime
+      
+      def get_formatted_date():
+          now = datetime.now()
+          return now.strftime("%Y-%m-%d")
+      
+      print(get_formatted_date())  # "2024-01-15"
+      ```
     
     instructions: |
       Write a function that returns the current date in a specific format.
@@ -228,6 +363,63 @@ challenges:
     time_estimate: "40-50 minutes"
     description: |
       Pick random items from lists!
+      
+      ## 🎓 LESSON: random.choice()
+      
+      ### Part 1: Choosing Random Items
+      
+      `random.choice()` picks one random element from a list:
+      
+      ```python
+      import random
+      
+      colors = ["red", "blue", "green", "yellow"]
+      picked = random.choice(colors)
+      
+      print(picked)  # Might be "blue" (random each time!)
+      ```
+      
+      ### Part 2: Real-World Uses
+      
+      **Game AI:**
+      ```python
+      moves = ["rock", "paper", "scissors"]
+      computer_move = random.choice(moves)
+      ```
+      
+      **Random greetings:**
+      ```python
+      greetings = ["Hello!", "Hi there!", "Hey!", "Howdy!"]
+      greeting = random.choice(greetings)
+      print(greeting)  # Different each time!
+      ```
+      
+      **Quiz questions:**
+      ```python
+      questions = ["What is 2+2?", "What is Python?", "Who created Python?"]
+      random_question = random.choice(questions)
+      ```
+      
+      ### Part 3: random.choice() vs randint()
+      
+      | Function | Use When | Example |
+      |----------|----------|---------|
+      | `randint(a, b)` | Need a random number | `randint(1, 100)` |
+      | `choice(list)` | Need a random item from list | `choice(['a', 'b', 'c'])` |
+      
+      ### Part 4: Complete Example
+      
+      ```python
+      import random
+      
+      def pick_winner(names):
+          winner = random.choice(names)
+          return f"The winner is: {winner}!"
+      
+      participants = ["Alice", "Bob", "Charlie", "Diana"]
+      print(pick_winner(participants))
+      # "The winner is: Bob!" (random)
+      ```
     
     instructions: |
       Write a function that picks a random element from a list.
@@ -262,6 +454,90 @@ challenges:
     time_estimate: "50-65 minutes"
     description: |
       Generate secure random passwords!
+      
+      ## 🎓 LESSON: Combining Multiple Modules
+      
+      ### Part 1: The string Module
+      
+      Python's `string` module has useful constants:
+      
+      ```python
+      import string
+      
+      print(string.ascii_lowercase)  # 'abcdefghijklmnopqrstuvwxyz'
+      print(string.ascii_uppercase)  # 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      print(string.digits)            # '0123456789'
+      print(string.ascii_letters)     # All letters (upper + lower)
+      ```
+      
+      ### Part 2: Combining Strings
+      
+      Create a pool of characters:
+      
+      ```python
+      import string
+      
+      # All letters and numbers
+      chars = string.ascii_letters + string.digits
+      print(chars)  # 'abcdefg...XYZ0123456789'
+      ```
+      
+      ### Part 3: random.choice() in a Loop
+      
+      Pick multiple random characters:
+      
+      ```python
+      import random
+      import string
+      
+      chars = string.ascii_letters + string.digits
+      password = ""
+      
+      for i in range(8):  # 8 characters
+          password += random.choice(chars)
+      
+      print(password)  # "aB3xK9Qm" (random!)
+      ```
+      
+      ### Part 4: Better Way - random.choices()
+      
+      Get multiple random picks at once:
+      
+      ```python
+      import random
+      import string
+      
+      chars = string.ascii_letters + string.digits
+      
+      # Pick 8 random characters
+      password_list = random.choices(chars, k=8)
+      print(password_list)  # ['a', 'B', '3', 'x', 'K', '9', 'Q', 'm']
+      
+      # Join into string
+      password = ''.join(password_list)
+      print(password)  # "aB3xK9Qm"
+      ```
+      
+      ### Part 5: Complete Password Generator
+      
+      ```python
+      import random
+      import string
+      
+      def generate_password(length):
+          # Create character pool
+          chars = string.ascii_letters + string.digits
+          
+          # Pick random characters
+          password_chars = random.choices(chars, k=length)
+          
+          # Join into string
+          password = ''.join(password_chars)
+          
+          return password
+      
+      print(generate_password(12))  # "aB3xK9Qm4pL7"
+      ```
     
     instructions: |
       Write a function that generates a random password.
@@ -301,6 +577,85 @@ challenges:
     time_estimate: "45-60 minutes"
     description: |
       Organize related functions into a module!
+      
+      ## 🎓 LESSON: Creating Your Own Modules
+      
+      ### Part 1: What is a Module?
+      
+      A module is just a Python file with functions you can import!
+      
+      **File: calculator.py**
+      ```python
+      def add(a, b):
+          return a + b
+      
+      def subtract(a, b):
+          return a - b
+      ```
+      
+      **File: main.py**
+      ```python
+      import calculator
+      
+      result = calculator.add(5, 3)
+      print(result)  # 8
+      ```
+      
+      ### Part 2: Why Create Modules?
+      
+      **Benefits:**
+      - **Organization** - Group related functions
+      - **Reusability** - Use same code in multiple programs
+      - **Cleaner code** - Split large programs into files
+      
+      **Example structure:**
+      ```
+      my_project/
+        ├── main.py
+        ├── calculator.py
+        ├── database.py
+        └── utilities.py
+      ```
+      
+      ### Part 3: Importing from Your Module
+      
+      ```python
+      # Import entire module
+      import calculator
+      result = calculator.add(5, 3)
+      
+      # Import specific function
+      from calculator import add
+      result = add(5, 3)
+      
+      # Import multiple functions
+      from calculator import add, subtract, multiply
+      
+      # Import all (not recommended)
+      from calculator import *
+      ```
+      
+      ### Part 4: Module Example
+      
+      **math_helpers.py:**
+      ```python
+      def square(x):
+          return x ** 2
+      
+      def cube(x):
+          return x ** 3
+      
+      def is_even(x):
+          return x % 2 == 0
+      ```
+      
+      **Using it:**
+      ```python
+      import math_helpers
+      
+      print(math_helpers.square(5))    # 25
+      print(math_helpers.is_even(4))   # True
+      ```
     
     instructions: |
       Create a calculator module with basic operations.
@@ -346,6 +701,85 @@ challenges:
     time_estimate: "60-75 minutes"
     description: |
       Simulate a lottery drawing!
+      
+      ## 🎓 LESSON: random.sample() for Unique Selections
+      
+      ### Part 1: The Challenge
+      
+      Lottery numbers must be:
+      - Random
+      - **Unique** (no duplicates!)
+      - Within a range (1-49)
+      
+      ### Part 2: random.sample()
+      
+      `random.sample()` picks multiple unique items:
+      
+      ```python
+      import random
+      
+      numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      picked = random.sample(numbers, 3)  # Pick 3 unique
+      
+      print(picked)  # [7, 2, 9] (no duplicates!)
+      ```
+      
+      ### Part 3: Using with range()
+      
+      Generate lottery numbers 1-49:
+      
+      ```python
+      import random
+      
+      # Pick 6 numbers from 1-49
+      lottery = random.sample(range(1, 50), 6)
+      print(lottery)  # [23, 5, 42, 11, 38, 7]
+      ```
+      
+      **Note:** `range(1, 50)` gives 1-49 (50 is exclusive!)
+      
+      ### Part 4: Sorting Results
+      
+      Lottery numbers are usually displayed sorted:
+      
+      ```python
+      import random
+      
+      # Generate
+      lottery = random.sample(range(1, 50), 6)
+      print(lottery)  # [23, 5, 42, 11, 38, 7]
+      
+      # Sort
+      lottery_sorted = sorted(lottery)
+      print(lottery_sorted)  # [5, 7, 11, 23, 38, 42]
+      ```
+      
+      ### Part 5: Complete Lottery Simulator
+      
+      ```python
+      import random
+      
+      def lottery_numbers():
+          # Pick 6 unique numbers from 1-49
+          numbers = random.sample(range(1, 50), 6)
+          
+          # Sort them
+          numbers_sorted = sorted(numbers)
+          
+          return numbers_sorted
+      
+      # Draw numbers
+      winning = lottery_numbers()
+      print(f"Winning numbers: {winning}")
+      # Winning numbers: [7, 15, 23, 31, 42, 48]
+      ```
+      
+      ### Part 6: sample() vs choice()
+      
+      | Function | Duplicates? | Returns |
+      |----------|-------------|---------|
+      | `choice(list)` | Can repeat | One item |
+      | `sample(list, k)` | No duplicates | List of k items |
     
     instructions: |
       Write a function that simulates a lottery.
