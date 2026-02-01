@@ -6,6 +6,12 @@
     <title>Practice Sandbox - PyQuest</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- CodeMirror for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-ocean.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -184,14 +190,35 @@
                 </div>
 
                 <div class="practice-code-section">
-                    <div class="editor-header">
-                        <h3>💻 Your Solution</h3>
-                        <div class="editor-buttons">
-                            <button class="btn btn-primary" onclick="runPracticeTests()">▶️ Run Tests</button>
-                            <button class="btn btn-secondary" onclick="resetPracticeCode()">🔄 Reset</button>
+                    <div class="code-editor">
+                        <div class="code-editor-header">
+                            <div class="code-editor-dots">
+                                <span class="code-editor-dot red"></span>
+                                <span class="code-editor-dot yellow"></span>
+                                <span class="code-editor-dot green"></span>
+                            </div>
+                            <div class="code-editor-title">
+                                <span class="file-icon">🐍</span>
+                                practice_solution.py
+                            </div>
+                            <div class="code-editor-info">Python 3.11</div>
+                        </div>
+                        <div class="code-editor-body">
+                            <textarea id="practiceCodeEditor" spellcheck="false">${challenge.starter_code || '# Write your code here\ndef solution():\n    pass'}</textarea>
+                        </div>
+                        <div class="code-editor-footer">
+                            <div class="footer-left">
+                                <span class="footer-item">🐍 Python</span>
+                                <span class="footer-item">UTF-8</span>
+                            </div>
+                            <div class="footer-right">
+                                <span class="footer-item" id="practiceCursorPosition">Ln 1, Col 1</span>
+                                <span class="footer-item" id="practiceLineCount">0 lines</span>
+                                <button class="btn btn-small btn-secondary" onclick="resetPracticeCode()" style="margin-left: 1rem;">🔄 Reset</button>
+                                <button class="btn btn-small btn-primary" onclick="runPracticeTests()">▶️ Run Tests</button>
+                            </div>
                         </div>
                     </div>
-                    <textarea id="practiceCodeEditor" class="code-input">${challenge.starter_code || '# Write your code here\n'}</textarea>
                     
                     <div id="practiceTestResults"></div>
                 </div>
@@ -319,5 +346,89 @@
     </script>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    
+    <script>
+        // Initialize CodeMirror for practice editor when challenge is displayed
+        let practiceEditor = null;
+        
+        // Override displayChallenge to initialize CodeMirror
+        const originalDisplayChallenge = displayChallenge;
+        displayChallenge = function(challenge) {
+            originalDisplayChallenge(challenge);
+            
+            // Wait for DOM to update, then initialize CodeMirror
+            setTimeout(() => {
+                const textarea = document.getElementById('practiceCodeEditor');
+                if (textarea && typeof CodeMirror !== 'undefined') {
+                    practiceEditor = CodeMirror.fromTextArea(textarea, {
+                        mode: 'python',
+                        theme: 'material-ocean',
+                        lineNumbers: true,
+                        indentUnit: 4,
+                        tabSize: 4,
+                        indentWithTabs: false,
+                        lineWrapping: false,
+                        matchBrackets: true,
+                        autoCloseBrackets: true,
+                        styleActiveLine: true,
+                        highlightSelectionMatches: true,
+                        viewportMargin: Infinity
+                    });
+                    
+                    // Update status bar on cursor movement
+                    practiceEditor.on('cursorActivity', () => {
+                        const cursor = practiceEditor.getCursor();
+                        const cursorPosEl = document.getElementById('practiceCursorPosition');
+                        if (cursorPosEl) {
+                            cursorPosEl.textContent = `Ln ${cursor.line + 1}, Col ${cursor.ch + 1}`;
+                        }
+                    });
+                    
+                    // Update line count on change
+                    practiceEditor.on('change', () => {
+                        const lineCountEl = document.getElementById('practiceLineCount');
+                        if (lineCountEl) {
+                            lineCountEl.textContent = `${practiceEditor.lineCount()} lines`;
+                        }
+                    });
+                    
+                    // Initial status update
+                    const lineCountEl = document.getElementById('practiceLineCount');
+                    if (lineCountEl) {
+                        lineCountEl.textContent = `${practiceEditor.lineCount()} lines`;
+                    }
+                }
+            }, 100);
+        };
+        
+        // Update helper functions for practice editor
+        function resetPracticeCode() {
+            if (currentChallenge && confirm('Reset code to starter template?')) {
+                const starterCode = currentChallenge.starter_code || '# Write your code here\ndef solution():\n    pass';
+                if (practiceEditor) {
+                    practiceEditor.setValue(starterCode);
+                }
+            }
+        }
+        
+        function runPracticeTests() {
+            if (!practiceEditor) {
+                alert('Code editor not ready. Try generating a challenge first.');
+                return;
+            }
+            
+            const code = practiceEditor.getValue();
+            const resultsDiv = document.getElementById('practiceTestResults');
+            
+            resultsDiv.innerHTML = `
+                <div class="test-result success" style="margin-top: 1rem;">
+                    <h4>✅ Code Ready!</h4>
+                    <p>Your code:</p>
+                    <pre style="background: #0d1117; padding: 1rem; border-radius: 0.5rem; color: #e6edf3; overflow-x: auto;">${code}</pre>
+                    <p style="margin-top: 1rem;"><em>Note: Practice mode shows your code. Full test execution coming soon!</em></p>
+                </div>
+            `;
+        }
+    </script>
 </body>
 </html>
