@@ -66,8 +66,15 @@ Return JSON with this EXACT structure:
         "Third hint - more detailed guidance",
         "Fourth hint - nearly complete example"
     ],
+    "tests": [
+        {{"function": "function_name", "input": [1, 2], "expected": 3}},
+        {{"function": "function_name", "input": [5, 10], "expected": 15}},
+        {{"function": "function_name", "input": [0, 0], "expected": 0}}
+    ],
     "sample_solution": "Complete working solution for reference"
 }}
+
+IMPORTANT: Include at least 3 test cases with different inputs!
 
 Make it creative and practical. Focus on {topic_str}. Difficulty: {difficulty}."""
 

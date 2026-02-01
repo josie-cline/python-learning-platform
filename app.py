@@ -154,21 +154,28 @@ def submit_solution():
     challenge_id = data.get('challenge_id')
     code = data.get('code', '')
     
-    # Get challenge details
-    challenge = challenge_loader.get_challenge_by_id(challenge_id)
-    if not challenge:
-        return jsonify({'error': 'Challenge not found'}), 404
+    # For practice challenges, tests may be provided in request
+    tests = data.get('tests')
+    
+    if not tests:
+        # Get challenge details from curriculum
+        challenge = challenge_loader.get_challenge_by_id(challenge_id)
+        if not challenge:
+            return jsonify({'error': 'Challenge not found'}), 404
+        tests = challenge['tests']
     
     # Run tests
-    result = test_runner.run_tests(code, challenge['tests'])
+    result = test_runner.run_tests(code, tests)
     
-    # If passed, record progress
-    if result['passed']:
-        progress_tracker.record_completion(
-            challenge_id=challenge_id,
-            code=code,
-            time_spent=data.get('time_spent', 0)
-        )
+    # Only record progress for curriculum challenges (not practice)
+    if result['passed'] and challenge_id != 'practice_generated':
+        challenge = challenge_loader.get_challenge_by_id(challenge_id)
+        if challenge:  # Only if it's a curriculum challenge
+            progress_tracker.record_completion(
+                challenge_id=challenge_id,
+                code=code,
+                time_spent=data.get('time_spent', 0)
+            )
     
     return jsonify(result)
 
