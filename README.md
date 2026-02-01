@@ -71,25 +71,22 @@
 
 ### 👉 **Complete Beginner? Read This First:**
 
-If you've **never coded before**, start with these guides in order:
+If you've **never coded before**, follow this path:
 
-1. **`COMPLETE_BEGINNER_START.md`** - Read this FIRST!
+1. **[docs/guides/COMPLETE_BEGINNER_START.md](docs/guides/COMPLETE_BEGINNER_START.md)** ⭐ **READ THIS FIRST!**
    - What is programming?
    - What is Python?
    - How to think like a programmer
-   - Glossary of terms
+   - Complete glossary
    - Explains EVERYTHING from zero
 
-2. **`TOOLS_GUIDE.md`** - Learn the tools
-   - Terminal basics
-   - What Git is
-   - What VS Code is
+2. **[docs/guides/TOOLS_GUIDE.md](docs/guides/TOOLS_GUIDE.md)** - Understand the tools
+   - Terminal, Git, VS Code basics
 
-3. **`START_HERE.md`** - Setup instructions
-   - Install Python
-   - Configure the platform
+3. **[START_HERE.md](START_HERE.md)** - Install and setup
+   - Get the platform running
 
-4. **Start Week 1, Day 1** - Your first code!
+4. **Week 1, Day 1** - Write your first code!
 
 ### 🎯 **Our Teaching Philosophy**
 
@@ -304,21 +301,14 @@ Your progress is saved locally in `user_progress.json`. This includes:
 
 ## 📚 Documentation
 
-**Complete guides in [`docs/`](./docs/) folder:**
+**📍 Lost? See [Documentation Map](docs/DOCUMENTATION_MAP.md) - shows exactly where to find everything!**
 
-### **Setup & Installation**
-- [Quick Start](./docs/setup/QUICKSTART.md) - 5 minutes
-- [Setup Guide](./docs/setup/SETUP_GUIDE.md) - Detailed installation
-- [AI Practice Setup](./docs/setup/AI_PRACTICE_SETUP.md) - Enable AI generation ✨
-- [Deployment](./docs/setup/DEPLOYMENT.md) - Go live
-
-### **User Guides**
-- [Features](./docs/guides/FEATURES.md) - All features explained
-- [Tools Guide](./docs/guides/TOOLS_GUIDE.md) - Cursor, VS Code, Git, Terminal
-- [Quick Reference](./docs/guides/QUICK_REFERENCE.md) - Command cheat sheet
-
-### **Browse All Docs**
-See **[docs/README.md](./docs/README.md)** for complete navigation
+**Quick Links:**
+- 🎓 [Complete Beginner's Guide](docs/guides/COMPLETE_BEGINNER_START.md) - Never coded? Start here!
+- ⚡ [Quick Start](docs/setup/QUICKSTART.md) - Get running in 5 minutes  
+- 📖 [All Features](docs/guides/FEATURES.md) - What the platform can do
+- 🛠️ [Tools Guide](docs/guides/TOOLS_GUIDE.md) - Terminal, Git, VS Code
+- 📋 [Complete Docs Index](docs/README.md) - Browse everything
 
 ## 🆘 Need Help?
 
