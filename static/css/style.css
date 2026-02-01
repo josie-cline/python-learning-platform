@@ -584,6 +584,33 @@ body {
     height: 25.2px;  /* Match line height of textarea */
 }
 
+.code-editor-footer {
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: #8b949e;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.footer-item:hover {
+    color: #c9d1d9;
+}
+
 #codeEditor {
     flex: 1;
     min-height: 500px;

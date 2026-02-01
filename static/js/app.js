@@ -80,7 +80,7 @@ window.addEventListener('load', () => {
 const codeEditor = document.getElementById('codeEditor');
 const lineNumbers = document.getElementById('lineNumbers');
 
-// Update line numbers
+// Update line numbers and status bar
 function updateLineNumbers() {
     if (!codeEditor || !lineNumbers) return;
     
@@ -90,6 +90,28 @@ function updateLineNumbers() {
     ).join('');
     
     lineNumbers.innerHTML = lineNumbersHTML;
+    
+    // Update line count in footer
+    const lineCountEl = document.getElementById('lineCount');
+    if (lineCountEl) {
+        lineCountEl.textContent = `${lines} lines`;
+    }
+}
+
+// Update cursor position in status bar
+function updateCursorPosition() {
+    if (!codeEditor) return;
+    
+    const cursorPosEl = document.getElementById('cursorPosition');
+    if (!cursorPosEl) return;
+    
+    const pos = codeEditor.selectionStart;
+    const textBeforeCursor = codeEditor.value.substring(0, pos);
+    const lines = textBeforeCursor.split('\n');
+    const lineNumber = lines.length;
+    const columnNumber = lines[lines.length - 1].length + 1;
+    
+    cursorPosEl.textContent = `Ln ${lineNumber}, Col ${columnNumber}`;
 }
 
 // Sync scroll between textarea and line numbers
@@ -99,10 +121,18 @@ if (codeEditor && lineNumbers) {
     });
     
     // Update line numbers on input
-    codeEditor.addEventListener('input', updateLineNumbers);
+    codeEditor.addEventListener('input', () => {
+        updateLineNumbers();
+        updateCursorPosition();
+    });
     
-    // Initial line numbers
+    // Update cursor position on click/keyup
+    codeEditor.addEventListener('click', updateCursorPosition);
+    codeEditor.addEventListener('keyup', updateCursorPosition);
+    
+    // Initial setup
     updateLineNumbers();
+    updateCursorPosition();
     
     // Handle Tab key (insert 4 spaces)
     codeEditor.addEventListener('keydown', (e) => {
