@@ -1,5 +1,25 @@
 // PyQuest - Frontend JavaScript
 
+// Dismiss beginner banner
+function dismissBeginnerBanner() {
+    const banner = document.getElementById('beginnerBanner');
+    if (banner) {
+        banner.style.display = 'none';
+        localStorage.setItem('beginner_banner_dismissed', 'true');
+    }
+}
+
+// Check if banner should be hidden
+(function() {
+    const dismissed = localStorage.getItem('beginner_banner_dismissed');
+    if (dismissed === 'true') {
+        const banner = document.getElementById('beginnerBanner');
+        if (banner) {
+            banner.style.display = 'none';
+        }
+    }
+})();
+
 // Theme Toggle
 function toggleTheme() {
     const html = document.documentElement;
@@ -56,9 +76,52 @@ window.addEventListener('load', () => {
     }, 10);
 });
 
+// Code editor line numbers
+const codeEditor = document.getElementById('codeEditor');
+const lineNumbers = document.getElementById('lineNumbers');
+
+// Update line numbers
+function updateLineNumbers() {
+    if (!codeEditor || !lineNumbers) return;
+    
+    const lines = codeEditor.value.split('\n').length;
+    const lineNumbersHTML = Array.from({ length: lines }, (_, i) => 
+        `<div>${i + 1}</div>`
+    ).join('');
+    
+    lineNumbers.innerHTML = lineNumbersHTML;
+}
+
+// Sync scroll between textarea and line numbers
+if (codeEditor && lineNumbers) {
+    codeEditor.addEventListener('scroll', () => {
+        lineNumbers.scrollTop = codeEditor.scrollTop;
+    });
+    
+    // Update line numbers on input
+    codeEditor.addEventListener('input', updateLineNumbers);
+    
+    // Initial line numbers
+    updateLineNumbers();
+    
+    // Handle Tab key (insert 4 spaces)
+    codeEditor.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            e.preventDefault();
+            const start = codeEditor.selectionStart;
+            const end = codeEditor.selectionEnd;
+            const value = codeEditor.value;
+            
+            codeEditor.value = value.substring(0, start) + '    ' + value.substring(end);
+            codeEditor.selectionStart = codeEditor.selectionEnd = start + 4;
+            
+            updateLineNumbers();
+        }
+    });
+}
+
 // Confirmation before leaving page with unsaved code
 let codeChanged = false;
-const codeEditor = document.getElementById('codeEditor');
 
 if (codeEditor) {
     const originalCode = codeEditor.value;

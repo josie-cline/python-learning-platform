@@ -67,6 +67,52 @@
 - Code optimization
 - **Mock Scale AI coding interviews**
 
+## 📚 **NEW TO CODING? START HERE!**
+
+### 👉 **Complete Beginner? Read This First:**
+
+If you've **never coded before**, start with these guides in order:
+
+1. **`COMPLETE_BEGINNER_START.md`** - Read this FIRST!
+   - What is programming?
+   - What is Python?
+   - How to think like a programmer
+   - Glossary of terms
+   - Explains EVERYTHING from zero
+
+2. **`TOOLS_GUIDE.md`** - Learn the tools
+   - Terminal basics
+   - What Git is
+   - What VS Code is
+
+3. **`START_HERE.md`** - Setup instructions
+   - Install Python
+   - Configure the platform
+
+4. **Start Week 1, Day 1** - Your first code!
+
+### 🎯 **Our Teaching Philosophy**
+
+**We assume ZERO prior knowledge:**
+- Every concept explained from scratch
+- Real-world analogies for everything
+- No "assumed knowledge"
+- Glossary for every technical term
+- Step-by-step breakdowns
+
+**You don't need to be:**
+- ❌ Good at math
+- ❌ A "computer person"  
+- ❌ Technical
+- ❌ Young
+
+**You just need:**
+- ✅ 30-60 minutes per day
+- ✅ Willingness to learn
+- ✅ Persistence (trying again when stuck)
+
+---
+
 ## 🚀 Quick Start (5 Minutes)
 
 ### Step 1: Install Python

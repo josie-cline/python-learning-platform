@@ -114,9 +114,16 @@
                                 <span class="code-editor-dot yellow"></span>
                                 <span class="code-editor-dot green"></span>
                             </div>
-                            <div class="code-editor-title">python_solution.py</div>
+                            <div class="code-editor-title">
+                                <span class="file-icon">🐍</span>
+                                python_solution.py
+                            </div>
+                            <div class="code-editor-info">Python 3.11</div>
                         </div>
-                        <textarea id="codeEditor" spellcheck="false">{{ challenge.starter_code }}</textarea>
+                        <div class="code-editor-body">
+                            <div class="line-numbers" id="lineNumbers"></div>
+                            <textarea id="codeEditor" spellcheck="false">{{ challenge.starter_code }}</textarea>
+                        </div>
                     </div>
 
                     <div class="timer-display" id="timerDisplay">
