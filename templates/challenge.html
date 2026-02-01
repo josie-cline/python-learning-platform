@@ -255,14 +255,30 @@
                 html += `
                     <div class="test-result ${test.passed ? 'success' : 'failure'}">
                         <h4>${test.passed ? '✅' : '❌'} ${test.description}</h4>
+                        
+                        ${test.output ? `
+                            <div class="output-section">
+                                <strong>📤 Your Code Output:</strong>
+                                <pre class="code-output">${test.output}</pre>
+                            </div>
+                        ` : ''}
+                        
+                        ${!test.passed ? `
+                            <div class="test-comparison">
+                                <p><strong>Expected:</strong> <code>${JSON.stringify(test.expected)}</code></p>
+                                <p><strong>Got:</strong> <code>${JSON.stringify(test.actual)}</code></p>
+                            </div>
+                        ` : `
+                            <div class="test-comparison">
+                                <p><strong>✓ Returned:</strong> <code>${JSON.stringify(test.actual)}</code></p>
+                            </div>
+                        `}
+                        
                         ${!test.passed && test.error ? `
                             <div class="error-help">
                                 <pre class="error-details">${test.error}</pre>
                             </div>
-                        ` : test.passed ? '' : `
-                            <p><strong>Expected:</strong> ${JSON.stringify(test.expected)}</p>
-                            <p><strong>Got:</strong> ${JSON.stringify(test.actual)}</p>
-                        `}
+                        ` : ''}
                     </div>
                 `;
             });

@@ -240,26 +240,51 @@
                 
                 const result = await response.json();
                 
+                // Display detailed results with output
+                let html = `
+                    <div class="test-summary ${result.passed ? 'success' : 'failure'}">
+                        <h4>${result.passed ? '✅ All tests passed!' : '❌ Some tests failed'}</h4>
+                        <p>Passed: ${result.passed_tests}/${result.total_tests}</p>
+                    </div>
+                `;
+                
+                if (result.test_results) {
+                    result.test_results.forEach(test => {
+                        html += `
+                            <div class="test-result ${test.passed ? 'success' : 'failure'}">
+                                <h4>${test.passed ? '✅' : '❌'} Test ${test.test_number}</h4>
+                                
+                                ${test.output ? `
+                                    <div class="output-section">
+                                        <strong>📤 Your Code Output:</strong>
+                                        <pre class="code-output">${test.output}</pre>
+                                    </div>
+                                ` : ''}
+                                
+                                <div class="test-comparison">
+                                    <p><strong>Expected:</strong> <code>${JSON.stringify(test.expected)}</code></p>
+                                    <p><strong>Got:</strong> <code>${JSON.stringify(test.actual)}</code></p>
+                                </div>
+                                
+                                ${!test.passed && test.error ? `
+                                    <div class="error-help">
+                                        <pre class="error-details">${test.error}</pre>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `;
+                    });
+                }
+                
                 if (result.passed) {
-                    resultsDiv.innerHTML = `
-                        <div class="test-result success">
-                            <h3>✅ All Tests Passed!</h3>
-                            <p>Great work! Try another challenge to keep practicing.</p>
-                        </div>
-                    `;
-                } else {
-                    let failuresHTML = result.failures ? result.failures.map(f => 
-                        `<div class="test-failure">❌ ${f}</div>`
-                    ).join('') : '';
-                    
-                    resultsDiv.innerHTML = `
-                        <div class="test-result failure">
-                            <h3>❌ Some Tests Failed</h3>
-                            ${failuresHTML}
-                            <p>Keep trying! Check the hints if you're stuck.</p>
+                    html += `
+                        <div class="success-message">
+                            <p>🎉 Perfect! Try another challenge to keep learning.</p>
                         </div>
                     `;
                 }
+                
+                resultsDiv.innerHTML = html;
             } catch (error) {
                 resultsDiv.innerHTML = `
                     <div class="test-result failure">

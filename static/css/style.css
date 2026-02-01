@@ -752,6 +752,53 @@ body {
     font-family: 'Fira Code', monospace;
 }
 
+.output-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--code-bg);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+}
+
+.output-section strong {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.code-output {
+    background: #0d1117;
+    color: #58a6ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    margin: 0;
+    line-height: 1.6;
+    border-left: 3px solid var(--primary);
+}
+
+.test-comparison {
+    margin: 0.75rem 0;
+    padding: 0.75rem;
+    background: var(--surface);
+    border-radius: 0.5rem;
+}
+
+.test-comparison p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.test-comparison code {
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: 'Fira Code', monospace;
+}
+
 .success-message {
     background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
     color: white;
