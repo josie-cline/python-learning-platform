@@ -255,11 +255,14 @@
                 html += `
                     <div class="test-result ${test.passed ? 'success' : 'failure'}">
                         <h4>${test.passed ? '✅' : '❌'} ${test.description}</h4>
-                        ${!test.passed ? `
+                        ${!test.passed && test.error ? `
+                            <div class="error-help">
+                                <pre class="error-details">${test.error}</pre>
+                            </div>
+                        ` : test.passed ? '' : `
                             <p><strong>Expected:</strong> ${JSON.stringify(test.expected)}</p>
                             <p><strong>Got:</strong> ${JSON.stringify(test.actual)}</p>
-                            ${test.error ? `<p class="error-msg">${test.error}</p>` : ''}
-                        ` : ''}
+                        `}
                     </div>
                 `;
             });
