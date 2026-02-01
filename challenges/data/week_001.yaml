@@ -29,6 +29,56 @@ challenges:
       
       ## 🎓 LESSON: Understanding the Basics
       
+      ### Part 0: How Does Python Actually Work?
+      
+      **Before we code, let's understand what happens when you run Python:**
+      
+      **Step 1: You write code** (in a file or editor)
+      ```python
+      print("Hello!")
+      ```
+      
+      **Step 2: You run it** (tell Python to execute)
+      - In PyQuest: Click "Run Tests" button
+      - In terminal: Type `python3 yourfile.py`
+      - In interactive mode: Type code and press Enter
+      
+      **Step 3: Python executes** (runs each line from top to bottom)
+      ```
+      Line 1: print("Hello!")  ← Python sees this
+      Line 1: Displays "Hello!" on screen
+      Done!
+      ```
+      
+      **Step 4: You see the output**
+      ```
+      Hello!
+      ```
+      
+      **Key points:**
+      - Code runs **top to bottom**, one line at a time
+      - Each line executes **in order**
+      - When Python hits a function, it **runs that function**
+      - When it's done, the program stops
+      
+      **Example of execution order:**
+      ```python
+      print("First")    # Runs first
+      print("Second")   # Runs second  
+      print("Third")    # Runs third
+      
+      # Output:
+      # First
+      # Second
+      # Third
+      ```
+      
+      **In PyQuest:**
+      1. You write code in the editor
+      2. Click "Run Tests" button
+      3. PyQuest runs your code
+      4. You see if it passed or failed
+      
       ### Part 1: The print() Function
       
       `print()` is a built-in Python function that displays text on the screen.
