@@ -6,6 +6,12 @@
     <title>{{ challenge.title }} - PyQuest</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- CodeMirror for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-ocean.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -121,7 +127,6 @@
                             <div class="code-editor-info">Python 3.11</div>
                         </div>
                         <div class="code-editor-body">
-                            <div class="line-numbers" id="lineNumbers"></div>
                             <textarea id="codeEditor" spellcheck="false">{{ challenge.starter_code }}</textarea>
                         </div>
                         <div class="code-editor-footer">
@@ -186,11 +191,17 @@
         }
 
         function resetCode() {
-            document.getElementById('codeEditor').value = challengeData.starter_code;
+            if (confirm('Reset code to starter template?')) {
+                if (window.codeMirrorEditor) {
+                    window.codeMirrorEditor.setValue(challengeData.starter_code);
+                } else {
+                    document.getElementById('codeEditor').value = challengeData.starter_code;
+                }
+            }
         }
 
         async function runTests() {
-            const code = document.getElementById('codeEditor').value;
+            const code = window.codeMirrorEditor ? window.codeMirrorEditor.getValue() : document.getElementById('codeEditor').value;
             const resultsDiv = document.getElementById('testResults');
             const resultsContent = document.getElementById('resultsContent');
             
@@ -285,5 +296,66 @@
     </script>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    
+    <script>
+        // Initialize CodeMirror for syntax highlighting
+        if (typeof CodeMirror !== 'undefined' && document.getElementById('codeEditor')) {
+            const textarea = document.getElementById('codeEditor');
+            
+            const editor = CodeMirror.fromTextArea(textarea, {
+                mode: 'python',
+                theme: 'material-ocean',
+                lineNumbers: true,
+                indentUnit: 4,
+                tabSize: 4,
+                indentWithTabs: false,
+                lineWrapping: false,
+                matchBrackets: true,
+                autoCloseBrackets: true,
+                styleActiveLine: true,
+                highlightSelectionMatches: true,
+                viewportMargin: Infinity
+            });
+            
+            // Update status bar on cursor movement
+            editor.on('cursorActivity', () => {
+                const cursor = editor.getCursor();
+                const cursorPosEl = document.getElementById('cursorPosition');
+                if (cursorPosEl) {
+                    cursorPosEl.textContent = `Ln ${cursor.line + 1}, Col ${cursor.ch + 1}`;
+                }
+            });
+            
+            // Update line count on change
+            editor.on('change', () => {
+                const lineCountEl = document.getElementById('lineCount');
+                if (lineCountEl) {
+                    lineCountEl.textContent = `${editor.lineCount()} lines`;
+                }
+                
+                // Trigger auto-save
+                if (window.autoSaveEditor) {
+                    window.autoSaveEditor();
+                }
+            });
+            
+            // Make editor accessible globally for other functions
+            window.codeMirrorEditor = editor;
+            
+            // Override getValue for backward compatibility
+            if (textarea) {
+                Object.defineProperty(textarea, 'value', {
+                    get: function() { return editor.getValue(); },
+                    set: function(val) { editor.setValue(val); }
+                });
+            }
+            
+            // Initial status update
+            const lineCountEl = document.getElementById('lineCount');
+            if (lineCountEl) {
+                lineCountEl.textContent = `${editor.lineCount()} lines`;
+            }
+        }
+    </script>
 </body>
 </html>

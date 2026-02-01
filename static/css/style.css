@@ -558,30 +558,43 @@ body {
 }
 
 .code-editor-body {
-    display: flex;
     position: relative;
     background: #0d1117;
 }
 
-.line-numbers {
-    background: #0d1117;
-    color: #6e7681;
-    padding: 1.5rem 0;
-    text-align: right;
-    font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
-    font-size: 14px;
-    line-height: 1.8;
-    user-select: none;
-    min-width: 3.5rem;
-    border-right: 1px solid #21262d;
-    overflow: hidden;
-    position: relative;
+/* CodeMirror styling */
+.CodeMirror {
+    height: 500px !important;
+    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Courier New', monospace !important;
+    font-size: 14px !important;
+    background: #0d1117 !important;
+    color: #e6edf3 !important;
 }
 
-.line-numbers div {
-    padding-right: 1rem;
-    padding-left: 0.5rem;
-    height: 25.2px;  /* Match line height of textarea */
+.CodeMirror-gutters {
+    background: #0d1117 !important;
+    border-right: 1px solid #21262d !important;
+}
+
+.CodeMirror-linenumber {
+    color: #6e7681 !important;
+    padding: 0 0.75rem !important;
+}
+
+.CodeMirror-cursor {
+    border-left: 2px solid #58a6ff !important;
+}
+
+.CodeMirror-selected {
+    background: #1f6feb !important;
+}
+
+.CodeMirror-line::selection {
+    background: #1f6feb !important;
+}
+
+.CodeMirror-activeline-background {
+    background: rgba(110, 118, 129, 0.1) !important;
 }
 
 .code-editor-footer {

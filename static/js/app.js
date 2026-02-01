@@ -76,79 +76,8 @@ window.addEventListener('load', () => {
     }, 10);
 });
 
-// Code editor line numbers
+// Code editor reference (CodeMirror will replace this)
 const codeEditor = document.getElementById('codeEditor');
-const lineNumbers = document.getElementById('lineNumbers');
-
-// Update line numbers and status bar
-function updateLineNumbers() {
-    if (!codeEditor || !lineNumbers) return;
-    
-    const lines = codeEditor.value.split('\n').length;
-    const lineNumbersHTML = Array.from({ length: lines }, (_, i) => 
-        `<div>${i + 1}</div>`
-    ).join('');
-    
-    lineNumbers.innerHTML = lineNumbersHTML;
-    
-    // Update line count in footer
-    const lineCountEl = document.getElementById('lineCount');
-    if (lineCountEl) {
-        lineCountEl.textContent = `${lines} lines`;
-    }
-}
-
-// Update cursor position in status bar
-function updateCursorPosition() {
-    if (!codeEditor) return;
-    
-    const cursorPosEl = document.getElementById('cursorPosition');
-    if (!cursorPosEl) return;
-    
-    const pos = codeEditor.selectionStart;
-    const textBeforeCursor = codeEditor.value.substring(0, pos);
-    const lines = textBeforeCursor.split('\n');
-    const lineNumber = lines.length;
-    const columnNumber = lines[lines.length - 1].length + 1;
-    
-    cursorPosEl.textContent = `Ln ${lineNumber}, Col ${columnNumber}`;
-}
-
-// Sync scroll between textarea and line numbers
-if (codeEditor && lineNumbers) {
-    codeEditor.addEventListener('scroll', () => {
-        lineNumbers.scrollTop = codeEditor.scrollTop;
-    });
-    
-    // Update line numbers on input
-    codeEditor.addEventListener('input', () => {
-        updateLineNumbers();
-        updateCursorPosition();
-    });
-    
-    // Update cursor position on click/keyup
-    codeEditor.addEventListener('click', updateCursorPosition);
-    codeEditor.addEventListener('keyup', updateCursorPosition);
-    
-    // Initial setup
-    updateLineNumbers();
-    updateCursorPosition();
-    
-    // Handle Tab key (insert 4 spaces)
-    codeEditor.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-            e.preventDefault();
-            const start = codeEditor.selectionStart;
-            const end = codeEditor.selectionEnd;
-            const value = codeEditor.value;
-            
-            codeEditor.value = value.substring(0, start) + '    ' + value.substring(end);
-            codeEditor.selectionStart = codeEditor.selectionEnd = start + 4;
-            
-            updateLineNumbers();
-        }
-    });
-}
 
 // Confirmation before leaving page with unsaved code
 let codeChanged = false;
@@ -168,50 +97,71 @@ if (codeEditor) {
     });
 }
 
-// Auto-save code to localStorage
+// Auto-save code to localStorage (works with CodeMirror)
 if (codeEditor) {
     const challengeId = window.location.pathname;
     
-    // Load saved code
-    const savedCode = localStorage.getItem(`code_${challengeId}`);
-    const starterCode = codeEditor.value;
+    // Helper to get code (works with both textarea and CodeMirror)
+    window.getEditorCode = () => {
+        return window.codeMirrorEditor ? window.codeMirrorEditor.getValue() : codeEditor.value;
+    };
     
-    // Only prompt if saved code exists and is different from starter code
-    if (savedCode && savedCode !== starterCode && savedCode.trim() !== '') {
-        // Check if user disabled auto-resume prompts
-        const autoResumeDisabled = localStorage.getItem('disable_auto_resume_prompt') === 'true';
-        
-        if (!autoResumeDisabled) {
-            // Show a less intrusive notification instead of blocking confirm
-            const resumeDiv = document.createElement('div');
-            resumeDiv.className = 'auto-save-notification';
-            resumeDiv.innerHTML = `
-                <div class="notification-content">
-                    <span>💾 You have saved code from a previous session.</span>
-                    <div class="notification-actions">
-                        <button onclick="resumeSavedCode('${challengeId}')" class="btn btn-small btn-primary">Resume</button>
-                        <button onclick="dismissResume()" class="btn btn-small btn-secondary">Start Fresh</button>
-                        <button onclick="neverAskResume()" class="btn btn-small btn-text">Don't ask again</button>
-                    </div>
-                </div>
-            `;
-            document.querySelector('.challenge-editor').prepend(resumeDiv);
+    // Helper to set code
+    window.setEditorCode = (code) => {
+        if (window.codeMirrorEditor) {
+            window.codeMirrorEditor.setValue(code);
+        } else {
+            codeEditor.value = code;
         }
-    }
+    };
+    
+    // Auto-save function
+    window.autoSaveEditor = () => {
+        const code = window.getEditorCode();
+        if (code && code.trim() !== '') {
+            localStorage.setItem(`code_${challengeId}`, code);
+        }
+    };
+    
+    // Load saved code (wait for CodeMirror to initialize)
+    setTimeout(() => {
+        const savedCode = localStorage.getItem(`code_${challengeId}`);
+        const starterCode = window.getEditorCode();
+        
+        // Only prompt if saved code exists and is different from starter code
+        if (savedCode && savedCode !== starterCode && savedCode.trim() !== '') {
+            const autoResumeDisabled = localStorage.getItem('disable_auto_resume_prompt') === 'true';
+            
+            if (!autoResumeDisabled) {
+                const resumeDiv = document.createElement('div');
+                resumeDiv.className = 'auto-save-notification';
+                resumeDiv.innerHTML = `
+                    <div class="notification-content">
+                        <span>💾 You have saved code from a previous session.</span>
+                        <div class="notification-actions">
+                            <button onclick="resumeSavedCode('${challengeId}')" class="btn btn-small btn-primary">Resume</button>
+                            <button onclick="dismissResume()" class="btn btn-small btn-secondary">Start Fresh</button>
+                            <button onclick="neverAskResume()" class="btn btn-small btn-text">Don't ask again</button>
+                        </div>
+                    </div>
+                `;
+                const workspace = document.querySelector('.challenge-workspace');
+                if (workspace) workspace.insertBefore(resumeDiv, workspace.firstChild);
+            }
+        }
+    }, 500);  // Wait for CodeMirror to initialize
     
     // Save code periodically
     setInterval(() => {
-        if (codeEditor.value && codeEditor.value.trim() !== '') {
-            localStorage.setItem(`code_${challengeId}`, codeEditor.value);
-        }
+        window.autoSaveEditor();
     }, 30000); // Every 30 seconds
 }
 
 // Resume saved code function
 function resumeSavedCode(challengeId) {
     const savedCode = localStorage.getItem(`code_${challengeId}`);
-    if (savedCode && codeEditor) {
-        codeEditor.value = savedCode;
+    if (savedCode) {
+        window.setEditorCode(savedCode);
     }
     dismissResume();
 }
